@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
@@ -21,16 +21,23 @@ _global_script_class_icons={
 [application]
 
 config/name="IronIdle"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://Globals.gd"
+
+[display]
+
+window/size/width=720
+window/size/height=1280
+window/stretch/aspect="keep"
 
 [editor]
 
 version_control_autoload_on_startup=true
 version_control_plugin_name="GitAPI"
-
-[editor_plugins]
-
-enabled=PoolStringArray(  )
 
 [gui]
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ActiveExercise.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ExerciseSelect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://Store.tscn" type="PackedScene" id=4]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="ActiveExercise" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="ExerciseSelect" parent="." instance=ExtResource( 2 )]
+
+[node name="Store" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[connection signal="clicked_return" from="ActiveExercise" to="." method="returnToExerciseSelect"]
+[connection signal="completed_rep" from="ActiveExercise" to="." method="completedRep"]
+[connection signal="clicked_store" from="ExerciseSelect" to="." method="openStore"]
+[connection signal="sent_info" from="ExerciseSelect" to="." method="receivedExerciseInfo"]
+[connection signal="clicked_return" from="Store" to="." method="returnToExerciseSelect"]
+[connection signal="purchase_made" from="Store" to="." method="storePurchaseMade"]

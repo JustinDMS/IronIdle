@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/BigText.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ExerciseSelect.gd" type="Script" id=3]
+
+[node name="ExerciseSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="VerticalBox_Main" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VerticalBox_Store" type="VBoxContainer" parent="VerticalBox_Main"]
+margin_right = 720.0
+margin_bottom = 82.0
+
+[node name="Button_Store" type="Button" parent="VerticalBox_Main/VerticalBox_Store"]
+margin_right = 720.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 1 )
+text = "Store"
+
+[node name="HSeparator" type="HSeparator" parent="VerticalBox_Main"]
+margin_top = 86.0
+margin_right = 720.0
+margin_bottom = 101.0
+custom_constants/separation = 15
+
+[node name="VerticalBox_Calisthenic" type="VBoxContainer" parent="VerticalBox_Main"]
+margin_top = 105.0
+margin_right = 720.0
+margin_bottom = 325.0
+
+[node name="Label_Calisthenics" type="Label" parent="VerticalBox_Main/VerticalBox_Calisthenic"]
+margin_right = 720.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 1 )
+text = "Calisthenics"
+align = 1
+
+[node name="Button_PushUp" type="Button" parent="VerticalBox_Main/VerticalBox_Calisthenic"]
+margin_left = 210.0
+margin_top = 80.0
+margin_right = 510.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Push-Up"
+
+[node name="Button_SitUp" type="Button" parent="VerticalBox_Main/VerticalBox_Calisthenic"]
+margin_left = 210.0
+margin_top = 128.0
+margin_right = 510.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Sit-Up"
+
+[node name="Button_PullUp" type="Button" parent="VerticalBox_Main/VerticalBox_Calisthenic"]
+margin_left = 210.0
+margin_top = 176.0
+margin_right = 510.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Pull-Up"
+
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Store/Button_Store" to="." method="_on_Button_Store_pressed"]
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_PushUp" to="." method="_on_Button_PushUp_pressed"]
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_SitUp" to="." method="_on_Button_SitUp_pressed"]
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_PullUp" to="." method="_on_Button_PullUp_pressed"]
+[connection signal="tree_entered" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_PullUp" to="." method="_on_Button_PullUp_tree_entered"]

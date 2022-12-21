@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://ExerciseStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+exercise_name = "Sit-Up"
+exercise_type = "Calisthenic"
+rep_time = 1.8
+money_earned = 0.03
+muscle_groups = "Core"
+gym_req = "None"
+equipment_req = "None"
