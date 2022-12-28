@@ -15,7 +15,7 @@ anchor_bottom = 1.0
 
 [node name="VerticalBox_Store" type="VBoxContainer" parent="VerticalBox_Main"]
 margin_right = 720.0
-margin_bottom = 82.0
+margin_bottom = 246.0
 
 [node name="Button_Store" type="Button" parent="VerticalBox_Main/VerticalBox_Store"]
 margin_right = 720.0
@@ -23,16 +23,46 @@ margin_bottom = 82.0
 custom_fonts/font = ExtResource( 1 )
 text = "Store"
 
-[node name="HSeparator" type="HSeparator" parent="VerticalBox_Main"]
+[node name="HSeparator" type="HSeparator" parent="VerticalBox_Main/VerticalBox_Store"]
 margin_top = 86.0
 margin_right = 720.0
 margin_bottom = 101.0
 custom_constants/separation = 15
 
-[node name="VerticalBox_Calisthenic" type="VBoxContainer" parent="VerticalBox_Main"]
+[node name="Label_Inventory" type="Label" parent="VerticalBox_Main/VerticalBox_Store"]
 margin_top = 105.0
 margin_right = 720.0
-margin_bottom = 325.0
+margin_bottom = 143.0
+custom_fonts/font = ExtResource( 2 )
+text = "Inventory:"
+align = 1
+
+[node name="Label_InventoryGym" type="Label" parent="VerticalBox_Main/VerticalBox_Store"]
+margin_top = 147.0
+margin_right = 720.0
+margin_bottom = 185.0
+custom_fonts/font = ExtResource( 2 )
+text = "None"
+align = 1
+
+[node name="Label_InventoryEquipment" type="Label" parent="VerticalBox_Main/VerticalBox_Store"]
+margin_top = 189.0
+margin_right = 720.0
+margin_bottom = 227.0
+custom_fonts/font = ExtResource( 2 )
+text = "None"
+align = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VerticalBox_Main/VerticalBox_Store"]
+margin_top = 231.0
+margin_right = 720.0
+margin_bottom = 246.0
+custom_constants/separation = 15
+
+[node name="VerticalBox_Calisthenic" type="VBoxContainer" parent="VerticalBox_Main"]
+margin_top = 250.0
+margin_right = 720.0
+margin_bottom = 518.0
 
 [node name="Label_Calisthenics" type="Label" parent="VerticalBox_Main/VerticalBox_Calisthenic"]
 margin_right = 720.0
@@ -61,7 +91,7 @@ size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 2 )
 text = "Sit-Up"
 
-[node name="Button_PullUp" type="Button" parent="VerticalBox_Main/VerticalBox_Calisthenic"]
+[node name="Button_BodyweightSquat" type="Button" parent="VerticalBox_Main/VerticalBox_Calisthenic"]
 margin_left = 210.0
 margin_top = 176.0
 margin_right = 510.0
@@ -69,10 +99,76 @@ margin_bottom = 220.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 2 )
+text = "Squat"
+
+[node name="Button_PullUp" type="Button" parent="VerticalBox_Main/VerticalBox_Calisthenic"]
+margin_left = 210.0
+margin_top = 224.0
+margin_right = 510.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
 text = "Pull-Up"
+
+[node name="VerticalBox_Weighted" type="VBoxContainer" parent="VerticalBox_Main"]
+margin_top = 522.0
+margin_right = 720.0
+margin_bottom = 790.0
+
+[node name="Label_Weighted" type="Label" parent="VerticalBox_Main/VerticalBox_Weighted"]
+margin_right = 720.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 1 )
+text = "Weighted"
+align = 1
+
+[node name="Button_BenchPress" type="Button" parent="VerticalBox_Main/VerticalBox_Weighted"]
+margin_left = 210.0
+margin_top = 80.0
+margin_right = 510.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Bench Press"
+
+[node name="Button_OverheadPress" type="Button" parent="VerticalBox_Main/VerticalBox_Weighted"]
+margin_left = 210.0
+margin_top = 128.0
+margin_right = 510.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Overhead Press"
+
+[node name="Button_Squat" type="Button" parent="VerticalBox_Main/VerticalBox_Weighted"]
+margin_left = 210.0
+margin_top = 176.0
+margin_right = 510.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Squat"
+
+[node name="Button_Deadlift" type="Button" parent="VerticalBox_Main/VerticalBox_Weighted"]
+margin_left = 210.0
+margin_top = 224.0
+margin_right = 510.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "Deadlift"
 
 [connection signal="pressed" from="VerticalBox_Main/VerticalBox_Store/Button_Store" to="." method="_on_Button_Store_pressed"]
 [connection signal="pressed" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_PushUp" to="." method="_on_Button_PushUp_pressed"]
 [connection signal="pressed" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_SitUp" to="." method="_on_Button_SitUp_pressed"]
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_BodyweightSquat" to="." method="_on_Button_BodyweightSquat_pressed"]
 [connection signal="pressed" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_PullUp" to="." method="_on_Button_PullUp_pressed"]
-[connection signal="tree_entered" from="VerticalBox_Main/VerticalBox_Calisthenic/Button_PullUp" to="." method="_on_Button_PullUp_tree_entered"]
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Weighted/Button_BenchPress" to="." method="_on_Button_BenchPress_pressed"]
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Weighted/Button_OverheadPress" to="." method="_on_Button_OverheadPress_pressed"]
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Weighted/Button_Squat" to="." method="_on_Button_Squat_pressed"]
+[connection signal="pressed" from="VerticalBox_Main/VerticalBox_Weighted/Button_Deadlift" to="." method="_on_Button_Deadlift_pressed"]

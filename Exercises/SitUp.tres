@@ -6,8 +6,7 @@
 script = ExtResource( 1 )
 exercise_name = "Sit-Up"
 exercise_type = "Calisthenic"
-rep_time = 1.8
-money_earned = 0.03
+rep_time = 1.5
 muscle_groups = "Core"
 gym_req = "None"
 equipment_req = "None"

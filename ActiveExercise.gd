@@ -26,6 +26,7 @@ func stopExercise():
 
 
 func _on_Button_Start_pressed():
+	stopExercise()
 	$RepTimer.start()
 
 
@@ -36,6 +37,5 @@ func _on_RepTimer_timeout():
 	emit_signal("completed_rep")
 
 func _on_Button_Exit_pressed():
-	stopExercise()
 	hide()
 	emit_signal("clicked_return")

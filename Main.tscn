@@ -16,6 +16,7 @@ visible = false
 [node name="Store" parent="." instance=ExtResource( 4 )]
 visible = false
 
+[connection signal="tree_exiting" from="." to="." method="_on_Main_tree_exiting"]
 [connection signal="clicked_return" from="ActiveExercise" to="." method="returnToExerciseSelect"]
 [connection signal="completed_rep" from="ActiveExercise" to="." method="completedRep"]
 [connection signal="clicked_store" from="ExerciseSelect" to="." method="openStore"]
