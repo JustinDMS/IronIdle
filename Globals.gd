@@ -1,11 +1,15 @@
 extends Node
 
-var current_scene = null
-
 # Exercise info
 var pushup = load("res://Exercises/PushUp.tres")
 var situp = load("res://Exercises/SitUp.tres")
 var pullup = load("res://Exercises/PullUp.tres")
+var bodyweight_squat = load("res://Exercises/BodyweightSquat.tres")
+
+var benchpress = load("res://Exercises/BenchPress.tres")
+var overheadpress = load("res://Exercises/OverheadPress.tres")
+var squat = load("res://Exercises/Squat.tres")
+var deadlift = load("res://Exercises/Deadlift.tres")
 
 # Player variables
 var money := 0.00
@@ -24,6 +28,7 @@ func makePurchase(amount, type, item):
 		money = money - amount
 		type.append(item)
 		print(item + " purchased")
+		saveGame()
 
 func saveGame():
 	

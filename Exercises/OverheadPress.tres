@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://ExerciseStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+exercise_name = "Overhead Press"
+exercise_type = "Weighted"
+rep_time = 3.25
+muscle_groups = "Shoulders"
+gym_req = "Rack"
+equipment_req = "Plates"
