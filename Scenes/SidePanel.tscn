@@ -1,0 +1,306 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/PlayerBalance.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PlaceholderArt/ChestIcon.png" type="Texture" id=3]
+[ext_resource path="res://PlaceholderArt/ShouldersIcon.png" type="Texture" id=4]
+[ext_resource path="res://PlaceholderArt/BackIcon.png" type="Texture" id=5]
+[ext_resource path="res://PlaceholderArt/AbsIcon.png" type="Texture" id=6]
+[ext_resource path="res://PlaceholderArt/HamstringsIcon.png" type="Texture" id=7]
+[ext_resource path="res://PlaceholderArt/QuadsIcon.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/ActiveExercise.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/SidePanel.gd" type="Script" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.196078 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+
+[node name="SidePanel" type="Control"]
+anchor_right = 0.25
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.470588 )
+
+[node name="VBox_Main" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -15.0
+margin_bottom = -15.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="VBox_Main"]
+margin_right = 450.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBox_PlayerInfo" type="VBoxContainer" parent="VBox_Main/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PlayerBalance" parent="VBox_Main/Panel/VBox_PlayerInfo" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 450.0
+margin_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo"]
+margin_top = 86.0
+margin_right = 450.0
+margin_bottom = 90.0
+
+[node name="HBox_1" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo"]
+margin_top = 94.0
+margin_right = 450.0
+margin_bottom = 300.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBox_Strength1" type="VBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1"]
+margin_right = 219.0
+margin_bottom = 206.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBox_Chest" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
+margin_right = 219.0
+margin_bottom = 50.0
+
+[node name="Texture_Chest" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Chest"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 7
+
+[node name="Label_Chest" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Chest"]
+margin_left = 54.0
+margin_right = 219.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+valign = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
+margin_top = 54.0
+margin_right = 219.0
+margin_bottom = 74.0
+custom_constants/separation = 20
+
+[node name="HBox_Shoulders" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
+margin_top = 78.0
+margin_right = 219.0
+margin_bottom = 128.0
+
+[node name="Texture_Shoulders" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Shoulders"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="Label_Shoulders" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Shoulders"]
+margin_left = 54.0
+margin_right = 219.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+valign = 1
+
+[node name="HSeparator3" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
+margin_top = 132.0
+margin_right = 219.0
+margin_bottom = 152.0
+custom_constants/separation = 20
+
+[node name="HBox_Back" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
+margin_top = 156.0
+margin_right = 219.0
+margin_bottom = 206.0
+
+[node name="Texture_Back" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Back"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+
+[node name="Label_Back" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Back"]
+margin_left = 54.0
+margin_right = 219.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+valign = 1
+
+[node name="VSeparator" type="VSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1"]
+margin_left = 223.0
+margin_right = 227.0
+margin_bottom = 206.0
+
+[node name="VBox_Strength2" type="VBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1"]
+margin_left = 231.0
+margin_right = 450.0
+margin_bottom = 206.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBox_Core" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
+margin_right = 219.0
+margin_bottom = 50.0
+alignment = 1
+
+[node name="Texture_Core" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Core"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 7
+
+[node name="Label_Core" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Core"]
+margin_left = 54.0
+margin_right = 219.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+valign = 1
+
+[node name="HSeparator4" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
+margin_top = 54.0
+margin_right = 219.0
+margin_bottom = 74.0
+custom_constants/separation = 20
+
+[node name="HBox_Quadriceps" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
+margin_top = 78.0
+margin_right = 219.0
+margin_bottom = 128.0
+alignment = 1
+
+[node name="Texture_Quadriceps" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Quadriceps"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 7
+
+[node name="Label_Quadriceps" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Quadriceps"]
+margin_left = 54.0
+margin_right = 219.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+valign = 1
+
+[node name="HSeparator5" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
+margin_top = 132.0
+margin_right = 219.0
+margin_bottom = 152.0
+custom_constants/separation = 20
+
+[node name="HBox_Hamstrings" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
+margin_top = 156.0
+margin_right = 219.0
+margin_bottom = 206.0
+alignment = 1
+
+[node name="Texture_Hamstrings" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Hamstrings"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 7
+
+[node name="Label_Hamstrings" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Hamstrings"]
+margin_left = 54.0
+margin_right = 219.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBox_Main"]
+margin_top = 304.0
+margin_right = 450.0
+margin_bottom = 334.0
+custom_constants/separation = 30
+
+[node name="Button_Store" type="Button" parent="VBox_Main"]
+margin_top = 338.0
+margin_right = 450.0
+margin_bottom = 376.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Gym Store"
+
+[node name="HSeparator2" type="HSeparator" parent="VBox_Main"]
+margin_top = 380.0
+margin_right = 450.0
+margin_bottom = 410.0
+custom_constants/separation = 30
+
+[node name="Panel2" type="Panel" parent="VBox_Main"]
+margin_top = 414.0
+margin_right = 450.0
+margin_bottom = 1050.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+
+[node name="ActiveExercise" parent="VBox_Main/Panel2" instance=ExtResource( 9 )]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel2_Cover" type="Panel" parent="VBox_Main/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="VBox_Main/Panel2/Panel2_Cover"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "No Exercise selected"
+align = 1
+valign = 1
+autowrap = true
+
+[connection signal="pressed" from="VBox_Main/Button_Store" to="." method="_on_Button_Store_pressed"]
+[connection signal="completed_rep" from="VBox_Main/Panel2/ActiveExercise" to="." method="_on_ActiveExercise_completed_rep"]

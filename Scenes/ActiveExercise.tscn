@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/ActiveExercise.gd" type="Script" id=3]
+[ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=4]
+
+[node name="ActiveExercise" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="VerticalBox_Main" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label_ExerciseName" type="Label" parent="VerticalBox_Main"]
+margin_right = 1920.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 2 )
+text = "Exercise"
+align = 1
+
+[node name="VerticalBox_Bottom" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -146.0
+custom_constants/separation = 10
+
+[node name="HorizonatlBox_Info" type="HBoxContainer" parent="VerticalBox_Bottom"]
+margin_right = 1920.0
+margin_bottom = 38.0
+
+[node name="Label_RepTime" type="Label" parent="VerticalBox_Bottom/HorizonatlBox_Info"]
+margin_right = 958.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_fonts/font = ExtResource( 2 )
+text = "0.0s"
+align = 1
+
+[node name="Label_MoneyEarned" type="Label" parent="VerticalBox_Bottom/HorizonatlBox_Info"]
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "$0.00"
+align = 1
+
+[node name="ProgressBar_Rep" type="ProgressBar" parent="VerticalBox_Bottom"]
+margin_top = 48.0
+margin_right = 1920.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+percent_visible = false
+
+[node name="HorizontalBox_Buttons" type="HBoxContainer" parent="VerticalBox_Bottom"]
+margin_top = 108.0
+margin_right = 1920.0
+margin_bottom = 146.0
+size_flags_vertical = 3
+
+[node name="Button_Start" type="Button" parent="VerticalBox_Bottom/HorizontalBox_Buttons"]
+margin_right = 958.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = ExtResource( 4 )
+text = "Start"
+
+[node name="Button_End" type="Button" parent="VerticalBox_Bottom/HorizontalBox_Buttons"]
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = ExtResource( 4 )
+text = "Stop"
+
+[node name="RepTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="VerticalBox_Bottom/HorizontalBox_Buttons/Button_Start" to="." method="_on_Button_Start_pressed"]
+[connection signal="pressed" from="VerticalBox_Bottom/HorizontalBox_Buttons/Button_End" to="." method="_on_Button_End_pressed"]
+[connection signal="timeout" from="RepTimer" to="." method="_on_RepTimer_timeout"]

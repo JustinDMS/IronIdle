@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/ExerciseSelect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/SidePanel.tscn" type="PackedScene" id=5]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+anchor_left = 0.25
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.172549, 0.164706, 0.196078, 1 )
+
+[node name="ExerciseSelect" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.25
+
+[node name="Store" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = 480.0
+
+[node name="SidePanel" parent="." instance=ExtResource( 5 )]
+
+[connection signal="tree_exiting" from="." to="." method="_on_Main_tree_exiting"]
+[connection signal="sent_info" from="ExerciseSelect" to="." method="receivedExerciseInfo"]
+[connection signal="clicked_return" from="Store" to="." method="returnToExerciseSelect"]
+[connection signal="purchase_made" from="Store" to="." method="storePurchaseMade"]
+[connection signal="clicked_store" from="SidePanel" to="." method="openStore"]
+[connection signal="completed_rep" from="SidePanel" to="." method="completedRep"]

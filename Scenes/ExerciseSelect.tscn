@@ -1,0 +1,147 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/ExerciseButtons.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PlaceholderArt/BackIcon.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/ExerciseSelect.gd" type="Script" id=3]
+[ext_resource path="res://PlaceholderArt/ShouldersIcon.png" type="Texture" id=4]
+[ext_resource path="res://PlaceholderArt/ChestIcon.png" type="Texture" id=5]
+[ext_resource path="res://PlaceholderArt/QuadsIcon.png" type="Texture" id=6]
+[ext_resource path="res://PlaceholderArt/AbsIcon.png" type="Texture" id=7]
+[ext_resource path="res://PlaceholderArt/CalisthenicsIcon.png" type="Texture" id=8]
+[ext_resource path="res://PlaceholderArt/DumbbellIcon.png" type="Texture" id=9]
+[ext_resource path="res://PlaceholderArt/BarbellIcon.png" type="Texture" id=10]
+[ext_resource path="res://PlaceholderArt/HamstringsIcon.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/ExerciseInfo.tscn" type="PackedScene" id=12]
+
+[node name="ExerciseSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="VBox_Main" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox_Main"]
+margin_right = 1920.0
+margin_bottom = 304.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox_Main/HBoxContainer"]
+margin_right = 920.0
+margin_bottom = 304.0
+
+[node name="HBox_MuscleGroup" type="HBoxContainer" parent="VBox_Main/HBoxContainer/VBoxContainer"]
+margin_right = 920.0
+margin_bottom = 150.0
+
+[node name="Button_Chest" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+expand = true
+
+[node name="Button_Shoulder" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 4 )
+expand = true
+
+[node name="Button_Back" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 308.0
+margin_right = 458.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Button_Core" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 462.0
+margin_right = 612.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="Button_Quads" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 616.0
+margin_right = 766.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="Button_Hamstring" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 770.0
+margin_right = 920.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 11 )
+expand = true
+
+[node name="HBox_MuscleGroup2" type="HBoxContainer" parent="VBox_Main/HBoxContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 920.0
+margin_bottom = 304.0
+custom_constants/separation = 75
+alignment = 1
+
+[node name="Button_Calisthenics" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2"]
+margin_left = 160.0
+margin_right = 310.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 8 )
+expand = true
+
+[node name="Button_Dumbbell" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2"]
+margin_left = 385.0
+margin_right = 535.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="Button_Barbell" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2"]
+margin_left = 610.0
+margin_right = 760.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture_normal = ExtResource( 10 )
+expand = true
+
+[node name="ExerciseInfo" parent="VBox_Main/HBoxContainer" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 924.0
+margin_right = 1920.0
+margin_bottom = 304.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ExerciseButtons" parent="VBox_Main" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 308.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Chest" to="." method="_on_Button_Chest_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Shoulder" to="." method="_on_Button_Shoulder_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Back" to="." method="_on_Button_Back_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Core" to="." method="_on_Button_Core_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Quads" to="." method="_on_Button_Quads_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Hamstring" to="." method="_on_Button_Hamstring_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Calisthenics" to="." method="_on_Button_Calisthenics_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Dumbbell" to="." method="_on_Button_Dumbbell_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Barbell" to="." method="_on_Button_Barbell_pressed"]
+[connection signal="exercise_activated" from="VBox_Main/ExerciseButtons" to="." method="_on_ExerciseButtons_exercise_activated"]
+[connection signal="exercise_selected" from="VBox_Main/ExerciseButtons" to="." method="_on_ExerciseButtons_exercise_selected"]
