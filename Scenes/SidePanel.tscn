@@ -302,5 +302,22 @@ align = 1
 valign = 1
 autowrap = true
 
+[node name="XPDisplayTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="mouse_entered" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Chest" to="." method="_on_HBox_Chest_mouse_entered"]
+[connection signal="mouse_exited" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Chest" to="." method="_on_HBox_Chest_mouse_exited"]
+[connection signal="mouse_entered" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Shoulders" to="." method="_on_HBox_Shoulders_mouse_entered"]
+[connection signal="mouse_exited" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Shoulders" to="." method="_on_HBox_Shoulders_mouse_exited"]
+[connection signal="mouse_entered" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Back" to="." method="_on_HBox_Back_mouse_entered"]
+[connection signal="mouse_exited" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Back" to="." method="_on_HBox_Back_mouse_exited"]
+[connection signal="mouse_entered" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Core" to="." method="_on_HBox_Core_mouse_entered"]
+[connection signal="mouse_exited" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Core" to="." method="_on_HBox_Core_mouse_exited"]
+[connection signal="mouse_entered" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Quadriceps" to="." method="_on_HBox_Quadriceps_mouse_entered"]
+[connection signal="mouse_exited" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Quadriceps" to="." method="_on_HBox_Quadriceps_mouse_exited"]
+[connection signal="mouse_entered" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Hamstrings" to="." method="_on_HBox_Hamstrings_mouse_entered"]
+[connection signal="mouse_exited" from="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Hamstrings" to="." method="_on_HBox_Hamstrings_mouse_exited"]
 [connection signal="pressed" from="VBox_Main/Button_Store" to="." method="_on_Button_Store_pressed"]
 [connection signal="completed_rep" from="VBox_Main/Panel2/ActiveExercise" to="." method="_on_ActiveExercise_completed_rep"]
+[connection signal="timeout" from="XPDisplayTimer" to="." method="_on_XPDisplayTimer_timeout"]

@@ -7,6 +7,7 @@ script = ExtResource( 1 )
 exercise_name = "Deadlift"
 exercise_type = "Weighted"
 rep_time = 5.5
+base_strength = 3.0
 muscle_groups = "Hamstrings"
 gym_req = "Deadlift Platform"
 equipment_req = "Plates"

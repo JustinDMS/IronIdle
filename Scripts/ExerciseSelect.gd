@@ -31,9 +31,12 @@ func applyFilter():
 
 # Signal to update the ExerciseInfo scene
 func _on_ExerciseButtons_exercise_selected(index):
-	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer3/Label_Name.set_text(exercise_list[index]["exercise_name"])
+	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer3/Label_Name.set_text(exercise_list[index]["exercise_name"] + ":")
 	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer/Label_Money.set_text(Globals.calculateMoneyEarned(exercise_list[index]["rep_time"]))
 	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer2/Label_RepTime.set_text(str(exercise_list[index]["rep_time"]))
+	
+	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer4/TextureRect.set_texture(Globals.muscle_icons[exercise_list[index]["muscle_groups"]])
+	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer4/Label_Strength.set_text(str(exercise_list[index]["base_strength"]) + " xp")
 
 # Signal to update the ActiveExercise scene
 func _on_ExerciseButtons_exercise_activated(index):

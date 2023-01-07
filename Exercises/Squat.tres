@@ -7,6 +7,7 @@ script = ExtResource( 1 )
 exercise_name = "Squat"
 exercise_type = "Weighted"
 rep_time = 5.0
+base_strength = 3.0
 muscle_groups = "Quadriceps"
 gym_req = "Rack"
 equipment_req = "Plates"
