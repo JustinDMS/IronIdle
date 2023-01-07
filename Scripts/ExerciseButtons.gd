@@ -39,7 +39,6 @@ func filterExercises(type, group):
 
 
 func _on_ItemList_item_selected(index):
-	print(index)
 	emit_signal("exercise_selected", index)
 
 
