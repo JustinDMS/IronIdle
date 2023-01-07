@@ -2,14 +2,18 @@ extends Node
 
 var selected_exercise
 var money_earned
+var strength_earned
 
+onready var player_balance = $SidePanel/VBox_Main/Panel/VBox_PlayerInfo/PlayerBalance
 
 func _ready():
 	Globals.loadGame()
-
+	player_balance.updateBalance()
+	$SidePanel.updateStrengthLevels()
 
 func setActiveExerciseUI():
 	money_earned = Globals.calculateMoneyEarned(selected_exercise.rep_time)
+	strength_earned = selected_exercise.base_strength
 	
 	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/Label_ExerciseName.set_text(selected_exercise.exercise_name)
 	
@@ -37,8 +41,12 @@ func receivedExerciseInfo():
 
 
 func completedRep():
-	Globals.money += float(money_earned)
-	$SidePanel/VBox_Main/Panel/VBox_PlayerInfo/PlayerBalance.updateBalance()
+	Globals.player.money += float(money_earned)
+	player_balance.updateBalance()
+
+	Globals.gainExperience(selected_exercise.muscle_groups, strength_earned)
+	$SidePanel.updateStrengthLevels()
+	$SidePanel.updateDisplayXP(selected_exercise.muscle_groups)
 
 
 func returnToExerciseSelect():
@@ -47,8 +55,3 @@ func returnToExerciseSelect():
 
 func storePurchaseMade():
 	$SidePanel/VBox_Main/Panel/VBox_PlayerInfo/PlayerBalance.updateBalance()
-
-
-# Destructor
-func _on_Main_tree_exiting():
-	Globals.saveGame()
