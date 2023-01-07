@@ -21,7 +21,6 @@ func stopExercise():
 	$VerticalBox_Bottom/ProgressBar_Rep.set_value(rep_progress)
 	
 	Globals.saveGame()
-	print("Game saved because stopExercise()")
 
 func _on_Button_Start_pressed():
 	stopExercise()
