@@ -23,7 +23,6 @@ margin_left = 480.0
 
 [node name="SidePanel" parent="." instance=ExtResource( 5 )]
 
-[connection signal="tree_exiting" from="." to="." method="_on_Main_tree_exiting"]
 [connection signal="sent_info" from="ExerciseSelect" to="." method="receivedExerciseInfo"]
 [connection signal="clicked_return" from="Store" to="." method="returnToExerciseSelect"]
 [connection signal="purchase_made" from="Store" to="." method="storePurchaseMade"]
