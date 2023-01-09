@@ -7,6 +7,13 @@ var type_filter := "All"
 var muscle_filter := "All"
 onready var exercise_list : Array = $VBox_Main/ExerciseButtons.filtered_exercises
 
+onready var name_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/Label_Name
+onready var money_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Money/Label_Money
+onready var time_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Time/Label_RepTime
+onready var muscle_texture = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/TextureRect
+onready var strength_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/Label_Strength
+onready var proficiency_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Proficiency/Label_Proficiency
+
 func _ready():
 	pass
 
@@ -31,12 +38,17 @@ func applyFilter():
 
 # Signal to update the ExerciseInfo scene
 func _on_ExerciseButtons_exercise_selected(index):
-	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer3/Label_Name.set_text(exercise_list[index]["exercise_name"] + ":")
-	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer/Label_Money.set_text(Globals.calculateMoneyEarned(exercise_list[index]["rep_time"]))
-	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer2/Label_RepTime.set_text(str(exercise_list[index]["rep_time"]))
 	
-	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer4/TextureRect.set_texture(Globals.muscle_icons[exercise_list[index]["muscle_groups"]])
-	$VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBoxContainer4/Label_Strength.set_text(str(exercise_list[index]["base_strength"]) + " xp")
+	var strength = Globals.player.strength_level[exercise_list[index]["muscle_groups"]]
+	var proficiency = Globals.player.proficiency_level[exercise_list[index]["exercise_name"]]
+	var time = exercise_list[index]["rep_time"]
+	
+	name_label.set_text(exercise_list[index]["exercise_name"] + ":")
+	money_label.set_text(Globals.calculateMoneyEarned(exercise_list[index]["rep_time"]))
+	time_label.set_text(Globals.calculateRepTime(strength, proficiency, time))
+	muscle_texture.set_texture(Globals.muscle_icons[exercise_list[index]["muscle_groups"]])
+	strength_label.set_text(str(exercise_list[index]["base_strength"]) + " xp")
+	proficiency_label.set_text(str("1" + " xp"))
 
 # Signal to update the ActiveExercise scene
 func _on_ExerciseButtons_exercise_activated(index):

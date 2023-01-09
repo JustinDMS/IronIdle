@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/SidePanel.tscn" type="PackedScene" id=5]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" groups=["UI"]]
 script = ExtResource( 3 )
 
 [node name="BackgroundColor" type="ColorRect" parent="."]

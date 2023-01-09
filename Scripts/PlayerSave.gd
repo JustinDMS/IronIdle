@@ -30,11 +30,38 @@ export var xp_total = {
 	"Hamstrings" : 0.0,
 }
 export var proficiency_level = {
+	"Push-Up" : 1,
+	"Sit-Up" : 1,
+	"Bodyweight Squat" : 1,
+	"Pull-Up" : 1,
 	
+	"Bench Press" : 1,
+	"Overhead Press" : 1,
+	"Barbell Row" : 1,
+	"Squat" : 1,
+	"Deadlift" : 1,
 }
 export var proficiency_xp = {
+	"Push-Up" : 0.0,
+	"Sit-Up" : 0.0,
+	"Bodyweight Squat" : 0.0,
+	"Pull-Up" : 0.0,
 	
+	"Bench Press" : 0.0,
+	"Overhead Press" : 0.0,
+	"Barbell Row" : 0.0,
+	"Squat" : 0.0,
+	"Deadlift" : 0.0,
 }
 export var proficiency_xp_total = {
+	"Push-Up" : 0.0,
+	"Sit-Up" : 0.0,
+	"Bodyweight Squat" : 0.0,
+	"Pull-Up" : 0.0,
 	
+	"Bench Press" : 0.0,
+	"Overhead Press" : 0.0,
+	"Barbell Row" : 0.0,
+	"Squat" : 0.0,
+	"Deadlift" : 0.0,
 }

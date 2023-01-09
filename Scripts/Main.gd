@@ -3,6 +3,7 @@ extends Node
 var selected_exercise
 var money_earned
 var strength_earned
+var proficiency_earned = 1
 
 onready var player_balance = $SidePanel/VBox_Main/Panel/VBox_PlayerInfo/PlayerBalance
 
@@ -15,12 +16,23 @@ func setActiveExerciseUI():
 	money_earned = Globals.calculateMoneyEarned(selected_exercise.rep_time)
 	strength_earned = selected_exercise.base_strength
 	
+	var strength = Globals.player.strength_level[selected_exercise.muscle_groups]
+	var proficiency = Globals.player.proficiency_level[selected_exercise.exercise_name]
+	var rep_time = Globals.calculateRepTime(strength, proficiency, selected_exercise.rep_time)
+	
 	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/Label_ExerciseName.set_text(selected_exercise.exercise_name)
-	
-	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Bottom/HorizonatlBox_Info/Label_RepTime.set_text(str(selected_exercise.rep_time) + "s")
-	$SidePanel/VBox_Main/Panel2/ActiveExercise/RepTimer.set_wait_time(selected_exercise.rep_time)
-	
+	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Bottom/HorizonatlBox_Info/Label_RepTime.set_text(rep_time + "s")
+	$SidePanel/VBox_Main/Panel2/ActiveExercise/RepTimer.set_wait_time(float(rep_time))
 	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Bottom/HorizonatlBox_Info/Label_MoneyEarned.set_text("$" + str(money_earned))
+	
+	updateProficiencyUI()
+
+
+func updateProficiencyUI():
+	var proficiency_level = str(Globals.player.proficiency_level[selected_exercise.exercise_name])
+	var proficiency_xp = str(Globals.calculateProficiencyXPForLevel(Globals.player.proficiency_level[selected_exercise.exercise_name]) - Globals.player.proficiency_xp[selected_exercise.exercise_name])
+	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/Label_ProficiencyLevel.set_text("Current Proficiency: " + proficiency_level)
+	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/Label_ProficiencyXP.set_text("XP to Proficiency Level: " + proficiency_xp)
 
 
 # Signals / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
@@ -48,6 +60,8 @@ func completedRep():
 	$SidePanel.updateStrengthLevels()
 	$SidePanel.updateDisplayXP(selected_exercise.muscle_groups)
 
+	Globals.gainProficiencyExperience(selected_exercise.exercise_name, proficiency_earned)
+	updateProficiencyUI()
 
 func returnToExerciseSelect():
 	$ExerciseSelect.show()

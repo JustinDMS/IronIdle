@@ -13,6 +13,7 @@ var bodyweight_squat = load("res://Exercises/BodyweightSquat.tres")
 # Weighted
 var benchpress = load("res://Exercises/BenchPress.tres")
 var overheadpress = load("res://Exercises/OverheadPress.tres")
+var barbellrow = load("res://Exercises/BarbellRow.tres")
 var squat = load("res://Exercises/Squat.tres")
 var deadlift = load("res://Exercises/Deadlift.tres")
 
@@ -28,6 +29,8 @@ var muscle_icons = {
 
 var all_exercises = []
 var experience_required
+var proficiency_required
+onready var main = get_tree().get_nodes_in_group("UI")
 
 # Player variables
 
@@ -45,20 +48,41 @@ func createExerciseArray():
 	all_exercises.append(bodyweight_squat)
 	all_exercises.append(benchpress)
 	all_exercises.append(overheadpress)
+	all_exercises.append(barbellrow)
 	all_exercises.append(squat)
 	all_exercises.append(deadlift)
 
 
 func calculateMoneyEarned(time):
-	return str("%.2f" % (pow(time, 1.75)/100))
+	return str("%.2f" % (pow(time, 1.75)/50))
 
 
 func calculateStrengthXPForLevel(level):
 	return int(level + 50 * (pow(2, (level / 6))))
 
 
+func calculateProficiencyXPForLevel(level):
+	return int(level + 75 * (pow(2, (level / 3))))
+
+
+func calculateRepTime(strength, proficiency, time):
+	
+	var strength_modifier = strength/50.0
+	var proficiency_modifier = proficiency/20.0
+	
+	var result = time - (strength_modifier/5) - (proficiency_modifier/4)
+	result = str("%.3f" % result)
+
+	return result
+
+
 func updateExperienceRequired(muscle):
 	experience_required = calculateStrengthXPForLevel(player.strength_level[muscle] + 1)
+
+
+func updateProficiencyExperienceRequired(exercise : String):
+	proficiency_required = calculateProficiencyXPForLevel(player.proficiency_level[exercise] + 1)
+
 
 func gainExperience(muscle, amount):
 	
@@ -69,13 +93,32 @@ func gainExperience(muscle, amount):
 	
 	while player.xp[muscle] >= experience_required:
 		player.xp[muscle] -= experience_required
-		levelUp(muscle)
+		levelUpStrength(muscle)
 
 
-func levelUp(muscle):
+func gainProficiencyExperience(exercise : String, amount):
+	
+	updateProficiencyExperienceRequired(exercise)
+	
+	player.proficiency_xp_total[exercise] += amount
+	player.proficiency_xp[exercise] += amount
+	
+	while player.proficiency_xp[exercise] >= proficiency_required:
+		player.proficiency_xp[exercise] -= proficiency_required
+		levelUpProficiency(exercise)
+
+
+func levelUpStrength(muscle):
 
 	player.strength_level[muscle] += 1
 	updateExperienceRequired(muscle)
+	main[0].call("setActiveExerciseUI")
+
+
+func levelUpProficiency(exercise):
+	player.proficiency_level[exercise] += 1
+	updateProficiencyExperienceRequired(exercise)
+	main[0].call("setActiveExerciseUI")
 
 
 func loadGame():
