@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 exercise_name = "Pull-Up"
 exercise_type = "Calisthenic"
-rep_time = 2.75
+rep_time = 2.25
 base_strength = 2.0
 muscle_groups = "Back"
 gym_req = "High Bar"

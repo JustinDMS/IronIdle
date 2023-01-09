@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 exercise_name = "Bodyweight Squat"
 exercise_type = "Calisthenic"
-rep_time = 2.25
+rep_time = 1.5
 base_strength = 1.0
 muscle_groups = "Quadriceps"
 gym_req = "None"

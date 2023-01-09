@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource( 1 )
-exercise_name = "Overhead Press"
+exercise_name = "Barbell Row"
 exercise_type = "Weighted"
-rep_time = 2.95
+rep_time = 2.6
 base_strength = 3.0
-muscle_groups = "Shoulders"
-gym_req = "Rack"
+muscle_groups = "Back"
+gym_req = "None"
 equipment_req = "Plates"

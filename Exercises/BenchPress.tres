@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 exercise_name = "Bench Press"
 exercise_type = "Weighted"
-rep_time = 4.0
+rep_time = 3.25
 base_strength = 3.0
 muscle_groups = "Chest"
 gym_req = "Bench"
