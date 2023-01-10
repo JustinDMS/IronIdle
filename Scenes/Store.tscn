@@ -1,188 +1,336 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/BigText.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/Store.gd" type="Script" id=3]
+[ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=4]
 
 [node name="Store" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
 
-[node name="VerticalBox_Main" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.013
+anchor_top = 0.023
+anchor_right = 0.987
+anchor_bottom = 0.977
+margin_left = 0.039999
+margin_top = 0.159998
+margin_right = -0.0400391
+margin_bottom = -0.160034
 
-[node name="HorizontalBox_Top" type="HBoxContainer" parent="VerticalBox_Main"]
-margin_right = 720.0
-margin_bottom = 76.0
-
-[node name="Label_Store" type="Label" parent="VerticalBox_Main/HorizontalBox_Top"]
-margin_right = 358.0
-margin_bottom = 76.0
+[node name="VBox_Units" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 615.0
+margin_bottom = 1030.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
-text = "Store"
-align = 1
-
-[node name="Label_Money" type="Label" parent="VerticalBox_Main/HorizontalBox_Top"]
-margin_left = 362.0
-margin_right = 720.0
-margin_bottom = 76.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
-text = "$0.00"
-align = 1
-
-[node name="HSeparator" type="HSeparator" parent="VerticalBox_Main"]
-margin_top = 80.0
-margin_right = 720.0
-margin_bottom = 105.0
+size_flags_vertical = 3
 custom_constants/separation = 25
 
-[node name="Label_Units" type="Label" parent="VerticalBox_Main"]
-margin_top = 109.0
-margin_right = 720.0
-margin_bottom = 185.0
+[node name="Label_Units" type="Label" parent="HBoxContainer/VBox_Units"]
+margin_right = 615.0
+margin_bottom = 76.0
 custom_fonts/font = ExtResource( 1 )
-text = "Gym Units"
+text = "Units"
 align = 1
 
-[node name="HorizontalBox_HighBar" type="HBoxContainer" parent="VerticalBox_Main"]
-margin_top = 189.0
-margin_right = 720.0
-margin_bottom = 233.0
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/VBox_Units"]
+margin_top = 101.0
+margin_right = 615.0
+margin_bottom = 105.0
 
-[node name="Label_HighBar" type="Label" parent="VerticalBox_Main/HorizontalBox_HighBar"]
-margin_top = 3.0
-margin_right = 358.0
-margin_bottom = 41.0
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBox_Units"]
+margin_top = 130.0
+margin_right = 615.0
+margin_bottom = 168.0
+alignment = 1
+
+[node name="Label_PullUpBar" type="Label" parent="HBoxContainer/VBox_Units/HBoxContainer"]
+margin_right = 305.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
-text = "High Bar"
+text = "Pull-Up Bar"
 align = 1
 
-[node name="Button_HighBar" type="Button" parent="VerticalBox_Main/HorizontalBox_HighBar"]
-margin_left = 362.0
-margin_right = 720.0
-margin_bottom = 44.0
+[node name="Button_PullUpBar" type="Button" parent="HBoxContainer/VBox_Units/HBoxContainer"]
+margin_left = 309.0
+margin_right = 615.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
-text = "$5.00"
+custom_styles/normal = ExtResource( 4 )
 
-[node name="HorizontalBox_Bench" type="HBoxContainer" parent="VerticalBox_Main"]
-margin_top = 237.0
-margin_right = 720.0
-margin_bottom = 281.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBox_Units"]
+margin_top = 193.0
+margin_right = 615.0
+margin_bottom = 231.0
+alignment = 1
 
-[node name="Label_Bench" type="Label" parent="VerticalBox_Main/HorizontalBox_Bench"]
-margin_top = 3.0
-margin_right = 358.0
-margin_bottom = 41.0
+[node name="Label_Bench" type="Label" parent="HBoxContainer/VBox_Units/HBoxContainer2"]
+margin_right = 305.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Bench"
 align = 1
 
-[node name="Button_Bench" type="Button" parent="VerticalBox_Main/HorizontalBox_Bench"]
-margin_left = 362.0
-margin_right = 720.0
-margin_bottom = 44.0
+[node name="Button_Bench" type="Button" parent="HBoxContainer/VBox_Units/HBoxContainer2"]
+margin_left = 309.0
+margin_right = 615.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
-text = "$7.00"
+custom_styles/normal = ExtResource( 4 )
 
-[node name="HorizontalBox_Rack" type="HBoxContainer" parent="VerticalBox_Main"]
-margin_top = 285.0
-margin_right = 720.0
-margin_bottom = 329.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBox_Units"]
+margin_top = 256.0
+margin_right = 615.0
+margin_bottom = 294.0
+alignment = 1
 
-[node name="Label_Rack" type="Label" parent="VerticalBox_Main/HorizontalBox_Rack"]
-margin_top = 3.0
-margin_right = 358.0
-margin_bottom = 41.0
+[node name="Label_BarbellRack" type="Label" parent="HBoxContainer/VBox_Units/HBoxContainer3"]
+margin_right = 305.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Barbell Rack"
 align = 1
 
-[node name="Button_Rack" type="Button" parent="VerticalBox_Main/HorizontalBox_Rack"]
-margin_left = 362.0
-margin_right = 720.0
-margin_bottom = 44.0
+[node name="Button_BarbellRack" type="Button" parent="HBoxContainer/VBox_Units/HBoxContainer3"]
+margin_left = 309.0
+margin_right = 615.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
-text = "$8.15"
+custom_styles/normal = ExtResource( 4 )
 
-[node name="HorizontalBox_Platform" type="HBoxContainer" parent="VerticalBox_Main"]
-margin_top = 333.0
-margin_right = 720.0
-margin_bottom = 377.0
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/VBox_Units"]
+margin_top = 319.0
+margin_right = 615.0
+margin_bottom = 357.0
+alignment = 1
 
-[node name="Label_Platform" type="Label" parent="VerticalBox_Main/HorizontalBox_Platform"]
-margin_top = 3.0
-margin_right = 358.0
-margin_bottom = 41.0
+[node name="Label_DeadliftPlatform" type="Label" parent="HBoxContainer/VBox_Units/HBoxContainer4"]
+margin_right = 305.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Deadlift Platform"
 align = 1
 
-[node name="Button_Platform" type="Button" parent="VerticalBox_Main/HorizontalBox_Platform"]
-margin_left = 362.0
-margin_right = 720.0
-margin_bottom = 44.0
+[node name="Button_DeadliftPlatform" type="Button" parent="HBoxContainer/VBox_Units/HBoxContainer4"]
+margin_left = 309.0
+margin_right = 615.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
-text = "$10.50"
+custom_styles/normal = ExtResource( 4 )
 
-[node name="HSeparator2" type="HSeparator" parent="VerticalBox_Main"]
-margin_top = 381.0
-margin_right = 720.0
-margin_bottom = 406.0
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 619.0
+margin_right = 623.0
+margin_bottom = 1030.0
+
+[node name="VBox_Equipment" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 627.0
+margin_right = 1242.0
+margin_bottom = 1030.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 25
 
-[node name="Label_Equipment" type="Label" parent="VerticalBox_Main"]
-margin_top = 410.0
-margin_right = 720.0
-margin_bottom = 486.0
+[node name="Label_Equipment" type="Label" parent="HBoxContainer/VBox_Equipment"]
+margin_right = 615.0
+margin_bottom = 76.0
 custom_fonts/font = ExtResource( 1 )
 text = "Equipment"
 align = 1
 
-[node name="HorizontalBox_Plates" type="HBoxContainer" parent="VerticalBox_Main"]
-margin_top = 490.0
-margin_right = 720.0
-margin_bottom = 534.0
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBox_Equipment"]
+margin_top = 101.0
+margin_right = 615.0
+margin_bottom = 105.0
 
-[node name="Label_Plates" type="Label" parent="VerticalBox_Main/HorizontalBox_Plates"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBox_Equipment"]
+margin_top = 130.0
+margin_right = 615.0
+margin_bottom = 168.0
+alignment = 1
+
+[node name="Label_Dumbbells" type="Label" parent="HBoxContainer/VBox_Equipment/HBoxContainer"]
+margin_right = 305.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Dumbbells"
+align = 1
+
+[node name="Button_Dumbbells" type="Button" parent="HBoxContainer/VBox_Equipment/HBoxContainer"]
+margin_left = 309.0
+margin_right = 615.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = ExtResource( 4 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBox_Equipment"]
+margin_top = 193.0
+margin_right = 615.0
+margin_bottom = 231.0
+alignment = 1
+
+[node name="Label_Barbell" type="Label" parent="HBoxContainer/VBox_Equipment/HBoxContainer2"]
+margin_right = 305.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Barbell"
+align = 1
+
+[node name="Button_Barbell" type="Button" parent="HBoxContainer/VBox_Equipment/HBoxContainer2"]
+margin_left = 309.0
+margin_right = 615.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = ExtResource( 4 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/VBox_Equipment"]
+margin_top = 256.0
+margin_right = 615.0
+margin_bottom = 294.0
+alignment = 1
+
+[node name="Label_Plates" type="Label" parent="HBoxContainer/VBox_Equipment/HBoxContainer3"]
+margin_right = 305.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Plates"
+align = 1
+
+[node name="Button_Plates" type="Button" parent="HBoxContainer/VBox_Equipment/HBoxContainer3"]
+margin_left = 309.0
+margin_right = 615.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = ExtResource( 4 )
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+margin_left = 1246.0
+margin_right = 1250.0
+margin_bottom = 1030.0
+
+[node name="VBox_Levels" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 1254.0
+margin_right = 1870.0
+margin_bottom = 1030.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="Label_Levels" type="Label" parent="HBoxContainer/VBox_Levels"]
+margin_right = 616.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 1 )
+text = "Training"
+align = 1
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/VBox_Levels"]
+margin_top = 101.0
+margin_right = 616.0
+margin_bottom = 105.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/VBox_Levels"]
+margin_top = 130.0
+margin_right = 616.0
+margin_bottom = 174.0
+alignment = 1
+
+[node name="Label_Muscle" type="Label" parent="HBoxContainer/VBox_Levels/HBoxContainer4"]
 margin_top = 3.0
-margin_right = 358.0
+margin_right = 306.0
 margin_bottom = 41.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
-text = "Barbell Plates"
+text = "Muscle: "
 align = 1
 
-[node name="Button_Plates" type="Button" parent="VerticalBox_Main/HorizontalBox_Plates"]
-margin_left = 362.0
-margin_right = 720.0
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBox_Levels/HBoxContainer4"]
+margin_left = 310.0
+margin_right = 616.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
-text = "$6.35"
+text = "Select"
+align = 1
+items = [ "Select", null, true, 0, null, "Chest", null, false, 1, null, "Shoulders", null, false, 2, null, "Core", null, false, 3, null, "Back", null, false, 4, null, "Quadriceps", null, false, 5, null, "Hamstrings", null, false, 6, null ]
+selected = 0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/VBox_Levels"]
+margin_top = 199.0
+margin_right = 616.0
+margin_bottom = 247.0
+alignment = 1
+
+[node name="Label_XP" type="Label" parent="HBoxContainer/VBox_Levels/HBoxContainer5"]
+margin_top = 5.0
+margin_right = 306.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "XP ($1):"
+align = 1
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBox_Levels/HBoxContainer5"]
+margin_left = 310.0
+margin_right = 616.0
+margin_bottom = 48.0
+hint_tooltip = "Can only purchase whole-number amounts of XP.
+Non-whole numbers will be rounded down (ie 1.9 -> 1)"
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+align = 1
+placeholder_text = "Amount"
+placeholder_alpha = 0.5
+caret_blink = true
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="HBoxContainer/VBox_Levels"]
+margin_top = 272.0
+margin_right = 616.0
+margin_bottom = 310.0
+alignment = 1
+
+[node name="Button_XP" type="Button" parent="HBoxContainer/VBox_Levels/HBoxContainer6"]
+margin_right = 616.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = ExtResource( 4 )
+text = "Purchase"
 
 [node name="Button_Exit" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 40.0
+margin_left = -80.0
+margin_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 80, 80 )
 custom_fonts/font = ExtResource( 2 )
+custom_styles/normal = ExtResource( 4 )
 text = "x"
 
-[connection signal="pressed" from="VerticalBox_Main/HorizontalBox_HighBar/Button_HighBar" to="." method="_on_Button_HighBar_pressed"]
-[connection signal="pressed" from="VerticalBox_Main/HorizontalBox_Bench/Button_Bench" to="." method="_on_Button_Bench_pressed"]
-[connection signal="pressed" from="VerticalBox_Main/HorizontalBox_Rack/Button_Rack" to="." method="_on_Button_Rack_pressed"]
-[connection signal="pressed" from="VerticalBox_Main/HorizontalBox_Platform/Button_Platform" to="." method="_on_Button_Platform_pressed"]
-[connection signal="pressed" from="VerticalBox_Main/HorizontalBox_Plates/Button_Plates" to="." method="_on_Button_Plates_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Units/HBoxContainer/Button_PullUpBar" to="." method="_on_Button_PullUpBar_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Units/HBoxContainer2/Button_Bench" to="." method="_on_Button_Bench_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Units/HBoxContainer3/Button_BarbellRack" to="." method="_on_Button_BarbellRack_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Units/HBoxContainer4/Button_DeadliftPlatform" to="." method="_on_Button_DeadliftPlatform_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Equipment/HBoxContainer/Button_Dumbbells" to="." method="_on_Button_Dumbbells_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Equipment/HBoxContainer2/Button_Barbell" to="." method="_on_Button_Barbell_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Equipment/HBoxContainer3/Button_Plates" to="." method="_on_Button_Plates_pressed"]
+[connection signal="item_selected" from="HBoxContainer/VBox_Levels/HBoxContainer4/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="text_changed" from="HBoxContainer/VBox_Levels/HBoxContainer5/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Levels/HBoxContainer6/Button_XP" to="." method="_on_Button_XP_pressed"]
 [connection signal="pressed" from="Button_Exit" to="." method="_on_Button_Exit_pressed"]

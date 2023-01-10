@@ -13,24 +13,15 @@ onready var time_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContain
 onready var muscle_texture = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/TextureRect
 onready var strength_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/Label_Strength
 onready var proficiency_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Proficiency/Label_Proficiency
+onready var unit_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements/Label_UnitReq
+onready var equipment_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements2/Label_EquipmentReq
+onready var level_texture = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3/TextureRect
+onready var level_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3/Label_LevelReq
+
 
 func _ready():
 	pass
 
-func determineUnlocked(button, exercise):
-	
-	print("\n" + exercise.exercise_name)
-	var gym_check = Globals.gym.has(exercise.gym_req)
-	var equipment_check = Globals.equipment.has(exercise.equipment_req)
-	
-	if gym_check == true and equipment_check == true:
-		button.set_disabled(false)
-		
-	else:
-		print("Gym check: " + str(gym_check))
-		print("Equipment check: " + str(equipment_check))
-		button.set_disabled(true)
-		return false
 
 func applyFilter():
 	$VBox_Main/ExerciseButtons.filterExercises(type_filter, muscle_filter)
@@ -42,20 +33,51 @@ func _on_ExerciseButtons_exercise_selected(index):
 	var strength = Globals.player.strength_level[exercise_list[index]["muscle_groups"]]
 	var proficiency = Globals.player.proficiency_level[exercise_list[index]["exercise_name"]]
 	var time = exercise_list[index]["rep_time"]
+	var texture = Globals.muscle_icons[exercise_list[index]["muscle_groups"]]
 	
 	name_label.set_text(exercise_list[index]["exercise_name"] + ":")
 	money_label.set_text(Globals.calculateMoneyEarned(exercise_list[index]["rep_time"]))
 	time_label.set_text(Globals.calculateRepTime(strength, proficiency, time))
-	muscle_texture.set_texture(Globals.muscle_icons[exercise_list[index]["muscle_groups"]])
+	muscle_texture.set_texture(texture)
 	strength_label.set_text(str(exercise_list[index]["base_strength"]) + " xp")
 	proficiency_label.set_text(str("1" + " xp"))
+	unit_req.set_text("Unit: " + exercise_list[index]["unit_req"])
+	equipment_req.set_text("Equipment: " + exercise_list[index]["equipment_req_1"] + ", " + exercise_list[index]["equipment_req_2"])
+	level_texture.set_texture(texture)
+	level_req.set_text("Level " + str(exercise_list[index]["level_requirement"]))
+
+
+func determineUnlocked():
+	
+	var unit = Globals.player.gym_units.has(selected_exercise.unit_req)
+	var equipment_1 = Globals.player.gym_equipment.has(selected_exercise.equipment_req_1)
+	var equipment_2 = Globals.player.gym_equipment.has(selected_exercise.equipment_req_2)
+	var level = Globals.player.strength_level[selected_exercise.muscle_groups] >= selected_exercise.level_requirement
+	
+	if unit == true and equipment_1 == true and equipment_2 == true and level == true:
+		return true
+	
+	else:
+		return false
+
 
 # Signal to update the ActiveExercise scene
 func _on_ExerciseButtons_exercise_activated(index):
 	selected_exercise = exercise_list[index]
-	emit_signal("sent_info")
+	
+	if determineUnlocked():
+		emit_signal("sent_info")
+	
+	else:
+		print("Doesn't meet requirements")
 
 # Exercise list filter buttons
+
+func _on_Button_ClearFilters_pressed():
+	muscle_filter = "All"
+	type_filter = "All"
+	applyFilter()
+
 
 func _on_Button_Chest_pressed():
 	muscle_filter = "Chest"
@@ -89,9 +111,12 @@ func _on_Button_Calisthenics_pressed():
 	applyFilter()
 
 func _on_Button_Dumbbell_pressed():
-	type_filter = "Weighted"
+	type_filter = "Dumbbells"
 	applyFilter()
 
 func _on_Button_Barbell_pressed():
-	type_filter = "Weighted"
+	type_filter = "Barbell"
 	applyFilter()
+
+
+

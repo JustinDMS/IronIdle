@@ -13,19 +13,23 @@ func _ready():
 	$SidePanel.updateStrengthLevels()
 
 func setActiveExerciseUI():
-	money_earned = Globals.calculateMoneyEarned(selected_exercise.rep_time)
-	strength_earned = selected_exercise.base_strength
+	if selected_exercise == null:
+		return
 	
-	var strength = Globals.player.strength_level[selected_exercise.muscle_groups]
-	var proficiency = Globals.player.proficiency_level[selected_exercise.exercise_name]
-	var rep_time = Globals.calculateRepTime(strength, proficiency, selected_exercise.rep_time)
+	else:
+		money_earned = Globals.calculateMoneyEarned(selected_exercise.rep_time)
+		strength_earned = selected_exercise.base_strength
 	
-	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/Label_ExerciseName.set_text(selected_exercise.exercise_name)
-	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Bottom/HorizonatlBox_Info/Label_RepTime.set_text(rep_time + "s")
-	$SidePanel/VBox_Main/Panel2/ActiveExercise/RepTimer.set_wait_time(float(rep_time))
-	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Bottom/HorizonatlBox_Info/Label_MoneyEarned.set_text("$" + str(money_earned))
+		var strength = Globals.player.strength_level[selected_exercise.muscle_groups]
+		var proficiency = Globals.player.proficiency_level[selected_exercise.exercise_name]
+		var rep_time = Globals.calculateRepTime(strength, proficiency, selected_exercise.rep_time)
 	
-	updateProficiencyUI()
+		$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/Label_ExerciseName.set_text(selected_exercise.exercise_name)
+		$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Bottom/HorizonatlBox_Info/Label_RepTime.set_text(rep_time + "s")
+		$SidePanel/VBox_Main/Panel2/ActiveExercise/RepTimer.set_wait_time(float(rep_time))
+		$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Bottom/HorizonatlBox_Info/Label_MoneyEarned.set_text("$" + str(money_earned))
+	
+		updateProficiencyUI()
 
 
 func updateProficiencyUI():
@@ -38,6 +42,7 @@ func updateProficiencyUI():
 # Signals / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
 func openStore():
+	$ExerciseSelect.hide()
 	$Store.show()
 
 
@@ -68,4 +73,5 @@ func returnToExerciseSelect():
 
 
 func storePurchaseMade():
-	$SidePanel/VBox_Main/Panel/VBox_PlayerInfo/PlayerBalance.updateBalance()
+	player_balance.updateBalance()
+	$SidePanel.updateStrengthLevels()

@@ -22,7 +22,10 @@ func filterExercises(type, group):
 	
 	for i in Globals.all_exercises:
 		
-		if type == "All":
+		if type == "All" and group == "All":
+			filtered_exercises.append(i)
+		
+		elif type == "All":
 			if i["muscle_groups"] == group:
 				filtered_exercises.append(i)
 		

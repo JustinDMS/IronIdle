@@ -3,8 +3,8 @@ extends Resource
 class_name Player
 
 export var money : float
-export var gym_units = {}
-export var gym_equipment = {}
+export var gym_units = ["None"]
+export var gym_equipment = ["None"]
 export var strength_level = {
 	"Chest" : 1,
 	"Shoulders" : 1,
@@ -36,9 +36,9 @@ export var proficiency_level = {
 	"Pull-Up" : 1,
 	
 	"Bench Press" : 1,
-	"Overhead Press" : 1,
+	"Barbell Press" : 1,
 	"Barbell Row" : 1,
-	"Squat" : 1,
+	"Barbell Squat" : 1,
 	"Deadlift" : 1,
 }
 export var proficiency_xp = {
@@ -48,9 +48,9 @@ export var proficiency_xp = {
 	"Pull-Up" : 0.0,
 	
 	"Bench Press" : 0.0,
-	"Overhead Press" : 0.0,
+	"Barbell Press" : 0.0,
 	"Barbell Row" : 0.0,
-	"Squat" : 0.0,
+	"Barbell Squat" : 0.0,
 	"Deadlift" : 0.0,
 }
 export var proficiency_xp_total = {
@@ -60,8 +60,8 @@ export var proficiency_xp_total = {
 	"Pull-Up" : 0.0,
 	
 	"Bench Press" : 0.0,
-	"Overhead Press" : 0.0,
+	"Barbell Press" : 0.0,
 	"Barbell Row" : 0.0,
-	"Squat" : 0.0,
+	"Barbell Squat" : 0.0,
 	"Deadlift" : 0.0,
 }

@@ -5,9 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 exercise_name = "Barbell Row"
-exercise_type = "Weighted"
+exercise_type = "Barbell"
 rep_time = 2.6
 base_strength = 3.0
 muscle_groups = "Back"
-gym_req = "None"
-equipment_req = "Plates"
+has_level_requirement = true
+level_requirement = 15
+unit_req = "None"
+equipment_req_1 = "Barbell"
+equipment_req_2 = "Plates"

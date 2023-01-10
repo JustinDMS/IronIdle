@@ -5,9 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 exercise_name = "Bench Press"
-exercise_type = "Weighted"
+exercise_type = "Barbell"
 rep_time = 3.25
 base_strength = 3.0
 muscle_groups = "Chest"
-gym_req = "Bench"
-equipment_req = "Plates"
+has_level_requirement = true
+level_requirement = 15
+unit_req = "Bench"
+equipment_req_1 = "Barbell"
+equipment_req_2 = "Plates"

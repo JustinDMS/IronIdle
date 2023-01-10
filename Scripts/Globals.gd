@@ -1,7 +1,5 @@
 extends Node
 
-
-
 # Exercise info
 
 # Calisthenics
@@ -10,11 +8,11 @@ var situp = load("res://Exercises/SitUp.tres")
 var pullup = load("res://Exercises/PullUp.tres")
 var bodyweight_squat = load("res://Exercises/BodyweightSquat.tres")
 
-# Weighted
+# Barbell
 var benchpress = load("res://Exercises/BenchPress.tres")
-var overheadpress = load("res://Exercises/OverheadPress.tres")
+var barbellpress = load("res://Exercises/BarbellPress.tres")
 var barbellrow = load("res://Exercises/BarbellRow.tres")
-var squat = load("res://Exercises/Squat.tres")
+var barbellsquat = load("res://Exercises/BarbellSquat.tres")
 var deadlift = load("res://Exercises/Deadlift.tres")
 
 # Icons for muscle group
@@ -47,9 +45,9 @@ func createExerciseArray():
 	all_exercises.append(pullup)
 	all_exercises.append(bodyweight_squat)
 	all_exercises.append(benchpress)
-	all_exercises.append(overheadpress)
+	all_exercises.append(barbellpress)
 	all_exercises.append(barbellrow)
-	all_exercises.append(squat)
+	all_exercises.append(barbellsquat)
 	all_exercises.append(deadlift)
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=1]
 [ext_resource path="res://PlaceholderArt/MoneyIcon.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=4]
 [ext_resource path="res://PlaceholderArt/ExerciseIcon.png" type="Texture" id=5]
 [ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=6]
+[ext_resource path="res://PlaceholderArt/ChestIcon.png" type="Texture" id=7]
 
 [node name="ExerciseInfo" type="Control"]
 anchor_right = 1.0
@@ -34,13 +35,13 @@ valign = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 anchor_left = 0.05
-anchor_top = -0.084
+anchor_top = -0.12
 anchor_right = 0.95
-anchor_bottom = -0.084
+anchor_bottom = -0.12
 margin_left = 0.159996
-margin_top = 90.72
+margin_top = 129.6
 margin_right = -0.160156
-margin_bottom = 91.12
+margin_bottom = 130.0
 
 [node name="HBox_Main" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_right = 1727.0
@@ -49,11 +50,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox1" type="VBoxContainer" parent="Panel/VBoxContainer/HBox_Main"]
-margin_right = 190.0
+margin_right = 834.0
 margin_bottom = 236.0
+size_flags_horizontal = 3
 
 [node name="HBox_Money" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox1"]
-margin_right = 190.0
+margin_right = 834.0
 margin_bottom = 56.0
 size_flags_vertical = 3
 
@@ -75,7 +77,7 @@ text = "None Selected"
 
 [node name="HBox_Time" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox1"]
 margin_top = 60.0
-margin_right = 190.0
+margin_right = 834.0
 margin_bottom = 116.0
 size_flags_vertical = 3
 
@@ -97,7 +99,7 @@ text = "None Selected"
 
 [node name="HBox_Strength" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox1"]
 margin_top = 120.0
-margin_right = 190.0
+margin_right = 834.0
 margin_bottom = 176.0
 size_flags_vertical = 3
 
@@ -119,7 +121,7 @@ text = "None Selected"
 
 [node name="HBox_Proficiency" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox1"]
 margin_top = 180.0
-margin_right = 190.0
+margin_right = 834.0
 margin_bottom = 236.0
 size_flags_vertical = 3
 
@@ -138,3 +140,87 @@ margin_right = 190.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 6 )
 text = "None Selected"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/VBoxContainer/HBox_Main"]
+margin_left = 838.0
+margin_right = 888.0
+margin_bottom = 236.0
+custom_constants/separation = 50
+
+[node name="VBox2" type="VBoxContainer" parent="Panel/VBoxContainer/HBox_Main"]
+margin_left = 892.0
+margin_right = 1727.0
+margin_bottom = 236.0
+size_flags_horizontal = 3
+custom_constants/separation = -60
+
+[node name="HBox_LabelReq" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox2"]
+margin_right = 835.0
+margin_bottom = 50.0
+alignment = 1
+
+[node name="Label_Requirements" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox2/HBox_LabelReq"]
+margin_left = 376.0
+margin_right = 459.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 6 )
+text = "Requires:"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox2"]
+margin_top = -10.0
+margin_right = 835.0
+margin_bottom = 236.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -100
+alignment = 1
+
+[node name="HBox_Requirements" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer"]
+margin_right = 835.0
+margin_bottom = 148.0
+size_flags_vertical = 3
+
+[node name="Label_UnitReq" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements"]
+margin_top = 62.0
+margin_right = 101.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 6 )
+text = "Unit: Bench"
+
+[node name="HBox_Requirements2" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer"]
+margin_top = 48.0
+margin_right = 835.0
+margin_bottom = 197.0
+size_flags_vertical = 3
+
+[node name="Label_EquipmentReq" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements2"]
+margin_top = 62.0
+margin_right = 234.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 6 )
+text = "Equipment: Barbell, Plates"
+
+[node name="HBox_Requirements3" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer"]
+margin_top = 97.0
+margin_right = 835.0
+margin_bottom = 246.0
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3"]
+margin_right = 56.0
+margin_bottom = 149.0
+rect_min_size = Vector2( 56, 56 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Label_LevelReq" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3"]
+margin_left = 60.0
+margin_top = 62.0
+margin_right = 135.0
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 6 )
+text = "Level 15"

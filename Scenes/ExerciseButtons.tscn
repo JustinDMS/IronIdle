@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/ExerciseButtons.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=2]
 
 [node name="ExerciseButtons" type="Control"]
 anchor_right = 1.0
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+custom_fonts/font = ExtResource( 2 )
 fixed_icon_size = Vector2( 112, 112 )
 
 [connection signal="item_activated" from="ItemList" to="." method="_on_ItemList_item_activated"]

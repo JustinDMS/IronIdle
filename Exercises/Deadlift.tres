@@ -5,9 +5,12 @@
 [resource]
 script = ExtResource( 1 )
 exercise_name = "Deadlift"
-exercise_type = "Weighted"
+exercise_type = "Barbell"
 rep_time = 4.0
 base_strength = 3.0
 muscle_groups = "Hamstrings"
-gym_req = "Deadlift Platform"
-equipment_req = "Plates"
+has_level_requirement = true
+level_requirement = 20
+unit_req = "None"
+equipment_req_1 = "Barbell"
+equipment_req_2 = "Plates"
