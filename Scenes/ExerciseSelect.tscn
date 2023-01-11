@@ -154,13 +154,20 @@ margin_bottom = 730.0
 size_flags_horizontal = 11
 size_flags_vertical = 3
 
-[node name="Inventory" parent="VBox_Main/HBoxContainer2" instance=ExtResource( 15 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox_Main/HBoxContainer2"]
 margin_left = 962.0
 margin_right = 1920.0
 margin_bottom = 730.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Inventory" parent="VBox_Main/HBoxContainer2/VBoxContainer" instance=ExtResource( 15 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 958.0
+margin_bottom = 730.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Chest" to="." method="_on_Button_Chest_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Shoulder" to="." method="_on_Button_Shoulder_pressed"]

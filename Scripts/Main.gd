@@ -43,8 +43,8 @@ func updateProficiencyUI():
 
 func updateInventory():
 	
-	var unit = $ExerciseSelect/VBox_Main/HBoxContainer2/Inventory/VBoxContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Label_UnitsInventory
-	var equip = $ExerciseSelect/VBox_Main/HBoxContainer2/Inventory/VBoxContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Label_EquipmentInventory
+	var unit = $ExerciseSelect/VBox_Main/HBoxContainer2/VBoxContainer/Inventory/VBoxContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Label_UnitsInventory
+	var equip = $ExerciseSelect/VBox_Main/HBoxContainer2/VBoxContainer/Inventory/VBoxContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Label_EquipmentInventory
 	var text = ""
 	
 	for i in Globals.player.gym_units:

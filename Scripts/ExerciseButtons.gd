@@ -3,7 +3,15 @@ extends Control
 signal exercise_selected
 signal exercise_activated
 
-var icon = preload("res://PlaceholderArt/ExerciseIcon.png")
+var calisthenic_icon = preload("res://PlaceholderArt/CalisthenicsIcon.png")
+var dumbbell_icon = preload("res://PlaceholderArt/DumbbellIcon.png")
+var barbell_icon = preload("res://PlaceholderArt/BarbellIcon.png")
+
+var icons = {
+	"Calisthenic" : calisthenic_icon,
+	"Dumbbell" : dumbbell_icon,
+	"Barbell" : barbell_icon,
+}
 var filtered_exercises = []
 
 func _ready():
@@ -12,7 +20,7 @@ func _ready():
 func createExercises():
 	
 	for i in Globals.all_exercises:
-		$ItemList.add_item(i["exercise_name"], icon, true)
+		$ItemList.add_item(i["exercise_name"], icons[i["exercise_type"]], true)
 		filtered_exercises.append(i)
 
 func filterExercises(type, group):
@@ -38,7 +46,7 @@ func filterExercises(type, group):
 
 	
 	for i in filtered_exercises:
-		$ItemList.add_item(i["exercise_name"], icon, true)
+		$ItemList.add_item(i["exercise_name"], icons[i["exercise_type"]], true)
 
 
 func _on_ItemList_item_selected(index):
