@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/PlayerBalance.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://PlaceholderArt/QuadsIcon.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/ActiveExercise.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/SidePanel.gd" type="Script" id=10]
+[ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 0.196078 )
@@ -45,9 +46,9 @@ margin_bottom = -15.0
 grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="VBox_Main"]
-margin_right = 450.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 0, 300 )
+margin_right = 290.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 0, 230 )
 size_flags_horizontal = 3
 custom_styles/panel = SubResource( 1 )
 
@@ -58,230 +59,229 @@ anchor_bottom = 1.0
 [node name="PlayerBalance" parent="VBox_Main/Panel/VBox_PlayerInfo" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 450.0
-margin_bottom = 82.0
+margin_right = 290.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 290, 70 )
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="HSeparator" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo"]
-margin_top = 86.0
-margin_right = 450.0
-margin_bottom = 90.0
+margin_top = 74.0
+margin_right = 290.0
+margin_bottom = 78.0
 
 [node name="HBox_1" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo"]
-margin_top = 94.0
-margin_right = 450.0
-margin_bottom = 300.0
+margin_top = 82.0
+margin_right = 290.0
+margin_bottom = 230.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="VBox_Strength1" type="VBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1"]
-margin_right = 219.0
-margin_bottom = 206.0
+margin_right = 139.0
+margin_bottom = 148.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-alignment = 1
 
 [node name="HBox_Chest" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
-margin_right = 219.0
-margin_bottom = 50.0
+margin_right = 139.0
+margin_bottom = 28.0
 
 [node name="Texture_Chest" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Chest"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
 texture = ExtResource( 3 )
 expand = true
-stretch_mode = 7
+stretch_mode = 6
 
 [node name="Label_Chest" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Chest"]
-margin_left = 54.0
-margin_right = 219.0
-margin_bottom = 50.0
+margin_left = 32.0
+margin_right = 139.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 text = "1"
 valign = 1
 
 [node name="HSeparator2" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
-margin_top = 54.0
-margin_right = 219.0
-margin_bottom = 74.0
+margin_top = 32.0
+margin_right = 139.0
+margin_bottom = 52.0
 custom_constants/separation = 20
 
 [node name="HBox_Shoulders" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
-margin_top = 78.0
-margin_right = 219.0
-margin_bottom = 128.0
+margin_top = 56.0
+margin_right = 139.0
+margin_bottom = 84.0
+alignment = 1
 
 [node name="Texture_Shoulders" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Shoulders"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 7
 
 [node name="Label_Shoulders" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Shoulders"]
-margin_left = 54.0
-margin_right = 219.0
-margin_bottom = 38.0
+margin_left = 32.0
+margin_right = 139.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 1 )
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 11 )
 text = "1"
 valign = 1
 
 [node name="HSeparator3" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
-margin_top = 132.0
-margin_right = 219.0
-margin_bottom = 152.0
+margin_top = 88.0
+margin_right = 139.0
+margin_bottom = 108.0
 custom_constants/separation = 20
 
 [node name="HBox_Back" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1"]
-margin_top = 156.0
-margin_right = 219.0
-margin_bottom = 206.0
+margin_top = 112.0
+margin_right = 139.0
+margin_bottom = 140.0
 
 [node name="Texture_Back" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Back"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 7
 
 [node name="Label_Back" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/HBox_Back"]
-margin_left = 54.0
-margin_right = 219.0
-margin_bottom = 50.0
+margin_left = 32.0
+margin_right = 139.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 text = "1"
 valign = 1
 
 [node name="VSeparator" type="VSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1"]
-margin_left = 223.0
-margin_right = 227.0
-margin_bottom = 206.0
+margin_left = 143.0
+margin_right = 147.0
+margin_bottom = 148.0
 
 [node name="VBox_Strength2" type="VBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1"]
-margin_left = 231.0
-margin_right = 450.0
-margin_bottom = 206.0
+margin_left = 151.0
+margin_right = 290.0
+margin_bottom = 148.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-alignment = 1
 
 [node name="HBox_Core" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
-margin_right = 219.0
-margin_bottom = 50.0
+margin_right = 139.0
+margin_bottom = 28.0
 alignment = 1
 
 [node name="Texture_Core" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Core"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 7
 
 [node name="Label_Core" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Core"]
-margin_left = 54.0
-margin_right = 219.0
-margin_bottom = 50.0
+margin_left = 32.0
+margin_right = 139.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 text = "1"
 valign = 1
 
 [node name="HSeparator4" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
-margin_top = 54.0
-margin_right = 219.0
-margin_bottom = 74.0
+margin_top = 32.0
+margin_right = 139.0
+margin_bottom = 52.0
 custom_constants/separation = 20
 
 [node name="HBox_Quadriceps" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
-margin_top = 78.0
-margin_right = 219.0
-margin_bottom = 128.0
+margin_top = 56.0
+margin_right = 139.0
+margin_bottom = 84.0
 alignment = 1
 
 [node name="Texture_Quadriceps" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Quadriceps"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
 texture = ExtResource( 8 )
 expand = true
 stretch_mode = 7
 
 [node name="Label_Quadriceps" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Quadriceps"]
-margin_left = 54.0
-margin_right = 219.0
-margin_bottom = 50.0
+margin_left = 32.0
+margin_right = 139.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 text = "1"
 valign = 1
 
 [node name="HSeparator5" type="HSeparator" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
-margin_top = 132.0
-margin_right = 219.0
-margin_bottom = 152.0
+margin_top = 88.0
+margin_right = 139.0
+margin_bottom = 108.0
 custom_constants/separation = 20
 
 [node name="HBox_Hamstrings" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2"]
-margin_top = 156.0
-margin_right = 219.0
-margin_bottom = 206.0
+margin_top = 112.0
+margin_right = 139.0
+margin_bottom = 140.0
 alignment = 1
 
 [node name="Texture_Hamstrings" type="TextureRect" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Hamstrings"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 7
 
 [node name="Label_Hamstrings" type="Label" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2/HBox_Hamstrings"]
-margin_left = 54.0
-margin_right = 219.0
-margin_bottom = 50.0
+margin_left = 32.0
+margin_right = 139.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 text = "1"
 valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBox_Main"]
-margin_top = 304.0
-margin_right = 450.0
-margin_bottom = 334.0
+margin_top = 234.0
+margin_right = 290.0
+margin_bottom = 264.0
 custom_constants/separation = 30
 
 [node name="Button_Store" type="Button" parent="VBox_Main"]
-margin_top = 338.0
-margin_right = 450.0
-margin_bottom = 376.0
+margin_top = 268.0
+margin_right = 290.0
+margin_bottom = 306.0
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 2 )
 text = "Gym Store"
 
 [node name="HSeparator2" type="HSeparator" parent="VBox_Main"]
-margin_top = 380.0
-margin_right = 450.0
-margin_bottom = 410.0
+margin_top = 310.0
+margin_right = 290.0
+margin_bottom = 340.0
 custom_constants/separation = 30
 
 [node name="Panel2" type="Panel" parent="VBox_Main"]
-margin_top = 414.0
-margin_right = 450.0
-margin_bottom = 1050.0
+margin_top = 344.0
+margin_right = 290.0
+margin_bottom = 690.0
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 

@@ -7,7 +7,7 @@ var type_filter := "All"
 var muscle_filter := "All"
 onready var exercise_list : Array = $VBox_Main/HBoxContainer2/ExerciseButtons.filtered_exercises
 
-onready var name_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/Label_Name
+onready var name_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/Label_Name
 onready var money_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Money/Label_Money
 onready var time_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Time/Label_RepTime
 onready var muscle_texture = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/TextureRect

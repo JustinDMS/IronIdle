@@ -16,6 +16,8 @@ color = Color( 0.172549, 0.164706, 0.196078, 1 )
 
 [node name="ExerciseSelect" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.25
+anchor_top = 0.005
+margin_top = -3.6
 
 [node name="Store" parent="." instance=ExtResource( 4 )]
 visible = false

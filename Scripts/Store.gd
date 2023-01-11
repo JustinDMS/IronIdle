@@ -20,7 +20,7 @@ onready var barbell = $HBoxContainer/VBox_Equipment/HBoxContainer2/Button_Barbel
 onready var plates = $HBoxContainer/VBox_Equipment/HBoxContainer3/Button_Plates
 
 onready var prices = {
-	pullupbar : 1,
+	pullupbar : 45,
 	bench : 90,
 	barbellrack : 60,
 	deadliftplatform : 200,
