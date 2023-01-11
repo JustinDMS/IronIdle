@@ -35,6 +35,13 @@ export var proficiency_level = {
 	"Bodyweight Squat" : 1,
 	"Pull-Up" : 1,
 	
+	"Lateral Raise": 1,
+	"Dumbbell Row": 1,
+	"Goblet Squat": 1,
+	"Dumbbell Deadlift": 1,
+	"Dumbbell Bench Press": 1,
+	"Dumbbell Press": 1,
+	
 	"Bench Press" : 1,
 	"Barbell Press" : 1,
 	"Barbell Row" : 1,
@@ -47,6 +54,13 @@ export var proficiency_xp = {
 	"Bodyweight Squat" : 0.0,
 	"Pull-Up" : 0.0,
 	
+	"Lateral Raise": 1,
+	"Dumbbell Row": 1,
+	"Goblet Squat": 1,
+	"Dumbbell Deadlift": 1,
+	"Dumbbell Bench Press": 1,
+	"Dumbbell Press": 1,
+	
 	"Bench Press" : 0.0,
 	"Barbell Press" : 0.0,
 	"Barbell Row" : 0.0,
@@ -58,6 +72,13 @@ export var proficiency_xp_total = {
 	"Sit-Up" : 0.0,
 	"Bodyweight Squat" : 0.0,
 	"Pull-Up" : 0.0,
+	
+	"Lateral Raise": 1,
+	"Dumbbell Row": 1,
+	"Goblet Squat": 1,
+	"Dumbbell Deadlift": 1,
+	"Dumbbell Bench Press": 1,
+	"Dumbbell Press": 1,
 	
 	"Bench Press" : 0.0,
 	"Barbell Press" : 0.0,

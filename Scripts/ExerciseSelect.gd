@@ -5,7 +5,7 @@ signal sent_info
 var selected_exercise
 var type_filter := "All"
 var muscle_filter := "All"
-onready var exercise_list : Array = $VBox_Main/ExerciseButtons.filtered_exercises
+onready var exercise_list : Array = $VBox_Main/HBoxContainer2/ExerciseButtons.filtered_exercises
 
 onready var name_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/Label_Name
 onready var money_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Money/Label_Money
@@ -13,8 +13,8 @@ onready var time_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContain
 onready var muscle_texture = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/TextureRect
 onready var strength_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/Label_Strength
 onready var proficiency_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Proficiency/Label_Proficiency
-onready var unit_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements/Label_UnitReq
-onready var equipment_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements2/Label_EquipmentReq
+onready var unit_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/Label_UnitReq
+onready var equipment_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/Label_EquipmentReq
 onready var level_texture = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3/TextureRect
 onready var level_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3/Label_LevelReq
 
@@ -24,7 +24,7 @@ func _ready():
 
 
 func applyFilter():
-	$VBox_Main/ExerciseButtons.filterExercises(type_filter, muscle_filter)
+	$VBox_Main/HBoxContainer2/ExerciseButtons.filterExercises(type_filter, muscle_filter)
 
 
 # Signal to update the ExerciseInfo scene
@@ -41,11 +41,12 @@ func _on_ExerciseButtons_exercise_selected(index):
 	muscle_texture.set_texture(texture)
 	strength_label.set_text(str(exercise_list[index]["base_strength"]) + " xp")
 	proficiency_label.set_text(str("1" + " xp"))
-	unit_req.set_text("Unit: " + exercise_list[index]["unit_req"])
-	equipment_req.set_text("Equipment: " + exercise_list[index]["equipment_req_1"] + ", " + exercise_list[index]["equipment_req_2"])
+	unit_req.set_text(exercise_list[index]["unit_req"])
+	equipment_req.set_text(exercise_list[index]["equipment_req_1"] + ", " + exercise_list[index]["equipment_req_2"])
 	level_texture.set_texture(texture)
 	level_req.set_text("Level " + str(exercise_list[index]["level_requirement"]))
 
+	$VBox_Main/HBoxContainer/ExerciseInfo/CoverPanel.hide()
 
 func determineUnlocked():
 	
@@ -111,7 +112,7 @@ func _on_Button_Calisthenics_pressed():
 	applyFilter()
 
 func _on_Button_Dumbbell_pressed():
-	type_filter = "Dumbbells"
+	type_filter = "Dumbbell"
 	applyFilter()
 
 func _on_Button_Barbell_pressed():

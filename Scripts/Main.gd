@@ -11,8 +11,10 @@ func _ready():
 	Globals.loadGame()
 	player_balance.updateBalance()
 	$SidePanel.updateStrengthLevels()
+	updateInventory()
 
 func setActiveExerciseUI():
+	
 	if selected_exercise == null:
 		return
 	
@@ -38,6 +40,34 @@ func updateProficiencyUI():
 	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/Label_ProficiencyLevel.set_text("Current Proficiency: " + proficiency_level)
 	$SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/Label_ProficiencyXP.set_text("XP to Proficiency Level: " + proficiency_xp)
 
+
+func updateInventory():
+	
+	var unit = $ExerciseSelect/VBox_Main/HBoxContainer2/Inventory/VBoxContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/Label_UnitsInventory
+	var equip = $ExerciseSelect/VBox_Main/HBoxContainer2/Inventory/VBoxContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer2/Label_EquipmentInventory
+	var text = ""
+	
+	for i in Globals.player.gym_units:
+		
+		if i == "None":
+			continue
+		
+		else:
+			text = text + "\n" + i
+
+	unit.set_text(text)
+	
+	text = ""
+	
+	for i in Globals.player.gym_equipment:
+		
+		if i == "None":
+			continue
+		
+		else:
+			text = text + "\n" + i
+	
+	equip.set_text(text)
 
 # Signals / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /
 
@@ -75,3 +105,4 @@ func returnToExerciseSelect():
 func storePurchaseMade():
 	player_balance.updateBalance()
 	$SidePanel.updateStrengthLevels()
+	updateInventory()

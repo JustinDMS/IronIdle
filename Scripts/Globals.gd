@@ -8,6 +8,14 @@ var situp = load("res://Exercises/SitUp.tres")
 var pullup = load("res://Exercises/PullUp.tres")
 var bodyweight_squat = load("res://Exercises/BodyweightSquat.tres")
 
+# Dumbbell
+var latraise = load("res://Exercises/LateralRaise.tres")
+var dumbbellrow = load("res://Exercises/DumbbellRow.tres")
+var dumbbellbench = load("res://Exercises/DumbbellBenchPress.tres")
+var dumbbelldeadlift = load("res://Exercises/DumbbellDeadlift.tres")
+var dumbbellpress = load("res://Exercises/DumbbellPress.tres")
+var gobletsquat = load("res://Exercises/GobletSquat.tres")
+
 # Barbell
 var benchpress = load("res://Exercises/BenchPress.tres")
 var barbellpress = load("res://Exercises/BarbellPress.tres")
@@ -44,6 +52,14 @@ func createExerciseArray():
 	all_exercises.append(situp)
 	all_exercises.append(pullup)
 	all_exercises.append(bodyweight_squat)
+	
+	all_exercises.append(latraise)
+	all_exercises.append(dumbbellbench)
+	all_exercises.append(dumbbelldeadlift)
+	all_exercises.append(dumbbellpress)
+	all_exercises.append(dumbbellrow)
+	all_exercises.append(gobletsquat)
+	
 	all_exercises.append(benchpress)
 	all_exercises.append(barbellpress)
 	all_exercises.append(barbellrow)

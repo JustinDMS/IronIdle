@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource( 1 )
-exercise_name = "Pull-Up"
-exercise_type = "Calisthenic"
-rep_time = 2.25
-base_strength = 3.0
-muscle_groups = "Back"
+exercise_name = "Dumbbell Press"
+exercise_type = "Dumbbell"
+rep_time = 3.5
+base_strength = 2.0
+muscle_groups = "Shoulders"
 has_level_requirement = true
 level_requirement = 8
-unit_req = "Pull-Up Bar"
-equipment_req_1 = "None"
+unit_req = "None"
+equipment_req_1 = "Dumbbells"
 equipment_req_2 = "None"
