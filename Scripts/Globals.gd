@@ -41,7 +41,7 @@ onready var main = get_tree().get_nodes_in_group("UI")
 # Player variables
 
 var player = Player.new()
-const save_path = "res://Save/savegame.res"
+const save_path := "user://savegame.res"
 
 func _ready():
 	createExerciseArray()
@@ -147,8 +147,9 @@ func loadGame():
 		print("Save not found. Creating new save")
 		saveGame()
 
+
 func saveGame():
 
-	var result = ResourceSaver.save("res://Save/savegame.res", player)
+	var result = ResourceSaver.save(save_path, player)
 	assert(result == OK)
 	print("Game saved")

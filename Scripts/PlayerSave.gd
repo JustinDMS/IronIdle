@@ -2,6 +2,8 @@ extends Resource
 
 class_name Player
 
+export var version = "1.0"
+
 export var money : float
 export var gym_units = ["None"]
 export var gym_equipment = ["None"]
