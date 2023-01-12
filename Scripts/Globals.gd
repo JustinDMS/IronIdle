@@ -95,7 +95,7 @@ func updateExperienceRequired(muscle):
 
 
 func updateProficiencyExperienceRequired(exercise : String):
-	proficiency_required = calculateProficiencyXPForLevel(player.proficiency_level[exercise] + 1)
+	proficiency_required = calculateProficiencyXPForLevel(player.proficiency_level[exercise])
 
 
 func gainExperience(muscle, amount):
