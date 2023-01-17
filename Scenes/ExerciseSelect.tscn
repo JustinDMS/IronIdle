@@ -1,24 +1,22 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scenes/ExerciseButtons.tscn" type="PackedScene" id=1]
-[ext_resource path="res://PlaceholderArt/BackIcon.png" type="Texture" id=2]
+[ext_resource path="res://Art/ShouldersIcon.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ExerciseSelect.gd" type="Script" id=3]
-[ext_resource path="res://PlaceholderArt/ShouldersIcon.png" type="Texture" id=4]
-[ext_resource path="res://PlaceholderArt/ChestIcon.png" type="Texture" id=5]
-[ext_resource path="res://PlaceholderArt/QuadsIcon.png" type="Texture" id=6]
-[ext_resource path="res://PlaceholderArt/AbsIcon.png" type="Texture" id=7]
-[ext_resource path="res://PlaceholderArt/CalisthenicsIcon.png" type="Texture" id=8]
-[ext_resource path="res://PlaceholderArt/DumbbellIcon.png" type="Texture" id=9]
-[ext_resource path="res://PlaceholderArt/BarbellIcon.png" type="Texture" id=10]
-[ext_resource path="res://PlaceholderArt/HamstringsIcon.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/ExerciseInfo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Art/ChestIcon.png" type="Texture" id=4]
+[ext_resource path="res://Art/BackIcon.png" type="Texture" id=5]
+[ext_resource path="res://Art/CoreIcon.png" type="Texture" id=6]
+[ext_resource path="res://Art/QuadricepsIcon.png" type="Texture" id=7]
+[ext_resource path="res://Art/BarbellIcon.png" type="Texture" id=8]
+[ext_resource path="res://Art/DumbbellIcon.png" type="Texture" id=9]
+[ext_resource path="res://Art/CalisthenicIcon.png" type="Texture" id=10]
+[ext_resource path="res://Art/HamstringsIcon.png" type="Texture" id=11]
 [ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=13]
-[ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=14]
-[ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Art/ClearFilterIcon.png" type="Texture" id=15]
 
 [node name="ExerciseSelect" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 320.0
 script = ExtResource( 3 )
 
 [node name="VBox_Main" type="VBoxContainer" parent="."]
@@ -29,162 +27,163 @@ grow_vertical = 2
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBox_Main"]
-margin_right = 1280.0
-margin_bottom = 200.0
-alignment = 1
+margin_right = 960.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 0, 190 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBox_Main/HBoxContainer"]
-margin_right = 638.0
-margin_bottom = 200.0
+margin_right = 960.0
+margin_bottom = 190.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
 
+[node name="Label_SearchFilters" type="Label" parent="VBox_Main/HBoxContainer/VBoxContainer"]
+margin_right = 960.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 13 )
+text = "Exercise Search Filters"
+align = 1
+
 [node name="HBox_MuscleGroup" type="HBoxContainer" parent="VBox_Main/HBoxContainer/VBoxContainer"]
-margin_right = 638.0
-margin_bottom = 84.0
+margin_top = 28.0
+margin_right = 960.0
+margin_bottom = 107.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 15
 alignment = 1
 
 [node name="Button_Chest" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
-margin_left = 141.0
-margin_right = 197.0
-margin_bottom = 84.0
+margin_left = 239.0
+margin_right = 295.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 56, 56 )
 toggle_mode = true
-texture_normal = ExtResource( 5 )
-expand = true
-stretch_mode = 5
-
-[node name="Button_Shoulder" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
-margin_left = 201.0
-margin_right = 257.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 56, 56 )
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 
-[node name="Button_Back" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
-margin_left = 261.0
-margin_right = 317.0
-margin_bottom = 84.0
+[node name="Button_Shoulder" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 310.0
+margin_right = 366.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 56, 56 )
 texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 5
 
-[node name="Button_Core" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
-margin_left = 321.0
-margin_right = 377.0
-margin_bottom = 84.0
+[node name="Button_Back" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 381.0
+margin_right = 437.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 56, 56 )
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 
-[node name="Button_Quads" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
-margin_left = 381.0
-margin_right = 437.0
-margin_bottom = 84.0
+[node name="Button_Core" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 452.0
+margin_right = 508.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 56, 56 )
 texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
+[node name="Button_Quads" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 523.0
+margin_right = 579.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 56, 56 )
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
 [node name="Button_Hamstring" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
-margin_left = 441.0
-margin_right = 497.0
-margin_bottom = 84.0
+margin_left = 594.0
+margin_right = 650.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 56, 56 )
 texture_normal = ExtResource( 11 )
 expand = true
 stretch_mode = 5
 
+[node name="Button_ClearMuscle" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup"]
+margin_left = 665.0
+margin_right = 721.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 56, 56 )
+texture_normal = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+
 [node name="HBox_MuscleGroup2" type="HBoxContainer" parent="VBox_Main/HBoxContainer/VBoxContainer"]
-margin_top = 88.0
-margin_right = 638.0
-margin_bottom = 172.0
+margin_top = 111.0
+margin_right = 960.0
+margin_bottom = 190.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 20
+custom_constants/separation = 15
 alignment = 1
 
 [node name="Button_Calisthenics" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2"]
-margin_left = 215.0
-margin_right = 271.0
-margin_bottom = 84.0
+margin_left = 345.0
+margin_right = 401.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 56, 56 )
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 10 )
 expand = true
 stretch_mode = 5
 
 [node name="Button_Dumbbell" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2"]
-margin_left = 291.0
-margin_right = 347.0
-margin_bottom = 84.0
+margin_left = 416.0
+margin_right = 472.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 56, 56 )
 texture_normal = ExtResource( 9 )
 expand = true
 stretch_mode = 5
 
 [node name="Button_Barbell" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2"]
-margin_left = 367.0
-margin_right = 423.0
-margin_bottom = 84.0
+margin_left = 487.0
+margin_right = 543.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 56, 56 )
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
-[node name="Button_ClearFilters" type="Button" parent="VBox_Main/HBoxContainer/VBoxContainer"]
-margin_top = 176.0
-margin_right = 638.0
-margin_bottom = 200.0
-custom_fonts/font = ExtResource( 13 )
-custom_styles/normal = ExtResource( 14 )
-text = "Clear Filter(s)"
+[node name="Button_ClearType" type="TextureButton" parent="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2"]
+margin_left = 558.0
+margin_right = 614.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 56, 56 )
+texture_normal = ExtResource( 15 )
+expand = true
+stretch_mode = 5
 
-[node name="ExerciseInfo" parent="VBox_Main/HBoxContainer" instance=ExtResource( 12 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 642.0
-margin_right = 1280.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 500, 200 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="HSeparator" type="HSeparator" parent="VBox_Main"]
+margin_top = 194.0
+margin_right = 960.0
+margin_bottom = 198.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBox_Main"]
-margin_top = 204.0
-margin_right = 1280.0
+[node name="ScrollContainer" type="ScrollContainer" parent="VBox_Main"]
+margin_top = 202.0
+margin_right = 960.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+scroll_horizontal_enabled = false
 
-[node name="ExerciseButtons" parent="VBox_Main/HBoxContainer2" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 776.0
-margin_bottom = 516.0
-rect_min_size = Vector2( 300, 0 )
-size_flags_horizontal = 11
+[node name="GridContainer" type="GridContainer" parent="VBox_Main/ScrollContainer"]
+margin_right = 960.0
+margin_bottom = 518.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBox_Main/HBoxContainer2"]
-margin_left = 780.0
-margin_right = 1280.0
-margin_bottom = 516.0
-rect_min_size = Vector2( 500, 0 )
-size_flags_vertical = 3
-
-[node name="Inventory" parent="VBox_Main/HBoxContainer2/VBoxContainer" instance=ExtResource( 15 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 500.0
-margin_bottom = 516.0
-size_flags_vertical = 3
+custom_constants/vseparation = 200
+custom_constants/hseparation = 325
+columns = 3
 
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Chest" to="." method="_on_Button_Chest_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Shoulder" to="." method="_on_Button_Shoulder_pressed"]
@@ -192,9 +191,8 @@ size_flags_vertical = 3
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Core" to="." method="_on_Button_Core_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Quads" to="." method="_on_Button_Quads_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Hamstring" to="." method="_on_Button_Hamstring_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_ClearMuscle" to="." method="_on_Button_ClearMuscle_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Calisthenics" to="." method="_on_Button_Calisthenics_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Dumbbell" to="." method="_on_Button_Dumbbell_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Barbell" to="." method="_on_Button_Barbell_pressed"]
-[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/Button_ClearFilters" to="." method="_on_Button_ClearFilters_pressed"]
-[connection signal="exercise_activated" from="VBox_Main/HBoxContainer2/ExerciseButtons" to="." method="_on_ExerciseButtons_exercise_activated"]
-[connection signal="exercise_selected" from="VBox_Main/HBoxContainer2/ExerciseButtons" to="." method="_on_ExerciseButtons_exercise_selected"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_ClearType" to="." method="_on_Button_ClearType_pressed"]

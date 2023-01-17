@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/ProficiencyProgress.gd" type="Script" id=2]
+
+[node name="ProficiencyProgress" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -40.5
+margin_right = 112.0
+margin_bottom = 40.5
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label_Proficiency" type="Label" parent="VBoxContainer"]
+margin_top = 14.0
+margin_right = 224.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Level 1"
+align = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+margin_top = 42.0
+margin_right = 224.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 1 )
+step = 1.0
+
+[connection signal="mouse_entered" from="VBoxContainer/ProgressBar" to="." method="_on_ProgressBar_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/ProgressBar" to="." method="_on_ProgressBar_mouse_exited"]

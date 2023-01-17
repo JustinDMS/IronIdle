@@ -16,8 +16,7 @@ color = Color( 0.172549, 0.164706, 0.196078, 1 )
 
 [node name="ExerciseSelect" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.25
-anchor_top = 0.005
-margin_top = -3.6
+margin_left = 0.0
 
 [node name="Store" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -25,8 +24,10 @@ anchor_left = 0.25
 
 [node name="SidePanel" parent="." instance=ExtResource( 5 )]
 
+[connection signal="list_changed" from="ExerciseSelect" to="." method="makeExerciseDict"]
 [connection signal="sent_info" from="ExerciseSelect" to="." method="receivedExerciseInfo"]
 [connection signal="clicked_return" from="Store" to="." method="returnToExerciseSelect"]
+[connection signal="experience_purchase_made" from="Store" to="." method="_on_Store_experience_purchase_made"]
 [connection signal="purchase_made" from="Store" to="." method="storePurchaseMade"]
 [connection signal="clicked_store" from="SidePanel" to="." method="openStore"]
 [connection signal="completed_rep" from="SidePanel" to="." method="completedRep"]

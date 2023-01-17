@@ -1,89 +1,155 @@
 extends Control
 
 signal sent_info
+signal list_changed
 
 var selected_exercise
 var type_filter := "All"
 var muscle_filter := "All"
-onready var exercise_list : Array = $VBox_Main/HBoxContainer2/ExerciseButtons.filtered_exercises
+var filtered_exercises = []
+var grid
 
-onready var name_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/Label_Name
-onready var money_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Money/Label_Money
-onready var time_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Time/Label_RepTime
-onready var muscle_texture = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/TextureRect
-onready var strength_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength/Label_Strength
-onready var proficiency_label = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox1/HBox_Proficiency/Label_Proficiency
-onready var unit_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/Label_UnitReq
-onready var equipment_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/Label_EquipmentReq
-onready var level_texture = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3/TextureRect
-onready var level_req = $VBox_Main/HBoxContainer/ExerciseInfo/Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3/Label_LevelReq
+var highlight = preload("res://Art/HighlightIcon.png")
+var highlighticon_type
+var highlighticon_muscle
+var previous_type_filter := "All"
+var previous_muscle_filter := "All"
 
+onready var muscle_search = {
+	"All" : null,
+	"Chest" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Chest,
+	"Shoulders" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Shoulder,
+	"Back" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Back,
+	"Core" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Core,
+	"Quadriceps" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Quads,
+	"Hamstrings" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup/Button_Hamstring,
+}
+onready var type_search = {
+	"All" : null,
+	"Calisthenic" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Calisthenics,
+	"Dumbbell" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Dumbbell,
+	"Barbell" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Barbell,
+}
 
 func _ready():
-	pass
+	initHighlightIcon()
+
+
+func fillGrid():
+	
+	grid = $VBox_Main/ScrollContainer/GridContainer
+	
+	for i in Globals.all_exercises:
+		appendExercise(i)
+
+
+func appendExercise(item):
+	
+	var instance
+	var scene = load("res://Scenes/ExercisePanel.tscn")
+	
+	instance = scene.instance()
+	instance.connect("selected_item", self, "activateExercise")
+	instance.createPanel(item.exercise_name, Globals.muscle_icons[item.muscle_groups], Globals.type_icons[item.exercise_type], item)
+	grid.add_child(instance)
+
+
+func filterExercises(type, group):
+	
+	clearGrid()
+	filtered_exercises.clear()
+	
+	for i in Globals.all_exercises:
+		
+		if type == "All" and group == "All":
+			filtered_exercises.append(i)
+		
+		elif type == "All":
+			if i["muscle_groups"] == group:
+				filtered_exercises.append(i)
+		
+		elif group == "All":
+			if i["exercise_type"] == type:
+				filtered_exercises.append(i)
+		
+		elif i["exercise_type"] == type and i["muscle_groups"] == group:
+			filtered_exercises.append(i)
+
+	
+	for i in filtered_exercises:
+		appendExercise(i)
+	
+	emit_signal("list_changed")
+
+
+func updateHighlight(type, group):
+	
+	if type_search[previous_type_filter] != null: 
+		type_search[previous_type_filter].remove_child(highlighticon_type)
+		
+	if muscle_search[previous_muscle_filter] != null: 
+		muscle_search[previous_muscle_filter].remove_child(highlighticon_muscle)
+	
+	match type:
+		"All":
+			previous_type_filter = type
+		_:
+			previous_type_filter = type
+			type_search[type].add_child(highlighticon_type)
+	
+	match group:
+		"All":
+			previous_muscle_filter = group
+		_:
+			previous_muscle_filter = group
+			muscle_search[group].add_child(highlighticon_muscle)
 
 
 func applyFilter():
-	$VBox_Main/HBoxContainer2/ExerciseButtons.filterExercises(type_filter, muscle_filter)
+	filterExercises(type_filter, muscle_filter)
+	updateHighlight(type_filter, muscle_filter)
 
 
-# Signal to update the ExerciseInfo scene
-func _on_ExerciseButtons_exercise_selected(index):
-	
-	var strength = Globals.player.strength_level[exercise_list[index]["muscle_groups"]]
-	var proficiency = Globals.player.proficiency_level[exercise_list[index]["exercise_name"]]
-	var time = exercise_list[index]["rep_time"]
-	var texture = Globals.muscle_icons[exercise_list[index]["muscle_groups"]]
-	
-	name_label.set_text(exercise_list[index]["exercise_name"] + ":")
-	money_label.set_text(Globals.calculateMoneyEarned(exercise_list[index]["rep_time"]))
-	time_label.set_text(Globals.calculateRepTime(strength, proficiency, time))
-	muscle_texture.set_texture(texture)
-	strength_label.set_text(str(exercise_list[index]["base_strength"]) + " xp")
-	proficiency_label.set_text(str("1" + " xp"))
-	unit_req.set_text(exercise_list[index]["unit_req"])
-	equipment_req.set_text(exercise_list[index]["equipment_req_1"] + ", " + exercise_list[index]["equipment_req_2"])
-	level_texture.set_texture(texture)
-	level_req.set_text("Level " + str(exercise_list[index]["level_requirement"]))
-
-	$VBox_Main/HBoxContainer/ExerciseInfo/CoverPanel.hide()
-
-func determineUnlocked():
-	
-	var unit = Globals.player.gym_units.has(selected_exercise.unit_req)
-	var equipment_1 = Globals.player.gym_equipment.has(selected_exercise.equipment_req_1)
-	var equipment_2 = Globals.player.gym_equipment.has(selected_exercise.equipment_req_2)
-	var level = Globals.player.strength_level[selected_exercise.muscle_groups] >= selected_exercise.level_requirement
-	
-	if unit == true and equipment_1 == true and equipment_2 == true and level == true:
-		return true
-	
-	else:
-		return false
+func clearGrid():
+	for n in grid.get_children():
+		n.queue_free()
 
 
-# Signal to update the ActiveExercise scene
-func _on_ExerciseButtons_exercise_activated(index):
-	selected_exercise = exercise_list[index]
+func activateExercise(exercise):
+	selected_exercise = exercise
+	emit_signal("sent_info")
+
+
+func initHighlightIcon():
+	var texture = TextureRect.new()
+	var texture2 = TextureRect.new()
 	
-	if determineUnlocked():
-		emit_signal("sent_info")
+	texture.set_texture(highlight)
+	texture.set_expand(true)
+	texture.set_stretch_mode(1)
+	texture.anchor_right = 1
+	texture.anchor_bottom = 1
 	
-	else:
-		print("Doesn't meet requirements")
+	texture2.set_texture(highlight)
+	texture2.set_expand(true)
+	texture2.set_stretch_mode(1)
+	texture2.anchor_right = 1
+	texture2.anchor_bottom = 1
+	
+	highlighticon_type = texture
+	highlighticon_muscle = texture2
+	
+
 
 # Exercise list filter buttons
 
-func _on_Button_ClearFilters_pressed():
+func _on_Button_ClearMuscle_pressed():
 	muscle_filter = "All"
-	type_filter = "All"
 	applyFilter()
-
 
 func _on_Button_Chest_pressed():
 	muscle_filter = "Chest"
 	applyFilter()
-
 
 func _on_Button_Shoulder_pressed():
 	muscle_filter = "Shoulders"
@@ -119,5 +185,6 @@ func _on_Button_Barbell_pressed():
 	type_filter = "Barbell"
 	applyFilter()
 
-
-
+func _on_Button_ClearType_pressed():
+	type_filter = "All"
+	applyFilter()

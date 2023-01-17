@@ -2,6 +2,7 @@ extends Control
 
 signal clicked_return
 signal purchase_made
+signal experience_purchase_made(muscle)
 
 var type = ["gym_units", "gym_equipment"]
 var item
@@ -117,5 +118,4 @@ func _on_Button_XP_pressed():
 		if Globals.player.money >= amount:
 			Globals.player.money -= amount
 			Globals.gainExperience(muscle, amount)
-			emit_signal("purchase_made")
-			print("Purchased " + str(amount) + "xp " + "for " + muscle)
+			emit_signal("experience_purchase_made", muscle)

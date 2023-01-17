@@ -25,23 +25,41 @@ var deadlift = load("res://Exercises/Deadlift.tres")
 
 # Icons for muscle group
 var muscle_icons = {
-	"Chest" : preload("res://PlaceholderArt/ChestIcon.png"),
-	"Shoulders" : preload("res://PlaceholderArt/ShouldersIcon.png"),
-	"Back" : preload("res://PlaceholderArt/BackIcon.png"),
-	"Core" : preload("res://PlaceholderArt/AbsIcon.png"),
-	"Quadriceps" : preload("res://PlaceholderArt/QuadsIcon.png"),
-	"Hamstrings" : preload("res://PlaceholderArt/HamstringsIcon.png"),
+	"Chest" : preload("res://Art/ChestIcon.png"),
+	"Shoulders" : preload("res://Art/ShouldersIcon.png"),
+	"Back" : preload("res://Art/BackIcon.png"),
+	"Core" : preload("res://Art/CoreIcon.png"),
+	"Quadriceps" : preload("res://Art/QuadricepsIcon.png"),
+	"Hamstrings" : preload("res://Art/HamstringsIcon.png"),
+}
+var muscle_icons_small = {
+	"Chest" : preload("res://Art/SmallIcons/ChestIcon_Small.png"),
+	"Shoulders" : preload("res://Art/SmallIcons/ShouldersIcon_Small.png"),
+	"Back" : preload("res://Art/SmallIcons/BackIcon_Small.png"),
+	"Core" : preload("res://Art/SmallIcons/CoreIcon_Small.png"),
+	"Quadriceps" : preload("res://Art/SmallIcons/QuadricepsIcon_Small.png"),
+	"Hamstrings" : preload("res://Art/SmallIcons/HamstringsIcon_Small.png"),
+}
+
+# Icons for the exercise type
+var type_icons = {
+	"Calisthenic" : preload("res://Art/CalisthenicIcon.png"),
+	"Dumbbell" : preload("res://Art/DumbbellIcon.png"),
+	"Barbell" : preload("res://Art/BarbellIcon.png"),
+	"Machine" : preload("res://Art/MachineIcon.png"),
 }
 
 var all_exercises = []
+
 var experience_required
 var proficiency_required
 onready var main = get_tree().get_nodes_in_group("UI")
 
+
 # Player variables
 
 var player = Player.new()
-const save_path := "user://savegame.res"
+const save_path := "res://Save/savegame.res"
 
 func _ready():
 	createExerciseArray()
@@ -67,8 +85,11 @@ func createExerciseArray():
 	all_exercises.append(deadlift)
 
 
-func calculateMoneyEarned(time):
-	return str("%.2f" % (pow(time, 1.75)/50))
+func calculateMoneyEarned(proficiency, base_time):
+	var proficiency_modifier = pow(proficiency/9.99, 2)
+	var money = pow(base_time, 1.75)/9.99
+	
+	return str("%.2f" % (money + (money * proficiency_modifier)))
 
 
 func calculateStrengthXPForLevel(level):
@@ -76,13 +97,13 @@ func calculateStrengthXPForLevel(level):
 
 
 func calculateProficiencyXPForLevel(level):
-	return int(level + 75 * (pow(2, (level / 3))))
+	return int(level + 75 * (pow(2, (level / 4))))
 
 
 func calculateRepTime(strength, proficiency, time):
 	
-	var strength_modifier = strength/50.0
-	var proficiency_modifier = proficiency/20.0
+	var strength_modifier = strength/49.99
+	var proficiency_modifier = proficiency/19.99
 	
 	var result = time - (strength_modifier/5) - (proficiency_modifier/4)
 	result = str("%.3f" % result)
@@ -91,7 +112,7 @@ func calculateRepTime(strength, proficiency, time):
 
 
 func updateExperienceRequired(muscle):
-	experience_required = calculateStrengthXPForLevel(player.strength_level[muscle] + 1)
+	experience_required = calculateStrengthXPForLevel(player.strength_level[muscle])
 
 
 func updateProficiencyExperienceRequired(exercise : String):
@@ -127,12 +148,14 @@ func levelUpStrength(muscle):
 	player.strength_level[muscle] += 1
 	updateExperienceRequired(muscle)
 	main[0].call("setActiveExerciseUI")
+	main[0].call("refreshExercisePanels")
 
 
 func levelUpProficiency(exercise):
 	player.proficiency_level[exercise] += 1
 	updateProficiencyExperienceRequired(exercise)
 	main[0].call("setActiveExerciseUI")
+	main[0].call("refreshExercisePanels")
 
 
 func loadGame():

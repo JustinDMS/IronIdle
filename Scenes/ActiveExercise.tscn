@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/ActiveExercise.gd" type="Script" id=3]
 [ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=4]
 
@@ -18,27 +17,12 @@ margin_top = -0.52
 custom_constants/separation = 25
 
 [node name="Label_ExerciseName" type="Label" parent="VerticalBox_Main"]
-margin_right = 1920.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 2 )
+margin_right = 1280.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
 text = "Exercise"
 align = 1
-
-[node name="Label_ProficiencyLevel" type="Label" parent="VerticalBox_Main"]
-margin_top = 63.0
-margin_right = 1920.0
-margin_bottom = 87.0
-custom_fonts/font = ExtResource( 1 )
-text = "Current Proficiency: #"
-align = 1
-
-[node name="Label_ProficiencyXP" type="Label" parent="VerticalBox_Main"]
-margin_top = 112.0
-margin_right = 1920.0
-margin_bottom = 136.0
-custom_fonts/font = ExtResource( 1 )
-text = "XP to Proficiency Level: #"
-align = 1
+autowrap = true
 
 [node name="VerticalBox_Bottom" type="VBoxContainer" parent="."]
 anchor_left = 0.025
@@ -50,31 +34,33 @@ margin_bottom = -0.0800781
 custom_constants/separation = 10
 
 [node name="HorizonatlBox_Info" type="HBoxContainer" parent="VerticalBox_Bottom"]
-margin_right = 1824.0
-margin_bottom = 38.0
+margin_right = 1216.0
+margin_bottom = 24.0
 
 [node name="Label_RepTime" type="Label" parent="VerticalBox_Bottom/HorizonatlBox_Info"]
-margin_right = 910.0
-margin_bottom = 38.0
+margin_right = 606.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 text = "0.0s"
 align = 1
+valign = 1
 
 [node name="Label_MoneyEarned" type="Label" parent="VerticalBox_Bottom/HorizonatlBox_Info"]
-margin_left = 914.0
-margin_right = 1824.0
-margin_bottom = 38.0
+margin_left = 610.0
+margin_right = 1216.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 text = "$0.00"
 align = 1
+valign = 1
 
 [node name="ProgressBar_Rep" type="ProgressBar" parent="VerticalBox_Bottom"]
-margin_top = 48.0
-margin_right = 1824.0
-margin_bottom = 98.0
+margin_top = 34.0
+margin_right = 1216.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_vertical = 3
 max_value = 1.0
@@ -82,25 +68,25 @@ step = 0.001
 percent_visible = false
 
 [node name="HorizontalBox_Buttons" type="HBoxContainer" parent="VerticalBox_Bottom"]
-margin_top = 108.0
-margin_right = 1824.0
-margin_bottom = 146.0
+margin_top = 94.0
+margin_right = 1216.0
+margin_bottom = 145.0
 size_flags_vertical = 3
 
 [node name="Button_Start" type="Button" parent="VerticalBox_Bottom/HorizontalBox_Buttons"]
-margin_right = 910.0
-margin_bottom = 38.0
+margin_right = 606.0
+margin_bottom = 51.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = ExtResource( 4 )
 text = "Start"
 
 [node name="Button_End" type="Button" parent="VerticalBox_Bottom/HorizontalBox_Buttons"]
-margin_left = 914.0
-margin_right = 1824.0
-margin_bottom = 38.0
+margin_left = 610.0
+margin_right = 1216.0
+margin_bottom = 51.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = ExtResource( 4 )
 text = "Stop"
 

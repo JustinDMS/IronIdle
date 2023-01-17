@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=1]
-[ext_resource path="res://PlaceholderArt/MoneyIcon.png" type="Texture" id=2]
-[ext_resource path="res://PlaceholderArt/TimerIcon.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Art/MoneyIcon.png" type="Texture" id=2]
+[ext_resource path="res://Art/TimerIcon.png" type="Texture" id=3]
 [ext_resource path="res://PlaceholderArt/ExerciseIcon.png" type="Texture" id=5]
 [ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Art/ProficiencyIcon.png" type="Texture" id=7]
 
 [node name="ExerciseInfo" type="Control"]
 anchor_right = 1.0
@@ -31,16 +31,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
-[node name="Label_Name" type="Label" parent="Panel/VBoxContainer"]
-margin_right = 1240.0
-margin_bottom = 24.0
-custom_fonts/font = ExtResource( 6 )
-text = "None Selected"
-align = 1
-valign = 1
-
 [node name="HBox_Main" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_top = 24.0
 margin_right = 1240.0
 margin_bottom = 680.0
 size_flags_horizontal = 3
@@ -48,18 +39,18 @@ size_flags_vertical = 3
 
 [node name="VBox1" type="VBoxContainer" parent="Panel/VBoxContainer/HBox_Main"]
 margin_right = 591.0
-margin_bottom = 656.0
+margin_bottom = 680.0
 size_flags_horizontal = 3
 
 [node name="HBox_Money" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox1"]
 margin_right = 591.0
-margin_bottom = 161.0
+margin_bottom = 167.0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBox_Main/VBox1/HBox_Money"]
-margin_top = 66.0
+margin_top = 69.0
 margin_right = 28.0
-margin_bottom = 94.0
+margin_bottom = 97.0
 rect_min_size = Vector2( 28, 28 )
 size_flags_vertical = 4
 texture = ExtResource( 2 )
@@ -68,22 +59,22 @@ stretch_mode = 5
 
 [node name="Label_Money" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox1/HBox_Money"]
 margin_left = 32.0
-margin_top = 68.0
+margin_top = 71.0
 margin_right = 162.0
-margin_bottom = 92.0
+margin_bottom = 95.0
 custom_fonts/font = ExtResource( 6 )
 text = "None Selected"
 
 [node name="HBox_Time" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox1"]
-margin_top = 165.0
+margin_top = 171.0
 margin_right = 591.0
-margin_bottom = 326.0
+margin_bottom = 338.0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBox_Main/VBox1/HBox_Time"]
-margin_top = 66.0
+margin_top = 69.0
 margin_right = 28.0
-margin_bottom = 94.0
+margin_bottom = 97.0
 rect_min_size = Vector2( 28, 28 )
 size_flags_vertical = 4
 texture = ExtResource( 3 )
@@ -92,22 +83,22 @@ stretch_mode = 5
 
 [node name="Label_RepTime" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox1/HBox_Time"]
 margin_left = 32.0
-margin_top = 68.0
+margin_top = 71.0
 margin_right = 162.0
-margin_bottom = 92.0
+margin_bottom = 95.0
 custom_fonts/font = ExtResource( 6 )
 text = "None Selected"
 
 [node name="HBox_Strength" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox1"]
-margin_top = 330.0
+margin_top = 342.0
 margin_right = 591.0
-margin_bottom = 491.0
+margin_bottom = 509.0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength"]
-margin_top = 66.0
+margin_top = 69.0
 margin_right = 28.0
-margin_bottom = 94.0
+margin_bottom = 97.0
 rect_min_size = Vector2( 28, 28 )
 size_flags_vertical = 4
 texture = ExtResource( 5 )
@@ -116,46 +107,46 @@ stretch_mode = 5
 
 [node name="Label_Strength" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox1/HBox_Strength"]
 margin_left = 32.0
-margin_top = 68.0
+margin_top = 71.0
 margin_right = 162.0
-margin_bottom = 92.0
+margin_bottom = 95.0
 custom_fonts/font = ExtResource( 6 )
 text = "None Selected"
 
 [node name="HBox_Proficiency" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox1"]
-margin_top = 495.0
+margin_top = 513.0
 margin_right = 591.0
-margin_bottom = 656.0
+margin_bottom = 680.0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBox_Main/VBox1/HBox_Proficiency"]
-margin_top = 66.0
+margin_top = 69.0
 margin_right = 28.0
-margin_bottom = 94.0
+margin_bottom = 97.0
 rect_min_size = Vector2( 28, 28 )
 size_flags_vertical = 4
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
 [node name="Label_Proficiency" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox1/HBox_Proficiency"]
 margin_left = 32.0
-margin_top = 68.0
+margin_top = 71.0
 margin_right = 162.0
-margin_bottom = 92.0
+margin_bottom = 95.0
 custom_fonts/font = ExtResource( 6 )
 text = "None Selected"
 
 [node name="VSeparator" type="VSeparator" parent="Panel/VBoxContainer/HBox_Main"]
 margin_left = 595.0
 margin_right = 645.0
-margin_bottom = 656.0
+margin_bottom = 680.0
 custom_constants/separation = 50
 
 [node name="VBox2" type="VBoxContainer" parent="Panel/VBoxContainer/HBox_Main"]
 margin_left = 649.0
 margin_right = 1240.0
-margin_bottom = 656.0
+margin_bottom = 680.0
 size_flags_horizontal = 3
 
 [node name="HBox_LabelReq" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox2"]
@@ -176,40 +167,40 @@ valign = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox2"]
 margin_top = 54.0
 margin_right = 591.0
-margin_bottom = 656.0
+margin_bottom = 680.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Label_UnitReq" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer"]
-margin_top = 87.0
+margin_top = 91.0
 margin_right = 591.0
-margin_bottom = 111.0
+margin_bottom = 115.0
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 6 )
 text = "None Selected"
 align = 1
 
 [node name="Label_EquipmentReq" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer"]
-margin_top = 289.0
+margin_top = 301.0
 margin_right = 591.0
-margin_bottom = 313.0
+margin_bottom = 325.0
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 6 )
 text = "None Selected"
 align = 1
 
 [node name="HBox_Requirements3" type="HBoxContainer" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer"]
-margin_top = 404.0
+margin_top = 420.0
 margin_right = 591.0
-margin_bottom = 602.0
+margin_bottom = 626.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3"]
 margin_left = 214.0
 margin_right = 242.0
-margin_bottom = 198.0
+margin_bottom = 206.0
 rect_min_size = Vector2( 28, 28 )
 texture = ExtResource( 5 )
 expand = true
@@ -217,20 +208,8 @@ stretch_mode = 6
 
 [node name="Label_LevelReq" type="Label" parent="Panel/VBoxContainer/HBox_Main/VBox2/VBoxContainer/HBox_Requirements3"]
 margin_left = 246.0
-margin_top = 87.0
+margin_top = 91.0
 margin_right = 376.0
-margin_bottom = 111.0
+margin_bottom = 115.0
 custom_fonts/font = ExtResource( 6 )
 text = "None Selected"
-
-[node name="CoverPanel" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Label_Cover" type="Label" parent="CoverPanel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 4 )
-text = "No Exercise selected"
-align = 1
-valign = 1
