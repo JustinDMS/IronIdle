@@ -27,16 +27,16 @@ onready var bcaa = $HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer3/
 
 onready var prices = {
 	pullupbar : 45.00,
-	bench : 90.00,
-	barbellrack : 60.00,
-	deadliftplatform : 200.00,
+	bench : 35.00,
+	barbellrack : 45.00,
+	deadliftplatform : 95.00,
 	
 	dumbbells : 30.00,
-	barbell : 125.00,
-	plates : 75.00,
+	barbell : 75.00,
+	plates : 35.00,
 	
 	caffeine : 10.00,
-	creatine : 15.00,
+	creatine : 20.00,
 	bcaa : 15.00,
 }
 
@@ -50,9 +50,9 @@ var descriptions = {
 	"Barbell" : "Heavy-duty stainless steel bar for your heaviest lifts",
 	"Plates" : "Barbell's best friend. Iconic clanking sounds included",
 	
-	"Caffeine" : "Provides -20% to your rep time",
-	"Creatine" : "Provides 2x the strength xp",
-	"BCAA" : "Provides 2x the proficiency xp",
+	"Caffeine" : "-20% rep time for 100 reps",
+	"Creatine" : "Double strength XP for 100 reps",
+	"BCAA" : "Double proficiency XP for 100 reps",
 }
 
 
