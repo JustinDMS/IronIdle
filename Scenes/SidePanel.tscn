@@ -219,3 +219,4 @@ anchor_right = 3.0
 [connection signal="pressed" from="VBox_Main/HBoxContainer/Button_Store" to="." method="_on_Button_Store_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/TextureButton_Inventory" to="." method="_on_TextureButton_Inventory_pressed"]
 [connection signal="completed_rep" from="VBox_Main/Panel2/ActiveExercise" to="." method="_on_ActiveExercise_completed_rep"]
+[connection signal="supplement_taken" from="Inventory" to="." method="_on_Inventory_supplement_taken"]

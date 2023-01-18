@@ -35,3 +35,4 @@ __meta__ = {
 [connection signal="purchase_made" from="Store" to="." method="storePurchaseMade"]
 [connection signal="clicked_store" from="SidePanel" to="." method="openStore"]
 [connection signal="completed_rep" from="SidePanel" to="." method="completedRep"]
+[connection signal="supplement_taken" from="SidePanel" to="." method="setActiveExerciseUI"]

@@ -2,6 +2,7 @@ extends Control
 
 signal clicked_store
 signal completed_rep
+signal supplement_taken
 
 onready var chest_progress = $VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/StrengthProgress_Chest
 onready var shoulders_progress = $VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/StrengthProgress_Shoulders
@@ -58,3 +59,7 @@ func optionSelected(index):
 		0:
 			var info_scene = load("res://Scenes/InfoPanel.tscn")
 			add_child(info_scene.instance())
+
+
+func _on_Inventory_supplement_taken():
+	emit_signal("supplement_taken")
