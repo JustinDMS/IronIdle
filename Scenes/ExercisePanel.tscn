@@ -90,6 +90,7 @@ size_flags_vertical = 3
 margin_right = 56.0
 margin_bottom = 81.0
 rect_min_size = Vector2( 56, 56 )
+hint_tooltip = "Proficiency"
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
