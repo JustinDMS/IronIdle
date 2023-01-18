@@ -143,7 +143,7 @@ func _on_LineEdit_text_changed(new_text):
 
 
 func _on_OptionButton_item_selected(index):
-	muscle = $HBoxContainer/VBox_Levels/HBoxContainer4/OptionButton.get_item_text(index)
+	muscle = $HBoxContainer/VBox_Training/HBoxContainer4/OptionButton.get_item_text(index)
 
 
 func _on_Button_XP_pressed():

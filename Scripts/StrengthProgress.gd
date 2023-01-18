@@ -21,8 +21,8 @@ func initDisplay(muscle : String):
 
 
 func updateProgress(muscle):
-	progress_bar.set_value(Globals.player.xp[muscle])
 	progress_bar.set_max(Globals.calculateStrengthXPForLevel(Globals.player.strength_level[muscle]))
+	progress_bar.set_value(Globals.player.xp[muscle])
 	
 	level_label.set_text("Level " + str(Globals.player.strength_level[muscle]))
 	

@@ -39,7 +39,8 @@ func _on_Button_Purchase_pressed():
 		print("Not enough money")
 	
 	else:
-		Globals.player[item_type][item_name] = amount
+		var current_amount = Globals.player[item_type][item_name]
+		Globals.player[item_type][item_name] = amount + current_amount
 		Globals.player.money -= total_cost
 		emit_signal("purchased")
 		_on_Button_Cancel_pressed()

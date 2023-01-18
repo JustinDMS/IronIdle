@@ -24,7 +24,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBox_Main"]
 margin_left = 239.0

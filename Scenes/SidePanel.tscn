@@ -36,16 +36,15 @@ margin_top = 15.0
 margin_right = -15.0
 margin_bottom = -15.0
 grow_horizontal = 0
-alignment = 2
 
 [node name="HBox_Options" type="HBoxContainer" parent="VBox_Main"]
 margin_right = 290.0
-margin_bottom = 72.0
-size_flags_vertical = 3
+margin_bottom = 56.0
+size_flags_vertical = 0
 
 [node name="MenuButton" type="MenuButton" parent="VBox_Main/HBox_Options"]
 margin_right = 56.0
-margin_bottom = 72.0
+margin_bottom = 56.0
 rect_min_size = Vector2( 56, 56 )
 custom_fonts/font = ExtResource( 11 )
 icon = ExtResource( 5 )
@@ -54,9 +53,9 @@ items = [ "Info", null, 0, false, false, 0, 0, null, "", false ]
 
 [node name="Label_Ironidle" type="Label" parent="VBox_Main/HBox_Options"]
 margin_left = 60.0
-margin_top = 17.0
+margin_top = 9.0
 margin_right = 290.0
-margin_bottom = 55.0
+margin_bottom = 47.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
 text = "Iron Idle v1.1"
@@ -64,11 +63,12 @@ align = 1
 valign = 1
 
 [node name="Panel" type="Panel" parent="VBox_Main"]
-margin_top = 76.0
+margin_top = 60.0
 margin_right = 290.0
-margin_bottom = 376.0
-rect_min_size = Vector2( 0, 300 )
+margin_bottom = 335.0
+rect_min_size = Vector2( 0, 275 )
 size_flags_horizontal = 3
+size_flags_vertical = 2
 custom_styles/panel = SubResource( 1 )
 
 [node name="VBox_PlayerInfo" type="VBoxContainer" parent="VBox_Main/Panel"]
@@ -91,12 +91,12 @@ margin_bottom = 58.0
 [node name="HBox_1" type="HBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo"]
 margin_top = 62.0
 margin_right = 290.0
-margin_bottom = 300.0
+margin_bottom = 275.0
 size_flags_vertical = 3
 
 [node name="VBox_Strength1" type="VBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1"]
 margin_right = 143.0
-margin_bottom = 238.0
+margin_bottom = 213.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -104,32 +104,32 @@ size_flags_vertical = 3
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 143.0
-margin_bottom = 76.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="StrengthProgress_Shoulders" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 80.0
+margin_top = 72.0
 margin_right = 143.0
-margin_bottom = 157.0
+margin_bottom = 140.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="StrengthProgress_Back" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 161.0
+margin_top = 144.0
 margin_right = 143.0
-margin_bottom = 238.0
+margin_bottom = 213.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox_Strength2" type="VBoxContainer" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1"]
 margin_left = 147.0
 margin_right = 290.0
-margin_bottom = 238.0
+margin_bottom = 213.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -137,32 +137,32 @@ size_flags_vertical = 3
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 143.0
-margin_bottom = 76.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="StrengthProgress_Quadriceps" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 80.0
+margin_top = 72.0
 margin_right = 143.0
-margin_bottom = 157.0
+margin_bottom = 140.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="StrengthProgress_Hamstrings" parent="VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength2" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 161.0
+margin_top = 144.0
 margin_right = 143.0
-margin_bottom = 238.0
+margin_bottom = 213.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBox_Main"]
-margin_top = 380.0
+margin_top = 347.0
 margin_right = 290.0
-margin_bottom = 436.0
+margin_bottom = 403.0
 custom_constants/separation = 30
 alignment = 1
 
@@ -188,10 +188,11 @@ expand = true
 stretch_mode = 5
 
 [node name="Panel2" type="Panel" parent="VBox_Main"]
-margin_top = 440.0
+margin_top = 407.0
 margin_right = 290.0
 margin_bottom = 690.0
 rect_min_size = Vector2( 0, 250 )
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 
 [node name="ActiveExercise" parent="VBox_Main/Panel2" instance=ExtResource( 9 )]

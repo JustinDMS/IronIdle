@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/VerySmallText.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/ActiveExercise.gd" type="Script" id=3]
 [ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=4]
 
@@ -14,7 +15,7 @@ anchor_top = 0.025
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.52
-custom_constants/separation = 25
+custom_constants/separation = 15
 
 [node name="Label_ExerciseName" type="Label" parent="VerticalBox_Main"]
 margin_right = 1280.0
@@ -23,6 +24,41 @@ custom_fonts/font = ExtResource( 1 )
 text = "Exercise"
 align = 1
 autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VerticalBox_Main"]
+margin_top = 39.0
+margin_right = 1280.0
+margin_bottom = 104.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VerticalBox_Main/HBoxContainer"]
+margin_right = 15.0
+margin_bottom = 65.0
+custom_constants/margin_left = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VerticalBox_Main/HBoxContainer"]
+margin_left = 19.0
+margin_right = 121.0
+margin_bottom = 65.0
+
+[node name="Label_Caffeine" type="Label" parent="VerticalBox_Main/HBoxContainer/VBoxContainer"]
+margin_right = 102.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 2 )
+text = "Caffeine: 94"
+
+[node name="Label_Creatine" type="Label" parent="VerticalBox_Main/HBoxContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 102.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 2 )
+text = "Creatine: 1546"
+
+[node name="Label_BCAA" type="Label" parent="VerticalBox_Main/HBoxContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 102.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 2 )
+text = "BCAA: 200"
 
 [node name="VerticalBox_Bottom" type="VBoxContainer" parent="."]
 anchor_left = 0.025
