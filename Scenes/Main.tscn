@@ -21,6 +21,10 @@ margin_left = 0.0
 [node name="Store" parent="." instance=ExtResource( 4 )]
 visible = false
 anchor_left = 0.25
+margin_left = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="SidePanel" parent="." instance=ExtResource( 5 )]
 

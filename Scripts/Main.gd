@@ -12,6 +12,7 @@ func _ready():
 	Globals.loadGame()
 	player_balance.updateBalance()
 	$SidePanel.initDisplay()
+	$SidePanel/Inventory.updateInventory()
 	$ExerciseSelect.fillGrid()
 	makeExerciseDict()
 
@@ -94,6 +95,7 @@ func returnToExerciseSelect():
 
 func storePurchaseMade():
 	player_balance.updateBalance()
+	Globals.saveGame()
 
 
 func _on_Store_experience_purchase_made(muscle):

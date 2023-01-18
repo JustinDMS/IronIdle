@@ -49,9 +49,7 @@ func _on_ActiveExercise_completed_rep():
 
 
 func _on_TextureButton_Inventory_pressed():
-	var scene = load("res://Scenes/Inventory.tscn")
-	var instance = scene.instance()
-	get_parent().add_child(instance)
+	$Inventory.show()
 
 
 func optionSelected(index):

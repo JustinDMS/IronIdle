@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://UI/Transparent_RoundedButtonStyleBox.tres" type="StyleBox" id=1]
+[ext_resource path="res://UI/Border_RoundedButtonStyleBox.tres" type="StyleBox" id=1]
 [ext_resource path="res://Fonts/VerySmallText.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/InfoPanel.gd" type="Script" id=3]
 

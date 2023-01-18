@@ -4,32 +4,57 @@ signal clicked_return
 signal purchase_made
 signal experience_purchase_made(muscle)
 
-var type = ["gym_units", "gym_equipment"]
 var item
 var price
 
 var muscle
 var amount
 
+onready var confirm_purchase = $ConfirmPurchase
+
 onready var pullupbar = $HBoxContainer/VBox_Units/HBoxContainer/Button_PullUpBar
 onready var bench = $HBoxContainer/VBox_Units/HBoxContainer2/Button_Bench
 onready var barbellrack = $HBoxContainer/VBox_Units/HBoxContainer3/Button_BarbellRack
 onready var deadliftplatform = $HBoxContainer/VBox_Units/HBoxContainer4/Button_DeadliftPlatform
 
-onready var dumbbells = $HBoxContainer/VBox_Equipment/HBoxContainer/Button_Dumbbells
-onready var barbell = $HBoxContainer/VBox_Equipment/HBoxContainer2/Button_Barbell
-onready var plates = $HBoxContainer/VBox_Equipment/HBoxContainer3/Button_Plates
+onready var dumbbells = $HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer/Button_Dumbbells
+onready var barbell = $HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer2/Button_Barbell
+onready var plates = $HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer3/Button_Plates
+
+onready var caffeine = $HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer/Button_Caffeine
+onready var creatine = $HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer2/Button_Creatine
+onready var bcaa = $HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer3/Button_BCAA
 
 onready var prices = {
-	pullupbar : 45,
-	bench : 90,
-	barbellrack : 60,
-	deadliftplatform : 200,
+	pullupbar : 45.00,
+	bench : 90.00,
+	barbellrack : 60.00,
+	deadliftplatform : 200.00,
 	
-	dumbbells : 25,
-	barbell : 125,
-	plates : 75,
+	dumbbells : 30.00,
+	barbell : 125.00,
+	plates : 75.00,
+	
+	caffeine : 10.00,
+	creatine : 15.00,
+	bcaa : 15.00,
 }
+
+var descriptions = {
+	"Pull-Up Bar" : "Bar used to perform pull-ups",
+	"Bench" : "Flat bench used for variations of the bench press",
+	"Barbell Rack" : "Holds the barbell",
+	"Deadlift Platform" : "Sturdy platform built for slamming your weights while deadlifting",
+	
+	"Dumbbells" : "Lighter weights used for unilateral training",
+	"Barbell" : "Heavy-duty stainless steel bar for your heaviest lifts",
+	"Plates" : "Barbell's best friend. Iconic clanking sounds included",
+	
+	"Caffeine" : "Provides -20% to your rep time.",
+	"Creatine" : "Provides 2x the strength xp.",
+	"BCAA" : "Provides 2x the proficiency xp.",
+}
+
 
 func _ready():
 	setPrices()
@@ -40,20 +65,13 @@ func setPrices():
 		i.set_text("$" + str(prices[i]))
 
 
-func checkPurchase(item_type : String, item_purchase : String, item_price : float): # type = unit, equipment, or level
-	
-	if Globals.player[item_type].has(item_purchase):
-		print("Already owned")
-	
-	elif Globals.player.money < item_price:
-		print("Not enough money")
+func showConfirmPurchase(item_name : String, description : String, item_price : float, type : int):
+	confirm_purchase.initPurchase(item_name, description, item_price, type)
+	confirm_purchase.show()
 
-	else:
-		Globals.player[item_type].append(item_purchase)
-		Globals.player.money -= item_price
-		emit_signal("purchase_made")
-		print("Purchased!")
 
+func purchaseMade():
+	emit_signal("purchase_made")
 
 # Units / / / / / / / / / / / / / / / / / / / /
 
@@ -65,40 +83,58 @@ func _on_Button_Exit_pressed():
 func _on_Button_PullUpBar_pressed():
 	item = "Pull-Up Bar"
 	price = prices[pullupbar]
-	checkPurchase(type[0], item, price)
-
+	showConfirmPurchase(item, descriptions[item], price, 0)
 
 func _on_Button_Bench_pressed():
 	item = "Bench"
 	price = prices[bench]
-	checkPurchase(type[0], item, price)
+	showConfirmPurchase(item, descriptions[item], price, 0)
 
 func _on_Button_BarbellRack_pressed():
 	item = "Barbell Rack"
 	price = prices[barbellrack]
-	checkPurchase(type[0], item, price)
+	showConfirmPurchase(item, descriptions[item], price, 0)
 
 func _on_Button_DeadliftPlatform_pressed():
 	item = "Deadlift Platform"
 	price = prices[deadliftplatform]
-	checkPurchase(type[0], item, price)
+	showConfirmPurchase(item, descriptions[item], price, 0)
 
 # Equipment / / / / / / / / / / / / / / / / / / / /
 
 func _on_Button_Dumbbells_pressed():
 	item = "Dumbbells"
 	price = prices[dumbbells]
-	checkPurchase(type[1], item, price)
+	showConfirmPurchase(item, descriptions[item], price, 1)
 
 func _on_Button_Barbell_pressed():
 	item = "Barbell"
 	price = prices[dumbbells]
-	checkPurchase(type[1], item, price)
+	showConfirmPurchase(item, descriptions[item], price, 1)
 
 func _on_Button_Plates_pressed():
 	item = "Plates"
 	price = prices[plates]
-	checkPurchase(type[1], item, price)
+	showConfirmPurchase(item, descriptions[item], price, 1)
+
+# Supplements / / / / / / / / / / / / / / / / / / / /
+
+func _on_Button_Caffeine_pressed():
+	item = "Caffeine"
+	price = prices[caffeine]
+	showConfirmPurchase(item, descriptions[item], price, 2)
+
+
+func _on_Button_Creatine_pressed():
+	item = "Creatine"
+	price = prices[creatine]
+	showConfirmPurchase(item, descriptions[item], price, 2)
+
+
+func _on_Button_BCAA_pressed():
+	item = "BCAA"
+	price = prices[bcaa]
+	showConfirmPurchase(item, descriptions[item], price, 2)
 
 # Levels / / / / / / / / / / / / / / / / / / / /
 

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/XPDisplay.gd" type="Script" id=2]
-[ext_resource path="res://UI/Transparent_RoundedButtonStyleBox.tres" type="StyleBox" id=3]
+[ext_resource path="res://UI/Border_RoundedButtonStyleBox.tres" type="StyleBox" id=3]
 
 [node name="XPDisplay" type="Control"]
 anchor_left = 0.5

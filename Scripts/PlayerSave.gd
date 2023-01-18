@@ -2,11 +2,12 @@ extends Resource
 
 class_name Player
 
-export var version = "1.0"
+export var version = "1.1"
 
 export var money : float
 export var gym_units = ["None"]
 export var gym_equipment = ["None"]
+export var gym_supplements = ["None"]
 export var strength_level = {
 	"Chest" : 1,
 	"Shoulders" : 1,

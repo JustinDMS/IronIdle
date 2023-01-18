@@ -49,6 +49,21 @@ var type_icons = {
 	"Machine" : preload("res://Art/MachineIcon.png"),
 }
 
+var inventory_items = {
+	"Pull-Up Bar" : "gym_units", 
+	"Bench" : "gym_units", 
+	"Barbell Rack" : "gym_units", 
+	"Deadlift Platform" : "gym_units",
+	
+	"Barbell" : "gym_equipment", 
+	"Dumbbells" : "gym_equipment",
+	"Plates" : "gym_equipment",
+	
+	"Caffeine" : "gym_supplements",
+	"Creatine" : "gym_supplements",
+	"BCAA" : "gym_supplements",
+}
+
 var all_exercises = []
 
 var experience_required
