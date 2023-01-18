@@ -5,9 +5,29 @@ class_name Player
 export var version = "1.1"
 
 export var money : float
-export var gym_units = ["None"]
-export var gym_equipment = ["None"]
-export var gym_supplements = ["None"]
+export var gym_units = {
+	"None" : 1,
+	"Pull-Up Bar" : 0,
+	"Bench" : 0,
+	"Barbell Rack" : 0,
+	"Deadlift Platform" : 0,
+}
+export var gym_equipment = {
+	"None" : 1,
+	"Dumbbells" : 0,
+	"Barbell" : 0,
+	"Plates" : 0,
+}
+export var gym_supplements = {
+	"Caffeine" : 0,
+	"Creatine" : 0,
+	"BCAA" : 0,
+}
+export var active_supplements = {
+	"Caffeine" : 0,
+	"Creatine" : 0,
+	"BCAA" : 0,
+}
 export var strength_level = {
 	"Chest" : 1,
 	"Shoulders" : 1,

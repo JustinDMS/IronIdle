@@ -50,9 +50,9 @@ var descriptions = {
 	"Barbell" : "Heavy-duty stainless steel bar for your heaviest lifts",
 	"Plates" : "Barbell's best friend. Iconic clanking sounds included",
 	
-	"Caffeine" : "Provides -20% to your rep time.",
-	"Creatine" : "Provides 2x the strength xp.",
-	"BCAA" : "Provides 2x the proficiency xp.",
+	"Caffeine" : "Provides -20% to your rep time",
+	"Creatine" : "Provides 2x the strength xp",
+	"BCAA" : "Provides 2x the proficiency xp",
 }
 
 

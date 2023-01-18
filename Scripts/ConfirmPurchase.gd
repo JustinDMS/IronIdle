@@ -14,8 +14,8 @@ func initPurchase(item : String, description : String, price : float, item_type_
 	
 	item_name = item
 	item_price = price
-	item_type = item_type_index
-	num_owned = Globals.player[type[item_type]].count(item)
+	item_type = type[item_type_index]
+	num_owned = Globals.player[item_type][item]
 	
 	$Panel/VBoxContainer/VBox_Spacing/Label_Item.set_text(item_name)
 	$Panel/VBoxContainer/VBox_Spacing/Label_Description.set_text(description)
@@ -39,12 +39,7 @@ func _on_Button_Purchase_pressed():
 		print("Not enough money")
 	
 	else:
-		var count = amount
-		
-		while count > 0:
-			Globals.player[type[item_type]].append(item_name)
-			count -= 1
-		
+		Globals.player[item_type][item_name] = amount
 		Globals.player.money -= total_cost
 		emit_signal("purchased")
 		_on_Button_Cancel_pressed()

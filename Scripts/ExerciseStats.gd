@@ -1,7 +1,7 @@
 extends Resource
 
 export var exercise_name : String
-export(String, "All", "Calisthenic", "Dumbbell", "Barbell") var exercise_type
+export(String, "All", "Calisthenic", "Dumbbells", "Barbell") var exercise_type
 export var rep_time : float
 export var base_strength : float
 export(String, "All", "Chest", "Shoulders", "Back", "Core", "Quadriceps", "Hamstrings") var muscle_groups
