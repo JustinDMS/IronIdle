@@ -78,7 +78,6 @@ func _on_Button_TakeSupplement_pressed():
 			return
 		
 		else:
-			print("Took supplement: " + selected_supplement)
 			Globals.player.gym_supplements[selected_supplement] = num_supplement - 1
 			Globals.player.active_supplements[selected_supplement] = Globals.player.active_supplements[selected_supplement] + 100
 			updateInventory()
