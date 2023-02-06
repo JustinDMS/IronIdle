@@ -64,7 +64,36 @@ var inventory_items = {
 	"BCAA" : "gym_supplements",
 }
 
+var no_imbalances_1 = preload("res://Challenges/NoImbalancesI.tres")
+var no_imbalances_2 = preload("res://Challenges/NoImbalancesII.tres")
+var no_imbalances_3 = preload("res://Challenges/NoImbalancesIII.tres")
+var no_imbalances_4 = preload("res://Challenges/NoImbalancesIV.tres")
+var no_imbalances_5 = preload("res://Challenges/NoImbalancesV.tres")
+var favorite_muscle_1 = preload("res://Challenges/FavoriteMuscleI.tres")
+var favorite_muscle_2 = preload("res://Challenges/FavoriteMuscleII.tres")
+var favorite_muscle_3 = preload("res://Challenges/FavoriteMuscleIII.tres")
+var favorite_muscle_4 = preload("res://Challenges/FavoriteMuscleIV.tres")
+var favorite_muscle_5 = preload("res://Challenges/FavoriteMuscleV.tres")
+var favorite_exercise_1 = preload("res://Challenges/FavoriteExerciseI.tres")
+var favorite_exercise_2 = preload("res://Challenges/FavoriteExerciseII.tres")
+var favorite_exercise_3 = preload("res://Challenges/FavoriteExerciseIII.tres")
+var favorite_exercise_4 = preload("res://Challenges/FavoriteExerciseIV.tres")
+var need_boost_1 = preload("res://Challenges/NeedBoostI.tres")
+var need_boost_2 = preload("res://Challenges/NeedBoostII.tres")
+var need_boost_3 = preload("res://Challenges/NeedBoostIII.tres")
+var gain_train_1 = preload("res://Challenges/GainTrainI.tres")
+var gain_train_2 = preload("res://Challenges/GainTrainII.tres")
+var gain_train_3 = preload("res://Challenges/GainTrainIII.tres")
+var focus_form_1 = preload("res://Challenges/FocusFormI.tres")
+var focus_form_2 = preload("res://Challenges/FocusFormII.tres")
+var focus_form_3 = preload("res://Challenges/FocusFormIII.tres")
+var sponsor_me_1 = preload("res://Challenges/SponsorMeI.tres")
+var sponsor_me_2 = preload("res://Challenges/SponsorMeII.tres")
+var sponsor_me_3 = preload("res://Challenges/SponsorMeIII.tres")
+
 var all_exercises = []
+var all_challenges = []
+var active_sponsor_tier
 
 var experience_required
 var proficiency_required
@@ -74,10 +103,12 @@ onready var main = get_tree().get_nodes_in_group("UI")
 # Player variables
 
 var player = Player.new()
-const save_path := "user://savegamev1.1.res"
+const save_path := "res://Save/savegamev1.2.res"
+
 
 func _ready():
 	createExerciseArray()
+	createChallengesArray()
 
 
 func createExerciseArray():
@@ -98,6 +129,41 @@ func createExerciseArray():
 	all_exercises.append(barbellrow)
 	all_exercises.append(barbellsquat)
 	all_exercises.append(deadlift)
+
+
+func createChallengesArray():
+	all_challenges.append(no_imbalances_1)
+	all_challenges.append(no_imbalances_2)
+	all_challenges.append(no_imbalances_3)
+	all_challenges.append(no_imbalances_4)
+	all_challenges.append(no_imbalances_5)
+	
+	all_challenges.append(favorite_muscle_1)
+	all_challenges.append(favorite_muscle_2)
+	all_challenges.append(favorite_muscle_3)
+	all_challenges.append(favorite_muscle_4)
+	all_challenges.append(favorite_muscle_5)
+	
+	all_challenges.append(favorite_exercise_1)
+	all_challenges.append(favorite_exercise_2)
+	all_challenges.append(favorite_exercise_3)
+	all_challenges.append(favorite_exercise_4)
+	
+	all_challenges.append(need_boost_1)
+	all_challenges.append(need_boost_2)
+	all_challenges.append(need_boost_3)
+	
+	all_challenges.append(gain_train_1)
+	all_challenges.append(gain_train_2)
+	all_challenges.append(gain_train_3)
+	
+	all_challenges.append(focus_form_1)
+	all_challenges.append(focus_form_2)
+	all_challenges.append(focus_form_3)
+	
+	all_challenges.append(sponsor_me_1)
+	all_challenges.append(sponsor_me_2)
+	all_challenges.append(sponsor_me_3)
 
 
 func calculateMoneyEarned(proficiency, base_time):
@@ -173,8 +239,184 @@ func levelUpProficiency(exercise):
 	main[0].call("refreshExercisePanels")
 
 
-func loadGame():
+func claimChallenge(challenge):
+	
+	Globals.player.challenge_progress[challenge._name] = true
+	main[0].call("buildChallengeList")
+	main[0].call("applyCompletedChallengeBuff")
+	main[0].call("setActiveExerciseUI")
+	saveGame()
 
+
+func getSupplementCharges(supplement : String):
+	match supplement:
+		"Caffeine":
+			if Globals.player.challenge_progress["Need a Boost III"]:
+				return 130
+			elif Globals.player.challenge_progress["Need a Boost II"]:
+				return 120
+			elif Globals.player.challenge_progress["Need a Boost I"]:
+				return 110
+			else: return 100
+		"Creatine":
+			if Globals.player.challenge_progress["Gain Train III"]:
+				return 130
+			elif Globals.player.challenge_progress["Gain Train II"]:
+				return 120
+			elif Globals.player.challenge_progress["Gain Train I"]:
+				return 110
+			else: return 100
+		"BCAA":
+			if Globals.player.challenge_progress["Focus on Form III"]:
+				return 130
+			elif Globals.player.challenge_progress["Focus on Form II"]:
+				return 120
+			elif Globals.player.challenge_progress["Focus on Form I"]:
+				return 110
+			else: return 100
+
+
+func getSponsorMeCharges(tier):
+	match tier:
+		null:
+			return 0
+		"I":
+			return 50
+		"II":
+			return 100
+		"III":
+			return 200
+
+
+func checkStrengthLevels(min_level : int):
+	
+	for i in Globals.player.strength_level:
+		
+		if Globals.player.strength_level[i] >= min_level:
+			continue
+		else:
+			return false
+	
+	return true
+
+
+func checkStrengthLevelThreshold(min_level : int):
+	
+	for i in Globals.player.strength_level:
+		
+		if Globals.player.strength_level[i] >= min_level:
+			return true
+		else:
+			continue
+	
+	return false
+
+
+func checkProficiencyLevelThreshold(min_level : int):
+	
+	for i in Globals.player.proficiency_level:
+		
+		if Globals.player.proficiency_level[i] >= min_level:
+			return true
+		else:
+			continue
+	
+	return false
+
+
+func checkSupplementUsage(supplement : String, min_amount : int):
+	
+	if Globals.player.supplements_used[supplement] >= min_amount:
+		return true
+	else:
+		return false
+
+
+func checkSponsorMeRequirements(tier):
+	match tier:
+		"Sponsor Me I":
+			if Globals.player.challenge_progress["Need a Boost I"] and Globals.player.challenge_progress["Gain Train I"] and Globals.player.challenge_progress["Focus on Form I"]:
+				return true
+			else:
+				return false
+		"Sponsor Me II":
+			if Globals.player.challenge_progress["Need a Boost II"] and Globals.player.challenge_progress["Gain Train II"] and Globals.player.challenge_progress["Focus on Form II"]:
+				return true
+			else:
+				return false
+		"Sponsor Me III":
+			if Globals.player.challenge_progress["Need a Boost III"] and Globals.player.challenge_progress["Gain Train III"] and Globals.player.challenge_progress["Focus on Form III"]:
+				return true
+			else:
+				return false
+
+
+func getCanClaimChallenge(challenge_name):
+	
+	match challenge_name:
+		
+		"No Imbalances I":
+			return checkStrengthLevels(10)
+		"No Imbalances II":
+			return checkStrengthLevels(20)
+		"No Imbalances III":
+			return checkStrengthLevels(30)
+		"No Imbalances IV":
+			return checkStrengthLevels(40)
+		"No Imbalances V":
+			return checkStrengthLevels(50)
+		
+		"Favorite Muscle I":
+			return checkStrengthLevelThreshold(10)
+		"Favorite Muscle II":
+			return checkStrengthLevelThreshold(20)
+		"Favorite Muscle III":
+			return checkStrengthLevelThreshold(30)
+		"Favorite Muscle IV":
+			return checkStrengthLevelThreshold(40)
+		"Favorite Muscle V":
+			return checkStrengthLevelThreshold(50)
+		
+		"Favorite Exercise I":
+			return checkProficiencyLevelThreshold(5)
+		"Favorite Exercise II":
+			return checkProficiencyLevelThreshold(10)
+		"Favorite Exercise III":
+			return checkProficiencyLevelThreshold(15)
+		"Favorite Exercise IV":
+			return checkProficiencyLevelThreshold(20)
+		
+		"Need a Boost I":
+			return checkSupplementUsage("Caffeine", 5000)
+		"Need a Boost II":
+			return checkSupplementUsage("Caffeine", 10000)
+		"Need a Boost III":
+			return checkSupplementUsage("Caffeine", 25000)
+		
+		"Gain Train I":
+			return checkSupplementUsage("Creatine", 5000)
+		"Gain Train II":
+			return checkSupplementUsage("Creatine", 10000)
+		"Gain Train III":
+			return checkSupplementUsage("Creatine", 25000)
+		
+		"Focus on Form I":
+			return checkSupplementUsage("BCAA", 5000)
+		"Focus on Form II":
+			return checkSupplementUsage("BCAA", 10000)
+		"Focus on Form III":
+			return checkSupplementUsage("BCAA", 25000)
+		
+		"Sponsor Me I":
+			return checkSponsorMeRequirements(challenge_name)
+		"Sponsor Me II":
+			return checkSponsorMeRequirements(challenge_name)
+		"Sponsor Me III":
+			return checkSponsorMeRequirements(challenge_name)
+
+
+func loadGame():
+	
 	if ResourceLoader.exists(save_path):
 		player = ResourceLoader.load(save_path)
 		if player is Player: # Check if data is valid

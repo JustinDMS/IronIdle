@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ChallengeInfo.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_name = "Favorite Exercise III"
+description = "Level any exercise proficiency to level 15"
+reward = "x1500 BCAA"
+is_series = true
+series_name = "Favorite Exercise"
+series_position = 3

@@ -34,11 +34,16 @@ config/icon="res://icon.png"
 
 Globals="*res://Scripts/Globals.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1280
 window/size/height=720
 window/size/resizable=false
+window/vsync/use_vsync=false
 window/stretch/aspect="keep"
 
 [editor]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ChallengeInfo.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_name = "Favorite Muscle I"
+description = "Level any muscle group to level 10"
+reward = "x1000 Creatine"
+is_series = true
+series_name = "Favorite Muscle"
+series_position = 1

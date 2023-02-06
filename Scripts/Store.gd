@@ -6,7 +6,7 @@ signal experience_purchase_made(muscle)
 
 var item
 var price
-
+var supplement_description
 var muscle
 var amount
 
@@ -25,6 +25,20 @@ onready var caffeine = $HBoxContainer/VBox_Training/VBox_Supplements/HBoxContain
 onready var creatine = $HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer2/Button_Creatine
 onready var bcaa = $HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer3/Button_BCAA
 
+onready var base_prices = {
+	pullupbar : 45.00,
+	bench : 35.00,
+	barbellrack : 45.00,
+	deadliftplatform : 95.00,
+	
+	dumbbells : 30.00,
+	barbell : 75.00,
+	plates : 35.00,
+	
+	caffeine : 10.00,
+	creatine : 20.00,
+	bcaa : 15.00,
+}
 onready var prices = {
 	pullupbar : 45.00,
 	bench : 35.00,
@@ -39,7 +53,17 @@ onready var prices = {
 	creatine : 20.00,
 	bcaa : 15.00,
 }
-
+var base_discount = {
+	"I" : 0.80,
+	"II" : 0.65,
+	"III" : 0.50,
+}
+var sponsor_discount = {
+	"I" : 0.15,
+	"II" : 0.20,
+	"III" : 0.25,
+}
+var active_discount = {}
 var descriptions = {
 	"Pull-Up Bar" : "Bar used to perform pull-ups",
 	"Bench" : "Flat bench used for variations of the bench press",
@@ -50,9 +74,9 @@ var descriptions = {
 	"Barbell" : "Heavy-duty stainless steel bar for your heaviest lifts",
 	"Plates" : "Barbell's best friend. Iconic clanking sounds included",
 	
-	"Caffeine" : "-20% rep time for 100 reps",
-	"Creatine" : "Double strength XP for 100 reps",
-	"BCAA" : "Double proficiency XP for 100 reps",
+	"Caffeine" : "-20% rep time for ",
+	"Creatine" : "Double strength XP for ",
+	"BCAA" : "Double proficiency XP for ",
 }
 
 
@@ -70,8 +94,33 @@ func showConfirmPurchase(item_name : String, description : String, item_price : 
 	confirm_purchase.show()
 
 
+func updateDiscount(supplement, tier):
+	
+	prices[supplement] = base_prices[supplement]
+	active_discount[supplement] = 1.0
+	
+	prices[supplement] = base_prices[supplement] * base_discount[tier]
+	active_discount[supplement] = base_discount[tier]
+	setPrices()
+
+
+func setSponsorMeDiscount(tier):
+	
+	active_discount[caffeine] = active_discount[caffeine] - sponsor_discount[tier]
+	active_discount[creatine] = active_discount[creatine] - sponsor_discount[tier]
+	active_discount[bcaa] = active_discount[bcaa] - sponsor_discount[tier]
+	
+	prices[caffeine] = base_prices[caffeine] * active_discount[caffeine]
+	prices[creatine] = base_prices[creatine] * active_discount[creatine]
+	prices[bcaa] = base_prices[bcaa] * active_discount[bcaa]
+	
+	Globals.active_sponsor_tier = tier
+	
+	setPrices()
+
 func purchaseMade():
 	emit_signal("purchase_made")
+
 
 # Units / / / / / / / / / / / / / / / / / / / /
 
@@ -122,19 +171,22 @@ func _on_Button_Plates_pressed():
 func _on_Button_Caffeine_pressed():
 	item = "Caffeine"
 	price = prices[caffeine]
-	showConfirmPurchase(item, descriptions[item], price, 2)
+	supplement_description = descriptions[item] + str(Globals.getSupplementCharges(item) + Globals.getSponsorMeCharges(Globals.active_sponsor_tier)) + " reps"
+	showConfirmPurchase(item, supplement_description, price, 2)
 
 
 func _on_Button_Creatine_pressed():
 	item = "Creatine"
 	price = prices[creatine]
-	showConfirmPurchase(item, descriptions[item], price, 2)
+	supplement_description = descriptions[item] + str(Globals.getSupplementCharges(item) + Globals.getSponsorMeCharges(Globals.active_sponsor_tier)) + " reps"
+	showConfirmPurchase(item, supplement_description, price, 2)
 
 
 func _on_Button_BCAA_pressed():
 	item = "BCAA"
 	price = prices[bcaa]
-	showConfirmPurchase(item, descriptions[item], price, 2)
+	supplement_description = descriptions[item] + str(Globals.getSupplementCharges(item) + Globals.getSponsorMeCharges(Globals.active_sponsor_tier)) + " reps"
+	showConfirmPurchase(item, supplement_description, price, 2)
 
 # Levels / / / / / / / / / / / / / / / / / / / /
 

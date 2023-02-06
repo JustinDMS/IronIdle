@@ -79,6 +79,6 @@ func _on_Button_TakeSupplement_pressed():
 		
 		else:
 			Globals.player.gym_supplements[selected_supplement] = num_supplement - 1
-			Globals.player.active_supplements[selected_supplement] = Globals.player.active_supplements[selected_supplement] + 100
+			Globals.player.active_supplements[selected_supplement] = Globals.player.active_supplements[selected_supplement] + Globals.getSupplementCharges(selected_supplement) + Globals.getSponsorMeCharges(Globals.active_sponsor_tier)
 			updateInventory()
 			emit_signal("supplement_taken")

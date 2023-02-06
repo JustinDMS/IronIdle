@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/StrengthProgress.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/PlayerBalance.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Art/HamburgerIcon.png" type="Texture" id=5]
 [ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/Inventory.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Art/ChallengesIcon.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/ActiveExercise.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/SidePanel.gd" type="Script" id=10]
 [ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=11]
@@ -167,23 +168,33 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="Button_Store" type="Button" parent="VBox_Main/HBoxContainer"]
-margin_left = 27.0
+margin_left = 9.0
 margin_top = 13.0
-margin_right = 177.0
+margin_right = 109.0
 margin_bottom = 43.0
-rect_min_size = Vector2( 150, 30 )
+rect_min_size = Vector2( 100, 30 )
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 11 )
 custom_styles/normal = ExtResource( 4 )
-text = "Gym Store"
+text = "Store"
 
 [node name="TextureButton_Inventory" type="TextureButton" parent="VBox_Main/HBoxContainer"]
-margin_left = 207.0
-margin_right = 263.0
+margin_left = 139.0
+margin_right = 195.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 56, 56 )
 hint_tooltip = "Inventory"
 texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureButton_Challenges" type="TextureButton" parent="VBox_Main/HBoxContainer"]
+margin_left = 225.0
+margin_right = 281.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 56, 56 )
+hint_tooltip = "Competitions"
+texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
@@ -219,5 +230,6 @@ anchor_right = 3.0
 
 [connection signal="pressed" from="VBox_Main/HBoxContainer/Button_Store" to="." method="_on_Button_Store_pressed"]
 [connection signal="pressed" from="VBox_Main/HBoxContainer/TextureButton_Inventory" to="." method="_on_TextureButton_Inventory_pressed"]
+[connection signal="pressed" from="VBox_Main/HBoxContainer/TextureButton_Challenges" to="." method="_on_TextureButton_Challenges_pressed"]
 [connection signal="completed_rep" from="VBox_Main/Panel2/ActiveExercise" to="." method="_on_ActiveExercise_completed_rep"]
 [connection signal="supplement_taken" from="Inventory" to="." method="_on_Inventory_supplement_taken"]

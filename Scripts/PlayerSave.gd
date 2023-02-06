@@ -2,7 +2,7 @@ extends Resource
 
 class_name Player
 
-export var version = "1.1"
+export var version = "1.2"
 
 export var money : float
 export var gym_units = {
@@ -24,6 +24,11 @@ export var gym_supplements = {
 	"BCAA" : 0,
 }
 export var active_supplements = {
+	"Caffeine" : 0,
+	"Creatine" : 0,
+	"BCAA" : 0,
+}
+export var supplements_used = {
 	"Caffeine" : 0,
 	"Creatine" : 0,
 	"BCAA" : 0,
@@ -108,4 +113,50 @@ export var proficiency_xp_total = {
 	"Barbell Row" : 0.0,
 	"Barbell Squat" : 0.0,
 	"Deadlift" : 0.0,
+}
+export var challenge_progress = {
+	"No Imbalances I" : false,
+	"No Imbalances II" : false,
+	"No Imbalances III" : false,
+	"No Imbalances IV" : false,
+	"No Imbalances V" : false,
+	
+	"Favorite Muscle I" : false,
+	"Favorite Muscle II" : false,
+	"Favorite Muscle III" : false,
+	"Favorite Muscle IV" : false,
+	"Favorite Muscle V" : false,
+	
+	"Favorite Exercise I" : false,
+	"Favorite Exercise II" : false,
+	"Favorite Exercise III" : false,
+	"Favorite Exercise IV" : false,
+	
+	"Need a Boost I" : false,
+	"Need a Boost II" : false,
+	"Need a Boost III" : false,
+	
+	"Gain Train I" : false,
+	"Gain Train II" : false,
+	"Gain Train III" : false,
+	
+	"Focus on Form I" : false,
+	"Focus on Form II" : false,
+	"Focus on Form III" : false,
+	
+	"Sponsor Me I" : false,
+	"Sponsor Me II" : false,
+	"Sponsor Me III" : false,
+}
+export var supplement_challenge_claimed = {
+	"Favorite Muscle I" : false,
+	"Favorite Muscle II" : false,
+	"Favorite Muscle III" : false,
+	"Favorite Muscle IV" : false,
+	"Favorite Muscle V" : false,
+	
+	"Favorite Exercise I" : false,
+	"Favorite Exercise II" : false,
+	"Favorite Exercise III" : false,
+	"Favorite Exercise IV" : false,
 }

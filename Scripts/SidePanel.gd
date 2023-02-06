@@ -1,6 +1,7 @@
 extends Control
 
 signal clicked_store
+signal clicked_challenges
 signal completed_rep
 signal supplement_taken
 
@@ -63,3 +64,8 @@ func optionSelected(index):
 
 func _on_Inventory_supplement_taken():
 	emit_signal("supplement_taken")
+
+
+func _on_TextureButton_Challenges_pressed():
+	print("Open challenges")
+	emit_signal("clicked_challenges")

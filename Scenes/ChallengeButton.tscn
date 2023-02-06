@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=2]
+[ext_resource path="res://Scripts/ChallengeButton.gd" type="Script" id=3]
+
+[node name="ChallengeButton" type="Control"]
+anchor_right = 0.294
+anchor_bottom = 0.033
+margin_right = -0.320007
+margin_bottom = 0.24
+rect_pivot_offset = Vector2( -499, -211 )
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button_Challenge" type="Button" parent="HBoxContainer"]
+margin_left = 13.0
+margin_right = 363.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 6
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+text = "Challenge Name"

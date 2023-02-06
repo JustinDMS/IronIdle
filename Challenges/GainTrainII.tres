@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ChallengeInfo.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_name = "Gain Train II"
+description = "Use 10,000 Creatine"
+reward = "Creatine is permanently 35% cheaper and provides 20 more charges"
+is_series = true
+series_name = "Gain Train"
+series_position = 2

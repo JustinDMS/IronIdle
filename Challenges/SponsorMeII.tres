@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ChallengeInfo.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_name = "Sponsor Me II"
+description = "Claim Need a Boost II, Gain Train II, and Focus on Form II"
+reward = "All supplements permanently provide 100 more charges and are an additional 20% cheaper"
+is_series = true
+series_name = "Sponsor Me"
+series_position = 2

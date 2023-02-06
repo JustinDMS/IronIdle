@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ChallengeInfo.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_name = "Sponsor Me III"
+description = "Claim Need a Boost III, Gain Train III, and Focus on Form III"
+reward = "All supplements permanently provide 200 more charges and are an additional 25% cheaper"
+is_series = true
+series_name = "Sponsor Me"
+series_position = 3

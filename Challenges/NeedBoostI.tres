@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ChallengeInfo.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_name = "Need a Boost I"
+description = "Use 5,000 Caffeine"
+reward = "Caffeine is permanently 20% cheaper and provides 10 more charges"
+is_series = true
+series_name = "Need a Boost"
+series_position = 1
