@@ -60,7 +60,7 @@ func addButton(container, instance, item):
 	container.add_child(instance)
 
 
-func displayChallenge(i):
+func displayChallenge(challenge):
 	
 	clearDisplayedChallenge()
 	
@@ -68,7 +68,7 @@ func displayChallenge(i):
 	var scene = load("res://Scenes/ChallengeDetails.tscn")
 	var instance = scene.instance()
 	
-	instance.setDetails(i)
+	instance.setDetails(challenge)
 	details_container.add_child(instance)
 
 

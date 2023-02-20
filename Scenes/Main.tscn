@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/ChallengesDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/ExerciseSelect.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Store.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/SidePanel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/PopupManager.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node" groups=["UI"]]
 script = ExtResource( 3 )
@@ -31,6 +32,8 @@ __meta__ = {
 visible = false
 
 [node name="SidePanel" parent="." instance=ExtResource( 5 )]
+
+[node name="PopupManager" parent="." instance=ExtResource( 6 )]
 
 [connection signal="list_changed" from="ExerciseSelect" to="." method="makeExerciseDict"]
 [connection signal="sent_info" from="ExerciseSelect" to="." method="receivedExerciseInfo"]

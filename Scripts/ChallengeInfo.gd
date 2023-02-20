@@ -6,3 +6,4 @@ export var reward : String
 export var is_series : bool
 export var series_name : String
 export var series_position : int
+export var is_tracked : bool

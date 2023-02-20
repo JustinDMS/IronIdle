@@ -2,6 +2,8 @@ extends Node
 
 # Exercise info
 
+var blank_exercise = load("res://Exercises/Blank.tres")
+
 # Calisthenics
 var pushup = load("res://Exercises/PushUp.tres")
 var situp = load("res://Exercises/SitUp.tres")

@@ -10,3 +10,4 @@ reward = "Caffeine is permanently 50% cheaper and provides 30 more charges"
 is_series = true
 series_name = "Need a Boost"
 series_position = 3
+is_tracked = true

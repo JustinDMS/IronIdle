@@ -12,6 +12,9 @@ func _ready():
 
 func createPanel(exercise_name : String, muscle_texture, type_texture, exercise):
 	
+	if exercise_name.match("Blank"):
+		return
+	
 	var proficiency_progress = $VBoxContainer/HBox_Proficiency/ProficiencyProgress
 	
 	$VBoxContainer/HBoxContainer/Button_Name.set_text(exercise_name)

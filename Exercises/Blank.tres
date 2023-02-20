@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ExerciseStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+exercise_name = "Blank"
+exercise_type = "Calisthenic"
+rep_time = 1.0
+base_strength = 1.0
+muscle_groups = "Chest"
+has_level_requirement = false
+level_requirement = 0
+unit_req = "None"
+equipment_req_1 = "None"
+equipment_req_2 = "None"

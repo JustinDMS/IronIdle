@@ -10,3 +10,4 @@ reward = "Creatine is permanently 20% cheaper and provides 10 more charges"
 is_series = true
 series_name = "Gain Train"
 series_position = 1
+is_tracked = true

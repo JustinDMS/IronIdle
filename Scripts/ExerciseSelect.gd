@@ -41,9 +41,15 @@ func fillGrid():
 	
 	for i in Globals.all_exercises:
 		appendExercise(i)
+	
+	# Workaround for ScrollContainer bug not showing the last elements
+	appendExercise(Globals.blank_exercise)
 
 
 func appendExercise(item):
+	
+	if item.exercise_name.match("Blank"):
+		return
 	
 	var instance
 	var scene = load("res://Scenes/ExercisePanel.tscn")
@@ -78,6 +84,10 @@ func filterExercises(type, group):
 	
 	for i in filtered_exercises:
 		appendExercise(i)
+	
+	# Workaround for ScrollContainer bug not showing the last elements
+	if type == "All" and group == "All":
+		appendExercise(Globals.blank_exercise)
 	
 	emit_signal("list_changed")
 

@@ -10,3 +10,4 @@ reward = "x5000 Creatine"
 is_series = true
 series_name = "Favorite Muscle"
 series_position = 5
+is_tracked = false

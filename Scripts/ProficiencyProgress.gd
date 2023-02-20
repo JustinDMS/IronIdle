@@ -9,6 +9,7 @@ func _ready():
 
 
 func updateProgress(item):
+	exercise = item
 	$VBoxContainer/Label_Proficiency.set_text("Level " + str(Globals.player.proficiency_level[item.exercise_name]))
 	$VBoxContainer/ProgressBar.set_max(Globals.calculateProficiencyXPForLevel(Globals.player.proficiency_level[item.exercise_name]))
 	$VBoxContainer/ProgressBar.set_value(Globals.player.proficiency_xp[item.exercise_name])

@@ -10,3 +10,4 @@ reward = "BCAA is permanently 50% cheaper and provides 30 more charges"
 is_series = true
 series_name = "Focus on Form"
 series_position = 3
+is_tracked = true

@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Art/SmallIcons/MoneyIcon_Small.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scripts/Popup.gd" type="Script" id=4]
+[ext_resource path="res://UI/Anim_Popup_Fade.tres" type="Animation" id=5]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Popup" type="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 200, 40 )
+mouse_filter = 2
+alignment = 1
+
+[node name="Label_Plus" type="Label" parent="HBoxContainer"]
+margin_left = 31.0
+margin_top = 1.0
+margin_right = 49.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 3 )
+text = "+"
+
+[node name="TextureRect_Type" type="TextureRect" parent="HBoxContainer"]
+margin_left = 53.0
+margin_right = 93.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Label_TypeAmount" type="Label" parent="HBoxContainer"]
+margin_left = 97.0
+margin_top = 8.0
+margin_right = 168.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Amount"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Popup_Fade = ExtResource( 5 )
+anims/RESET = SubResource( 2 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

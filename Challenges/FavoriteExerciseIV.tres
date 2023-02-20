@@ -10,3 +10,4 @@ reward = "x2000 BCAA"
 is_series = true
 series_name = "Favorite Exercise"
 series_position = 4
+is_tracked = false

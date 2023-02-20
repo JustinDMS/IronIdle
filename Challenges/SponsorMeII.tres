@@ -10,3 +10,4 @@ reward = "All supplements permanently provide 100 more charges and are an additi
 is_series = true
 series_name = "Sponsor Me"
 series_position = 2
+is_tracked = false

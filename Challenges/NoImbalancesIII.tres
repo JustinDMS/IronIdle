@@ -10,3 +10,4 @@ reward = "Permanently gain base 6 proficiency XP"
 is_series = true
 series_name = "No Imbalances"
 series_position = 3
+is_tracked = false

@@ -135,8 +135,6 @@ func buildChallengeList():
 
 func applyCompletedChallengeBuff():
 	
-	print("Applying challenge buffs")
-	
 	for c in Globals.all_challenges:
 		if Globals.player.challenge_progress[c._name]: # If challenge is completed ie True
 			match c.series_name:
@@ -290,6 +288,12 @@ func completedRep():
 	updateProficiencyProgress(selected_exercise)
 	
 	checkSupplements()
+	
+	$PopupManager.createPopup(Globals.muscle_icons_small[selected_exercise.muscle_groups], str(strength_earned) + "xp")
+	
+	var instance = get_node_or_null("ChallengesDisplay/MarginContainer/VBoxContainer/HBoxContainer/VBox_Details/ChallengeDetails")
+	if is_instance_valid(instance):
+		instance.updateProgressBar()
 
 
 func returnToExerciseSelect():
