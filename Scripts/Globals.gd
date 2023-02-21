@@ -51,6 +51,9 @@ var type_icons = {
 	"Machine" : preload("res://Art/MachineIcon.png"),
 }
 
+var proficiency_icon = preload("res://Art/SmallIcons/ProficiencyIcon_Small.png")
+var money_icon = preload("res://Art/SmallIcons/MoneyIcon_Small.png")
+
 var inventory_items = {
 	"Pull-Up Bar" : "gym_units", 
 	"Bench" : "gym_units", 

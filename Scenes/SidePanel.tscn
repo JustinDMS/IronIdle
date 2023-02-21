@@ -50,7 +50,7 @@ rect_min_size = Vector2( 56, 56 )
 custom_fonts/font = ExtResource( 11 )
 icon = ExtResource( 5 )
 expand_icon = true
-items = [ "Info", null, 0, false, false, 0, 0, null, "", false ]
+items = [ "Info", null, 0, false, false, 0, 0, null, "", false, "Settings", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="Label_Ironidle" type="Label" parent="VBox_Main/HBox_Options"]
 margin_left = 60.0

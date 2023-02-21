@@ -290,6 +290,8 @@ func completedRep():
 	checkSupplements()
 	
 	$PopupManager.createPopup(Globals.muscle_icons_small[selected_exercise.muscle_groups], str(strength_earned) + "xp")
+	$PopupManager.createPopup(Globals.proficiency_icon, str(proficiency_earned) + "xp")
+	$PopupManager.createPopup(Globals.money_icon, str(money_earned))
 	
 	var instance = get_node_or_null("ChallengesDisplay/MarginContainer/VBoxContainer/HBoxContainer/VBox_Details/ChallengeDetails")
 	if is_instance_valid(instance):
