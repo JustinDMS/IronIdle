@@ -30,7 +30,8 @@ func updateCost(price):
 
 
 func updateOwned(owned):
-	$Panel/VBoxContainer/VBox_Spacing/HBoxContainer4/Label_Owned.set_text("x" + str(owned + amount))
+	if item_type == type[2]:
+		$Panel/VBoxContainer/VBox_Spacing/HBoxContainer4/Label_Owned.set_text("x" + str(owned + amount))
 
 
 func _on_Button_Purchase_pressed():

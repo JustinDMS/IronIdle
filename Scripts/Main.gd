@@ -27,6 +27,7 @@ func _ready():
 	makeExerciseDict()
 	buildChallengeList()
 	applyCompletedChallengeBuff()
+	updateStore()
 
 
 func setActiveExerciseUI():
@@ -44,14 +45,14 @@ func setActiveExerciseUI():
 		var strength = Globals.player.strength_level[selected_exercise.muscle_groups]
 		var proficiency = Globals.player.proficiency_level[selected_exercise.exercise_name]
 		var rep_time
-		money_earned = Globals.calculateMoneyEarned(proficiency, selected_exercise.rep_time)
+		money_earned = getMoney(Globals.calculateMoneyEarned(proficiency, selected_exercise.rep_time))
 		
 		if Globals.player.active_supplements["Creatine"] > 0:
-			strength_earned = selected_exercise.base_strength * 2
 			creatine_label.set_text("Creatine: " + str(Globals.player.active_supplements["Creatine"]))
 			has_creatine = true
+			strength_earned = getStrengthXP()
 		else:
-			strength_earned = selected_exercise.base_strength
+			strength_earned = getStrengthXP()
 			creatine_label.set_text("Creatine: 0")
 			has_creatine = false
 		
@@ -129,7 +130,6 @@ func refreshExercisePanels(): # To update the dropdown menu on strength or profi
 
 
 func buildChallengeList():
-	print("main.buildChallengeList()")
 	$ChallengesDisplay.buildChallengeList()
 
 
@@ -250,6 +250,53 @@ func getBaseProficiency():
 		return 1
 
 
+func getStrengthXP():
+	
+	# Equipment Tier Check
+	if selected_exercise.equipment_req_1 == "Dumbbells":
+		strength_earned = selected_exercise.base_strength + Globals.player.equipment_tier["Dumbbells"] - 1
+	
+	elif selected_exercise.equipment_req_2 == "Plates":
+		strength_earned = selected_exercise.base_strength + Globals.player.equipment_tier["Plates"] - 1
+	
+	else:
+		strength_earned = selected_exercise.base_strength
+	
+	# Supplement Check
+	if has_creatine:
+		strength_earned = strength_earned * 2
+	
+	return strength_earned
+
+
+func getMoney(base):
+	
+	# Equipment Tier Check
+	if selected_exercise.equipment_req_1 == "Dumbbells":
+		
+		var tier = Globals.player.equipment_tier["Dumbbells"] - 1
+		tier = tier * 0.1
+		var bonus = str("%.2f" % (float(base) * tier))
+		money_earned = float(base) + float(bonus)
+	
+	elif selected_exercise.equipment_req_2 == "Plates":
+		
+		var tier = Globals.player.equipment_tier["Plates"] - 1
+		tier = tier * 0.1
+		var bonus = str("%.2f" % (float(base) * tier))
+		money_earned = float(base) + float(bonus)
+	
+	else:
+		money_earned = base
+	
+	return money_earned
+
+func updateStore():
+	$Store.setPrices()
+	$Store.updateEquipmentPrices("Dumbbells", $Store.dumbbells)
+	$Store.updateEquipmentPrices("Plates", $Store.plates)
+
+
 # Signals / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
 
 
@@ -303,6 +350,7 @@ func returnToExerciseSelect():
 
 
 func storePurchaseMade():
+	updateStore()
 	player_balance.updateBalance()
 	$SidePanel/Inventory.updateInventory()
 	Globals.saveGame()

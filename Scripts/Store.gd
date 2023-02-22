@@ -11,6 +11,7 @@ var muscle
 var amount
 
 onready var confirm_purchase = $ConfirmPurchase
+onready var confirm_equipment_purchase = $ConfirmPurchaseEquipment
 
 onready var pullupbar = $HBoxContainer/VBox_Units/HBoxContainer/Button_PullUpBar
 onready var bench = $HBoxContainer/VBox_Units/HBoxContainer2/Button_Bench
@@ -70,9 +71,9 @@ var descriptions = {
 	"Barbell Rack" : "Holds the barbell",
 	"Deadlift Platform" : "Sturdy platform built for slamming your weights while deadlifting",
 	
-	"Dumbbells" : "Lighter weights used for unilateral training",
+	"Dumbbells" : "Used for unilateral training. Upgrade to gain extra money and Strength XP",
 	"Barbell" : "Heavy-duty stainless steel bar for your heaviest lifts",
-	"Plates" : "Barbell's best friend. Iconic clanking sounds included",
+	"Plates" : "Barbell weight factored in. Upgrade to gain extra money and Strength XP",
 	
 	"Caffeine" : "-20% rep time for ",
 	"Creatine" : "Double strength XP for ",
@@ -81,7 +82,7 @@ var descriptions = {
 
 
 func _ready():
-	setPrices()
+	pass
 
 
 func setPrices():
@@ -92,6 +93,16 @@ func setPrices():
 func showConfirmPurchase(item_name : String, description : String, item_price : float, type : int):
 	confirm_purchase.initPurchase(item_name, description, item_price, type)
 	confirm_purchase.show()
+
+
+func showEquipmentConfirmPurchase(item_name : String, description : String, cost : float):
+	confirm_equipment_purchase.initEquipmentPurchase(item_name, description, cost)
+	confirm_equipment_purchase.show()
+
+
+func showUnitConfirmPurchase(item_name, description, cost):
+	confirm_equipment_purchase.initUnitPurchase(item_name, description, cost)
+	confirm_equipment_purchase.show()
 
 
 func updateDiscount(supplement, tier):
@@ -118,6 +129,18 @@ func setSponsorMeDiscount(tier):
 	
 	setPrices()
 
+
+func updateEquipmentPrices(equipment : String, item_node : Node):
+	var tier = Globals.player.equipment_tier[equipment]
+	var cost = base_prices[item_node]
+	
+	for _i in range(0, tier):
+		cost = cost * 2
+	
+	prices[item_node] = cost
+	item_node.set_text("$" + str(cost))
+
+
 func purchaseMade():
 	emit_signal("purchase_made")
 
@@ -132,39 +155,39 @@ func _on_Button_Exit_pressed():
 func _on_Button_PullUpBar_pressed():
 	item = "Pull-Up Bar"
 	price = prices[pullupbar]
-	showConfirmPurchase(item, descriptions[item], price, 0)
+	showUnitConfirmPurchase(item, descriptions[item], price)
 
 func _on_Button_Bench_pressed():
 	item = "Bench"
 	price = prices[bench]
-	showConfirmPurchase(item, descriptions[item], price, 0)
+	showUnitConfirmPurchase(item, descriptions[item], price)
 
 func _on_Button_BarbellRack_pressed():
 	item = "Barbell Rack"
 	price = prices[barbellrack]
-	showConfirmPurchase(item, descriptions[item], price, 0)
+	showUnitConfirmPurchase(item, descriptions[item], price)
 
 func _on_Button_DeadliftPlatform_pressed():
 	item = "Deadlift Platform"
 	price = prices[deadliftplatform]
-	showConfirmPurchase(item, descriptions[item], price, 0)
+	showUnitConfirmPurchase(item, descriptions[item], price)
 
 # Equipment / / / / / / / / / / / / / / / / / / / /
 
 func _on_Button_Dumbbells_pressed():
 	item = "Dumbbells"
 	price = prices[dumbbells]
-	showConfirmPurchase(item, descriptions[item], price, 1)
+	showEquipmentConfirmPurchase(item, descriptions[item], price)
 
 func _on_Button_Barbell_pressed():
 	item = "Barbell"
-	price = prices[dumbbells]
-	showConfirmPurchase(item, descriptions[item], price, 1)
+	price = prices[barbell]
+	showEquipmentConfirmPurchase(item, descriptions[item], price)
 
 func _on_Button_Plates_pressed():
 	item = "Plates"
 	price = prices[plates]
-	showConfirmPurchase(item, descriptions[item], price, 1)
+	showEquipmentConfirmPurchase(item, descriptions[item], price)
 
 # Supplements / / / / / / / / / / / / / / / / / / / /
 

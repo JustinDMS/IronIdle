@@ -122,9 +122,9 @@ func _on_Timer_MissingReq_timeout():
 
 func determineUnlocked(exercise):
 	
-	var unit = Globals.player.gym_units[exercise.unit_req] > 0
-	var equipment_1 = Globals.player.gym_equipment[exercise.equipment_req_1] > 0
-	var equipment_2 = Globals.player.gym_equipment[exercise.equipment_req_2] > 0
+	var unit = Globals.player.gym_units[exercise.unit_req]
+	var equipment_1 = Globals.player.gym_equipment[exercise.equipment_req_1]
+	var equipment_2 = Globals.player.gym_equipment[exercise.equipment_req_2]
 	var level = Globals.player.strength_level[exercise.muscle_groups] >= exercise.level_requirement
 	
 	if unit == true and equipment_1 == true and equipment_2 == true and level == true:

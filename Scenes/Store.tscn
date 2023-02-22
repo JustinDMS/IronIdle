@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Fonts/MediumText.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/Store.gd" type="Script" id=3]
 [ext_resource path="res://UI/RoundedButtonStyleBox.tres" type="StyleBox" id=4]
 [ext_resource path="res://Scenes/ConfirmPurchase.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/ConfirmPurchaseEquipment.tscn" type="PackedScene" id=6]
 
 [node name="Store" type="Control"]
 anchor_right = 1.0
@@ -452,6 +453,9 @@ text = "<"
 [node name="ConfirmPurchase" parent="." instance=ExtResource( 5 )]
 visible = false
 
+[node name="ConfirmPurchaseEquipment" parent="." instance=ExtResource( 6 )]
+visible = false
+
 [connection signal="pressed" from="HBoxContainer/VBox_Units/HBoxContainer/Button_PullUpBar" to="." method="_on_Button_PullUpBar_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBox_Units/HBoxContainer2/Button_Bench" to="." method="_on_Button_Bench_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBox_Units/HBoxContainer3/Button_BarbellRack" to="." method="_on_Button_BarbellRack_pressed"]
@@ -467,3 +471,4 @@ visible = false
 [connection signal="pressed" from="HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer3/Button_BCAA" to="." method="_on_Button_BCAA_pressed"]
 [connection signal="pressed" from="Button_Exit" to="." method="_on_Button_Exit_pressed"]
 [connection signal="purchased" from="ConfirmPurchase" to="." method="purchaseMade"]
+[connection signal="purchased" from="ConfirmPurchaseEquipment" to="." method="purchaseMade"]

@@ -119,48 +119,106 @@ margin_bottom = 32.0
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3"]
 margin_top = 36.0
 margin_right = 189.0
-margin_bottom = 131.0
+margin_bottom = 230.0
 size_flags_vertical = 3
 custom_constants/margin_left = 15
 
 [node name="VBox_Supplements" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2"]
 margin_left = 15.0
 margin_right = 189.0
-margin_bottom = 95.0
+margin_bottom = 194.0
+custom_constants/separation = 12
+alignment = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3"]
-margin_top = 135.0
-margin_right = 189.0
-margin_bottom = 230.0
-size_flags_vertical = 3
-custom_constants/margin_left = 15
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer3"]
-margin_left = 15.0
-margin_top = 35.0
-margin_right = 189.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-size_flags_vertical = 6
-alignment = 2
-
-[node name="OptionButton" type="OptionButton" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer3/HBoxContainer"]
-margin_right = 90.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 90, 0 )
-custom_fonts/font = ExtResource( 4 )
-text = "Select"
-items = [ "Select", null, true, 0, null, "Caffeine", null, false, 1, null, "Creatine", null, false, 2, null, "BCAA", null, false, 3, null ]
-selected = 0
-
-[node name="Button_TakeSupplement" type="Button" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer3/HBoxContainer"]
-margin_left = 99.0
+[node name="VBox_Caffeine" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements"]
+margin_top = 5.0
 margin_right = 174.0
+margin_bottom = 58.0
+alignment = 1
+
+[node name="Label_Caffeine" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Caffeine"]
+margin_right = 174.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 3 )
+text = "x0 Caffeine"
+align = 1
+
+[node name="HBoxContainer_Caffeine" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Caffeine"]
+margin_left = 49.0
+margin_top = 28.0
+margin_right = 124.0
+margin_bottom = 53.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Caffeine_TakeAll" type="Button" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Caffeine/HBoxContainer_Caffeine"]
+margin_right = 75.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 75, 0 )
 size_flags_horizontal = 10
 custom_fonts/font = ExtResource( 4 )
-text = "Take"
+text = "Take All"
+
+[node name="VBox_Creatine" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements"]
+margin_top = 70.0
+margin_right = 174.0
+margin_bottom = 123.0
+alignment = 1
+
+[node name="Label_Creatine" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Creatine"]
+margin_right = 174.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 3 )
+text = "x0 Creatine"
+align = 1
+
+[node name="HBoxContainer_Creatine" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Creatine"]
+margin_left = 49.0
+margin_top = 28.0
+margin_right = 124.0
+margin_bottom = 53.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Creatine_TakeAll" type="Button" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Creatine/HBoxContainer_Creatine"]
+margin_right = 75.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 75, 0 )
+size_flags_horizontal = 10
+custom_fonts/font = ExtResource( 4 )
+text = "Take All"
+
+[node name="VBox_BCAA" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements"]
+margin_top = 135.0
+margin_right = 174.0
+margin_bottom = 188.0
+alignment = 1
+
+[node name="Label_BCAA" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_BCAA"]
+margin_right = 174.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 3 )
+text = "x0 BCAA"
+align = 1
+
+[node name="HBoxContainer_BCAA" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_BCAA"]
+margin_top = 28.0
+margin_right = 174.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+alignment = 1
+
+[node name="BCAA_TakeAll" type="Button" parent="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_BCAA/HBoxContainer_BCAA"]
+margin_left = 49.0
+margin_right = 124.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 75, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 4 )
+text = "Take All"
 
 [node name="Button_Exit" type="Button" parent="."]
 margin_right = 50.0
@@ -172,6 +230,7 @@ custom_fonts/font = ExtResource( 3 )
 custom_styles/normal = ExtResource( 2 )
 text = "<"
 
-[connection signal="item_selected" from="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer3/HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer3/HBoxContainer/Button_TakeSupplement" to="." method="_on_Button_TakeSupplement_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Caffeine/HBoxContainer_Caffeine/Caffeine_TakeAll" to="." method="_on_Caffeine_TakeAll_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Creatine/HBoxContainer_Creatine/Creatine_TakeAll" to="." method="_on_Creatine_TakeAll_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_BCAA/HBoxContainer_BCAA/BCAA_TakeAll" to="." method="_on_BCAA_TakeAll_pressed"]
 [connection signal="pressed" from="Button_Exit" to="." method="_on_Button_Exit_pressed"]

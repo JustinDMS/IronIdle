@@ -18,5 +18,5 @@ margin_left = -100.0
 margin_right = 100.0
 margin_bottom = 670.0
 mouse_filter = 2
-custom_constants/separation = 40
+custom_constants/separation = 42
 alignment = 2

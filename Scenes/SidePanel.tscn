@@ -168,9 +168,9 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="Button_Store" type="Button" parent="VBox_Main/HBoxContainer"]
-margin_left = 9.0
+margin_left = 12.0
 margin_top = 13.0
-margin_right = 109.0
+margin_right = 112.0
 margin_bottom = 43.0
 rect_min_size = Vector2( 100, 30 )
 size_flags_vertical = 4
@@ -179,8 +179,8 @@ custom_styles/normal = ExtResource( 4 )
 text = "Store"
 
 [node name="TextureButton_Inventory" type="TextureButton" parent="VBox_Main/HBoxContainer"]
-margin_left = 139.0
-margin_right = 195.0
+margin_left = 142.0
+margin_right = 198.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 56, 56 )
 hint_tooltip = "Inventory"
@@ -189,10 +189,10 @@ expand = true
 stretch_mode = 5
 
 [node name="TextureButton_Challenges" type="TextureButton" parent="VBox_Main/HBoxContainer"]
-margin_left = 225.0
-margin_right = 281.0
+margin_left = 228.0
+margin_right = 278.0
 margin_bottom = 56.0
-rect_min_size = Vector2( 56, 56 )
+rect_min_size = Vector2( 50, 50 )
 hint_tooltip = "Challenges"
 texture_normal = ExtResource( 8 )
 expand = true

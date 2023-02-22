@@ -6,17 +6,17 @@ export var version = "1.2"
 
 export var money : float
 export var gym_units = {
-	"None" : 1,
-	"Pull-Up Bar" : 0,
-	"Bench" : 0,
-	"Barbell Rack" : 0,
-	"Deadlift Platform" : 0,
+	"None" : true,
+	"Pull-Up Bar" : false,
+	"Bench" : false,
+	"Barbell Rack" : false,
+	"Deadlift Platform" : false,
 }
 export var gym_equipment = {
-	"None" : 1,
-	"Dumbbells" : 0,
-	"Barbell" : 0,
-	"Plates" : 0,
+	"None" : true,
+	"Barbell" : false,
+	"Dumbbells" : false,
+	"Plates" : false,
 }
 export var gym_supplements = {
 	"Caffeine" : 0,
@@ -159,4 +159,8 @@ export var supplement_challenge_claimed = {
 	"Favorite Exercise II" : false,
 	"Favorite Exercise III" : false,
 	"Favorite Exercise IV" : false,
+}
+export var equipment_tier = {
+	"Dumbbells": 0,
+	"Plates" : 0,
 }
