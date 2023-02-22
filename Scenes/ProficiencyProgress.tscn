@@ -33,6 +33,7 @@ align = 1
 margin_top = 42.0
 margin_right = 224.0
 margin_bottom = 66.0
+rect_min_size = Vector2( 0, 24 )
 custom_fonts/font = ExtResource( 1 )
 step = 1.0
 

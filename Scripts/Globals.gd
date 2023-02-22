@@ -173,7 +173,7 @@ func createChallengesArray():
 
 func calculateMoneyEarned(proficiency, base_time):
 	var proficiency_modifier = pow(proficiency/9.99, 2)
-	var money = pow(base_time, 1.75)/9.99
+	var money = pow(base_time, 1.75)/1.99
 	
 	return str("%.2f" % (money + (money * proficiency_modifier)))
 
@@ -224,9 +224,13 @@ func gainProficiencyExperience(exercise : String, amount):
 	player.proficiency_xp_total[exercise] += amount
 	player.proficiency_xp[exercise] += amount
 	
-	while player.proficiency_xp[exercise] >= proficiency_required:
-		player.proficiency_xp[exercise] -= proficiency_required
-		levelUpProficiency(exercise)
+	if Globals.player.proficiency_level[exercise] == 20:
+		return
+		
+	else:
+		while player.proficiency_xp[exercise] >= proficiency_required:
+			player.proficiency_xp[exercise] -= proficiency_required
+			levelUpProficiency(exercise)
 
 
 func levelUpStrength(muscle):
@@ -242,6 +246,9 @@ func levelUpProficiency(exercise):
 	updateProficiencyExperienceRequired(exercise)
 	main[0].call("setActiveExerciseUI")
 	main[0].call("refreshExercisePanels")
+	
+	if Globals.player.proficiency_level[exercise] == 20:
+		main[0].call("proficiencyMaxOut", exercise)
 
 
 func claimChallenge(challenge):

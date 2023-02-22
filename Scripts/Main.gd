@@ -11,6 +11,10 @@ var has_caffeine : bool
 var has_creatine : bool
 var has_bcaa : bool
 
+var show_strength : bool
+var show_proficiency : bool
+var show_money : bool
+
 onready var player_balance = $SidePanel/VBox_Main/Panel/VBox_PlayerInfo/PlayerBalance
 
 onready var caffeine_label = $SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/HBoxContainer/VBoxContainer/Label_Caffeine
@@ -28,6 +32,7 @@ func _ready():
 	buildChallengeList()
 	applyCompletedChallengeBuff()
 	updateStore()
+	applySettings()
 
 
 func setActiveExerciseUI():
@@ -66,7 +71,7 @@ func setActiveExerciseUI():
 			has_caffeine = false
 		
 		if Globals.player.active_supplements["BCAA"] > 0:
-			proficiency_earned = proficiency_earned * 2
+			proficiency_earned = getBaseProficiency() * 2
 			bcaa_label.set_text("BCAA: " + str(Globals.player.active_supplements["BCAA"]))
 			has_bcaa = true
 		else:
@@ -297,7 +302,21 @@ func updateStore():
 	$Store.updateEquipmentPrices("Plates", $Store.plates)
 
 
-# Signals / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / / 
+func proficiencyMaxOut(exercise):
+	exercise_dict[exercise].setMaxOut()
+
+
+func applySettings():
+	show_strength = Globals.player.settings["Strength XP"]
+	show_proficiency = Globals.player.settings["Proficiency XP"]
+	show_money = Globals.player.settings["Money"]
+	
+	$Settings/Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_StrengthXP.set_pressed(show_strength)
+	$Settings/Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_ProficiencyXP.set_pressed(show_proficiency)
+	$Settings/Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_Money.set_pressed(show_money)
+
+
+# Signals
 
 
 func openStore():
@@ -336,9 +355,12 @@ func completedRep():
 	
 	checkSupplements()
 	
-	$PopupManager.createPopup(Globals.muscle_icons_small[selected_exercise.muscle_groups], str(strength_earned) + "xp")
-	$PopupManager.createPopup(Globals.proficiency_icon, str(proficiency_earned) + "xp")
-	$PopupManager.createPopup(Globals.money_icon, str(money_earned))
+	if show_strength:
+		$PopupManager.createPopup(Globals.muscle_icons_small[selected_exercise.muscle_groups], str(strength_earned) + "xp")
+	if show_proficiency:
+		$PopupManager.createPopup(Globals.proficiency_icon, str(proficiency_earned) + "xp")
+	if show_money:
+		$PopupManager.createPopup(Globals.money_icon, str(money_earned))
 	
 	var instance = get_node_or_null("ChallengesDisplay/MarginContainer/VBoxContainer/HBoxContainer/VBox_Details/ChallengeDetails")
 	if is_instance_valid(instance):
@@ -379,3 +401,20 @@ func _on_ChallengesDisplay_clicked_return():
 	
 	last_interface.show()
 	$ChallengesDisplay.hide()
+
+
+func _on_Settings_setting_changed(setting, is_on):
+	
+	match setting:
+		"Strength XP":
+			show_strength = is_on
+		"Proficiency XP":
+			show_proficiency = is_on
+		"Money":
+			show_money = is_on
+	
+	Globals.saveGame()
+
+
+func _on_SidePanel_show_settings():
+	$Settings.show()

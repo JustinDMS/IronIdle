@@ -59,7 +59,7 @@ margin_right = 290.0
 margin_bottom = 47.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 6 )
-text = "Iron Idle v1.1"
+text = "Iron Idle v1.2"
 align = 1
 valign = 1
 

@@ -32,13 +32,13 @@ onready var base_prices = {
 	barbellrack : 45.00,
 	deadliftplatform : 95.00,
 	
-	dumbbells : 30.00,
-	barbell : 75.00,
+	dumbbells : 60.00,
+	barbell : 250.00,
 	plates : 35.00,
 	
-	caffeine : 10.00,
-	creatine : 20.00,
-	bcaa : 15.00,
+	caffeine : 25.00,
+	creatine : 35.00,
+	bcaa : 30.00,
 }
 onready var prices = {
 	pullupbar : 45.00,
@@ -46,13 +46,13 @@ onready var prices = {
 	barbellrack : 45.00,
 	deadliftplatform : 95.00,
 	
-	dumbbells : 30.00,
-	barbell : 75.00,
-	plates : 35.00,
+	dumbbells : 60.00,
+	barbell : 250.00,
+	plates : 75.00,
 	
-	caffeine : 10.00,
-	creatine : 20.00,
-	bcaa : 15.00,
+	caffeine : 25.00,
+	creatine : 35.00,
+	bcaa : 30.00,
 }
 var base_discount = {
 	"I" : 0.80,

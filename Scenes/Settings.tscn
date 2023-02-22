@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Border_RoundedButtonStyleBox.tres" type="StyleBox" id=1]
+[ext_resource path="res://Fonts/SmallText.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/Settings.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/VerySmallText.tres" type="DynamicFont" id=5]
+
+[node name="Settings" type="Control"]
+anchor_right = 0.25
+anchor_bottom = 0.417
+margin_bottom = -0.240021
+rect_min_size = Vector2( 320, 300 )
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -260.0
+margin_bottom = -175.14
+rect_min_size = Vector2( 320, 300 )
+custom_styles/panel = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.056
+anchor_top = 0.056
+anchor_right = 0.944
+anchor_bottom = 0.944
+margin_left = -0.200001
+margin_top = -0.200001
+margin_right = 0.199982
+margin_bottom = 0.199982
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 284.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 2 )
+text = "Settings"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+margin_top = 28.0
+margin_right = 284.0
+margin_bottom = 32.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+margin_top = 36.0
+margin_right = 284.0
+margin_bottom = 266.0
+size_flags_vertical = 3
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 284.0
+margin_bottom = 230.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_right = 274.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 5 )
+text = "Show Pop-Ups:"
+
+[node name="CheckBox_StrengthXP" type="CheckBox" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 274.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 5 )
+pressed = true
+text = "Strength XP"
+
+[node name="CheckBox_ProficiencyXP" type="CheckBox" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 274.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 5 )
+pressed = true
+text = "Proficiency XP"
+
+[node name="CheckBox_Money" type="CheckBox" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 85.0
+margin_right = 274.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 5 )
+pressed = true
+text = "Money"
+
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_StrengthXP" to="." method="_on_CheckBox_StrengthXP_toggled"]
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_ProficiencyXP" to="." method="_on_CheckBox_ProficiencyXP_toggled"]
+[connection signal="toggled" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_Money" to="." method="_on_CheckBox_Money_toggled"]

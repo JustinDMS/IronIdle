@@ -164,3 +164,8 @@ export var equipment_tier = {
 	"Dumbbells": 0,
 	"Plates" : 0,
 }
+export var settings = {
+	"Strength XP" : true,
+	"Proficiency XP" : true,
+	"Money" : true,
+}
