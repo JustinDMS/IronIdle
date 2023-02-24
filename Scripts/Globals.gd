@@ -120,7 +120,7 @@ onready var main = get_tree().get_nodes_in_group("UI")
 # Player variables
 
 var player = Player.new()
-const save_path := "res://Save/savegamev1.2.res"
+const save_path := "user://savegamev1.2.res"
 
 
 func _ready():
