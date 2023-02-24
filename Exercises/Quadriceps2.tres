@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource( 1 )
-exercise_name = "Dumbbell Row"
-exercise_type = "Dumbbell"
-rep_time = 2.1
+exercise_name = "Goblet Squat"
+exercise_type = "Dumbbells"
+rep_time = 3.4
 base_strength = 2.0
-muscle_groups = "Back"
-has_level_requirement = false
-level_requirement = 0
+muscle_groups = "Quadriceps"
+has_level_requirement = true
+level_requirement = 4
 unit_req = "None"
 equipment_req_1 = "Dumbbells"
 equipment_req_2 = "None"

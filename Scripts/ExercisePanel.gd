@@ -12,9 +12,6 @@ func _ready():
 
 func createPanel(exercise_name : String, muscle_texture, type_texture, exercise):
 	
-	if exercise_name.match("Blank"):
-		return
-	
 	var proficiency_progress = $VBoxContainer/HBox_Proficiency/ProficiencyProgress
 	
 	$VBoxContainer/HBoxContainer/Button_Name.set_text(exercise_name)
@@ -48,11 +45,13 @@ func updatePanelMenu(exercise):
 	var time = Globals.calculateRepTime(Globals.player.strength_level[exercise.muscle_groups], Globals.player.proficiency_level[exercise.exercise_name], exercise.rep_time)
 	var money = Globals.calculateMoneyEarned(Globals.player.proficiency_level[exercise.exercise_name], exercise.rep_time)
 	var strength = str(exercise.base_strength)
+	var proficiency = str(Globals.main[0].getProficiencyXP(exercise))
 
 	$VBoxContainer/HBoxContainer/MenuButton.get_popup().set_item_text(0, money)
 	$VBoxContainer/HBoxContainer/MenuButton.get_popup().set_item_text(1, time)
 	$VBoxContainer/HBoxContainer/MenuButton.get_popup().set_item_text(2, strength + "xp")
 	$VBoxContainer/HBoxContainer/MenuButton.get_popup().set_item_icon(2, Globals.muscle_icons_small[exercise.muscle_groups])
+	$VBoxContainer/HBoxContainer/MenuButton.get_popup().set_item_text(3, proficiency + "xp")
 
 
 func getLevelRequirement(exercise):

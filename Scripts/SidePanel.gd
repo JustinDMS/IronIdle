@@ -3,7 +3,7 @@ extends Control
 signal clicked_store
 signal clicked_challenges
 signal completed_rep
-signal supplement_taken
+signal supplement_taken(num, type)
 signal show_settings
 
 onready var chest_progress = $VBox_Main/Panel/VBox_PlayerInfo/HBox_1/VBox_Strength1/StrengthProgress_Chest
@@ -65,8 +65,8 @@ func optionSelected(index):
 			emit_signal("show_settings")
 
 
-func _on_Inventory_supplement_taken():
-	emit_signal("supplement_taken")
+func _on_Inventory_supplement_taken(num, type):
+	emit_signal("supplement_taken", num, type)
 
 
 func _on_TextureButton_Challenges_pressed():

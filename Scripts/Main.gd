@@ -16,7 +16,6 @@ var show_proficiency : bool
 var show_money : bool
 
 onready var player_balance = $SidePanel/VBox_Main/Panel/VBox_PlayerInfo/PlayerBalance
-
 onready var caffeine_label = $SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/HBoxContainer/VBoxContainer/Label_Caffeine
 onready var creatine_label = $SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/HBoxContainer/VBoxContainer/Label_Creatine
 onready var bcaa_label = $SidePanel/VBox_Main/Panel2/ActiveExercise/VerticalBox_Main/HBoxContainer/VBoxContainer/Label_BCAA
@@ -53,7 +52,7 @@ func setActiveExerciseUI():
 		money_earned = getMoney(Globals.calculateMoneyEarned(proficiency, selected_exercise.rep_time))
 		
 		if Globals.player.active_supplements["Creatine"] > 0:
-			creatine_label.set_text("Creatine: " + str(Globals.player.active_supplements["Creatine"]))
+			creatine_label.set_text("Creatine: " + getFormattedSupplementNumber("Creatine"))
 			has_creatine = true
 			strength_earned = getStrengthXP()
 		else:
@@ -63,7 +62,7 @@ func setActiveExerciseUI():
 		
 		if Globals.player.active_supplements["Caffeine"] > 0:
 			rep_time = str(float(Globals.calculateRepTime(strength, proficiency, selected_exercise.rep_time)) * 0.8)
-			caffeine_label.set_text("Caffeine: " + str(Globals.player.active_supplements["Caffeine"]))
+			caffeine_label.set_text("Caffeine: " + getFormattedSupplementNumber("Caffeine"))
 			has_caffeine = true
 		else:
 			rep_time = Globals.calculateRepTime(strength, proficiency, selected_exercise.rep_time)
@@ -71,11 +70,11 @@ func setActiveExerciseUI():
 			has_caffeine = false
 		
 		if Globals.player.active_supplements["BCAA"] > 0:
-			proficiency_earned = getBaseProficiency() * 2
-			bcaa_label.set_text("BCAA: " + str(Globals.player.active_supplements["BCAA"]))
+			proficiency_earned = getProficiencyXP(selected_exercise) * 2
+			bcaa_label.set_text("BCAA: " + getFormattedSupplementNumber("BCAA"))
 			has_bcaa = true
 		else:
-			proficiency_earned = getBaseProficiency()
+			proficiency_earned = getProficiencyXP(selected_exercise)
 			bcaa_label.set_text("BCAA: 0")
 			has_bcaa = false
 		
@@ -93,7 +92,7 @@ func checkSupplements():
 		amount = Globals.player.active_supplements["Caffeine"]
 		Globals.player.active_supplements["Caffeine"] = amount - 1
 		updateSupplementsUsed("Caffeine")
-		caffeine_label.set_text("Caffeine: " + str(Globals.player.active_supplements["Caffeine"]))
+		caffeine_label.set_text("Caffeine: " + getFormattedSupplementNumber("Caffeine"))
 		if Globals.player.active_supplements["Caffeine"] < 1:
 			has_caffeine = false
 			setActiveExerciseUI()
@@ -102,7 +101,7 @@ func checkSupplements():
 		amount = Globals.player.active_supplements["Creatine"]
 		Globals.player.active_supplements["Creatine"] = amount - 1
 		updateSupplementsUsed("Creatine")
-		creatine_label.set_text("Creatine: " + str(Globals.player.active_supplements["Creatine"]))
+		creatine_label.set_text("Creatine: " + getFormattedSupplementNumber("Creatine"))
 		if Globals.player.active_supplements["Creatine"] < 1:
 			has_creatine = false
 			setActiveExerciseUI()
@@ -111,10 +110,14 @@ func checkSupplements():
 		amount = Globals.player.active_supplements["BCAA"]
 		Globals.player.active_supplements["BCAA"] = amount - 1
 		updateSupplementsUsed("BCAA")
-		bcaa_label.set_text("BCAA: " + str(Globals.player.active_supplements["BCAA"]))
+		bcaa_label.set_text("BCAA: " + getFormattedSupplementNumber("BCAA"))
 		if Globals.player.active_supplements["BCAA"] < 1:
 			has_bcaa = false
 			setActiveExerciseUI()
+
+
+func getFormattedSupplementNumber(supplement : String):
+	return Globals.formatBigNumber(Globals.player.active_supplements[supplement])
 
 
 func updateSupplementsUsed(supplement):
@@ -149,49 +152,49 @@ func applyCompletedChallengeBuff():
 					match c.series_position:
 						1:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 1000
+								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 10
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 						2:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 2000
+								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 20
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 						3:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 3000
+								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 30
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 						4:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 4000
+								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 40
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 						5:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 5000
+								Globals.player.gym_supplements.Creatine = Globals.player.gym_supplements.Creatine + 50
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 				"Favorite Exercise":
 					match c.series_position:
 						1:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.BCAA = Globals.player.gym_supplements.BCAA + 500
+								Globals.player.gym_supplements.BCAA = Globals.player.gym_supplements.BCAA + 15
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 						2:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.BCAA = Globals.player.gym_supplements.BCAA + 1000
+								Globals.player.gym_supplements.BCAA = Globals.player.gym_supplements.BCAA + 25
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 						3:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.BCAA = Globals.player.gym_supplements.BCAA + 1500
+								Globals.player.gym_supplements.BCAA = Globals.player.gym_supplements.BCAA + 40
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 						4:
 							if checkSupplementsClaimed(c._name):
-								Globals.player.gym_supplements.BCAA = Globals.player.gym_supplements.BCAA + 2000
+								Globals.player.gym_supplements.BCAA = Globals.player.gym_supplements.BCAA + 50
 								Globals.player.supplement_challenge_claimed[c._name] = true
 								$SidePanel/Inventory.updateInventory()
 				"Need a Boost":
@@ -240,19 +243,33 @@ func checkSupplementsClaimed(challenge_name):
 	else: return false
 
 
-func getBaseProficiency():
+func getProficiencyXP(exercise):
 	if Globals.player.challenge_progress["No Imbalances V"]:
-		return 10
+		return getBaseProficiencyXP(exercise) + 5
 	elif Globals.player.challenge_progress["No Imbalances IV"]:
-		return 8
+		return getBaseProficiencyXP(exercise) + 4
 	elif Globals.player.challenge_progress["No Imbalances III"]:
-		return 6
+		return getBaseProficiencyXP(exercise) + 3
 	elif Globals.player.challenge_progress["No Imbalances II"]:
-		return 4
+		return getBaseProficiencyXP(exercise) + 2
 	elif Globals.player.challenge_progress["No Imbalances I"]:
-		return 2
+		return getBaseProficiencyXP(exercise) + 1
 	else:
+		return getBaseProficiencyXP(exercise)
+
+
+func getBaseProficiencyXP(exercise):
+	
+	var level = Globals.player.proficiency_level[exercise.exercise_name]
+	
+	if level < 5:
 		return 1
+	elif level >= 5 and level < 10:
+		return 2
+	elif level >= 10 and level < 15:
+		return 3
+	elif level >= 15:
+		return 4
 
 
 func getStrengthXP():
@@ -296,6 +313,7 @@ func getMoney(base):
 	
 	return money_earned
 
+
 func updateStore():
 	$Store.setPrices()
 	$Store.updateEquipmentPrices("Dumbbells", $Store.dumbbells)
@@ -314,6 +332,15 @@ func applySettings():
 	$Settings/Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_StrengthXP.set_pressed(show_strength)
 	$Settings/Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_ProficiencyXP.set_pressed(show_proficiency)
 	$Settings/Panel/VBoxContainer/MarginContainer/VBoxContainer/CheckBox_Money.set_pressed(show_money)
+
+
+func showMilestones(muscle : String):
+	$Milestones.initMilestoneDisplay(muscle)
+	$Milestones.show()
+
+
+func displayBigPopup(texture, text : String, is_strength : bool, exercise_name):
+	$PopupManager.createBigPopup(texture, text, is_strength, exercise_name)
 
 
 # Signals
@@ -340,8 +367,10 @@ func makeExerciseDict():
 	
 	for i in $ExerciseSelect/VBox_Main/ScrollContainer/GridContainer.get_children():
 		var temp = i.find_node("ProficiencyProgress")
-		exercise_dict[temp.exercise.exercise_name] = temp
-
+		if is_instance_valid(temp):
+			exercise_dict[temp.exercise.exercise_name] = temp
+	
+	$ExerciseSelect/VBox_Main/ScrollContainer/GridContainer.add_child(Control.new())
 
 func completedRep():
 	Globals.player.money += float(money_earned)
@@ -365,16 +394,28 @@ func completedRep():
 	var instance = get_node_or_null("ChallengesDisplay/MarginContainer/VBoxContainer/HBoxContainer/VBox_Details/ChallengeDetails")
 	if is_instance_valid(instance):
 		instance.updateProgressBar()
+		instance.determineCanClaim(instance.selected_challenge)
 
 
 func returnToExerciseSelect():
 	$ExerciseSelect.show()
 
 
-func storePurchaseMade():
+func storePurchaseMade(type, item, amount):
+	
+	match type:
+		"Unit":
+			$PopupManager.createPopup(load("res://Art/UnitIcon.png"), item)
+		"Equipment":
+			$PopupManager.createPopup(load("res://Art/MachineIcon.png"), item)
+		"Supplement":
+			$PopupManager.createPopup(Globals.supplement_icons[item], Globals.formatBigNumber(amount) + " " + item)
+	
 	updateStore()
 	player_balance.updateBalance()
 	$SidePanel/Inventory.updateInventory()
+	refreshExercisePanels()
+	setActiveExerciseUI()
 	Globals.saveGame()
 
 
@@ -418,3 +459,10 @@ func _on_Settings_setting_changed(setting, is_on):
 
 func _on_SidePanel_show_settings():
 	$Settings.show()
+
+
+func supplement_taken(num, type):
+	
+	setActiveExerciseUI()
+	
+	$PopupManager.createPopup(Globals.supplement_icons[type], Globals.formatBigNumber(num) + " charges")

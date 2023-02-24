@@ -235,6 +235,30 @@ size_flags_horizontal = 2
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = ExtResource( 4 )
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/VBox_Units/VBox_Equipment"]
+margin_top = 239.0
+margin_right = 300.0
+margin_bottom = 263.0
+alignment = 1
+
+[node name="Label_AbWheel" type="Label" parent="HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer4"]
+margin_right = 200.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Ab Wheel"
+align = 1
+
+[node name="Button_AbWheel" type="Button" parent="HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer4"]
+margin_left = 204.0
+margin_right = 284.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = ExtResource( 4 )
+
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 margin_left = 304.0
 margin_right = 308.0
@@ -362,7 +386,6 @@ margin_bottom = 67.0
 margin_top = 92.0
 margin_right = 300.0
 margin_bottom = 116.0
-hint_tooltip = "-20% Rep Speed"
 alignment = 1
 
 [node name="Label_Caffeine" type="Label" parent="HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer"]
@@ -387,7 +410,6 @@ custom_styles/normal = ExtResource( 4 )
 margin_top = 141.0
 margin_right = 300.0
 margin_bottom = 165.0
-hint_tooltip = "-20% Rep Speed"
 alignment = 1
 
 [node name="Label_Creatine" type="Label" parent="HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer2"]
@@ -412,7 +434,6 @@ custom_styles/normal = ExtResource( 4 )
 margin_top = 190.0
 margin_right = 300.0
 margin_bottom = 214.0
-hint_tooltip = "-20% Rep Speed"
 alignment = 1
 
 [node name="Label_BCAA" type="Label" parent="HBoxContainer/VBox_Training/VBox_Supplements/HBoxContainer3"]
@@ -463,6 +484,7 @@ visible = false
 [connection signal="pressed" from="HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer/Button_Dumbbells" to="." method="_on_Button_Dumbbells_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer2/Button_Barbell" to="." method="_on_Button_Barbell_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer3/Button_Plates" to="." method="_on_Button_Plates_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBox_Units/VBox_Equipment/HBoxContainer4/Button_AbWheel" to="." method="_on_Button_AbWheel_pressed"]
 [connection signal="item_selected" from="HBoxContainer/VBox_Training/HBoxContainer4/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="text_changed" from="HBoxContainer/VBox_Training/HBoxContainer5/LineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="HBoxContainer/VBox_Training/HBoxContainer6/Button_XP" to="." method="_on_Button_XP_pressed"]

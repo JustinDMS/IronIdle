@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 _name = "No Imbalances IV"
 description = "Level all muscle groups to level 40"
-reward = "Permanently gain base 8 proficiency XP"
+reward = "Permanently gain 4 bonus proficiency XP"
 is_series = true
 series_name = "No Imbalances"
 series_position = 4

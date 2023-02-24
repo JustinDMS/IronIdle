@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource( 1 )
 exercise_name = "Dumbbell Deadlift"
-exercise_type = "Dumbbell"
-rep_time = 3.2
-base_strength = 2.0
+exercise_type = "Dumbbells"
+rep_time = 2.65
+base_strength = 1.0
 muscle_groups = "Hamstrings"
 has_level_requirement = false
 level_requirement = 0

@@ -1,6 +1,6 @@
 extends Control
 
-signal purchased
+signal purchased(type, item, amount)
 
 var item_name
 var item_price
@@ -43,7 +43,7 @@ func _on_Button_Purchase_pressed():
 		var current_amount = Globals.player[item_type][item_name]
 		Globals.player[item_type][item_name] = amount + current_amount
 		Globals.player.money -= total_cost
-		emit_signal("purchased")
+		emit_signal("purchased", "Supplement", item_name, amount)
 		_on_Button_Cancel_pressed()
 
 

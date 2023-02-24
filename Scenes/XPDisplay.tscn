@@ -12,7 +12,7 @@ anchor_bottom = 0.556
 margin_left = -109.5
 margin_top = -80.32
 margin_right = 109.5
-margin_bottom = -0.320068
+margin_bottom = -0.320099
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]

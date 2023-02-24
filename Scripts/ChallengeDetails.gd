@@ -21,15 +21,17 @@ func setDetails(challenge):
 
 
 func determineCanClaim(challenge):
+	if Globals.player.challenge_progress[challenge._name] == true:
+		return
 	var is_unlocked = Globals.getCanClaimChallenge(challenge._name)
 	$MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Button_Claim.set_disabled(not is_unlocked)
 
 
 func getChallengeMaxValue():
 	match selected_challenge.series_position:
-		1: return 5000
-		2: return 10000
-		3: return 25000
+		1: return 1000
+		2: return 2500
+		3: return 5000
 
 
 func getChallengeCurrentValue():
@@ -52,7 +54,6 @@ func setProgressBar():
 func updateProgressBar():
 	if selected_challenge.is_tracked:
 		progress.set_value(getChallengeCurrentValue())
-		print("Progress updated")
 
 
 func _on_Button_Claim_pressed():

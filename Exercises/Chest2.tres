@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ExerciseStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+exercise_name = "Dumbbell Bench Press"
+exercise_type = "Dumbbells"
+rep_time = 2.9
+base_strength = 2.0
+muscle_groups = "Chest"
+has_level_requirement = true
+level_requirement = 7
+unit_req = "Bench"
+equipment_req_1 = "Dumbbells"
+equipment_req_2 = "None"

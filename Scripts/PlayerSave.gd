@@ -17,6 +17,7 @@ export var gym_equipment = {
 	"Barbell" : false,
 	"Dumbbells" : false,
 	"Plates" : false,
+	"Ab Wheel" : false,
 }
 export var gym_supplements = {
 	"Caffeine" : 0,
@@ -59,60 +60,96 @@ export var xp_total = {
 }
 export var proficiency_level = {
 	"Push-Up" : 1,
-	"Sit-Up" : 1,
-	"Bodyweight Squat" : 1,
-	"Pull-Up" : 1,
-	
-	"Lateral Raise": 1,
-	"Dumbbell Row": 1,
-	"Goblet Squat": 1,
-	"Dumbbell Deadlift": 1,
-	"Dumbbell Bench Press": 1,
-	"Dumbbell Press": 1,
-	
+	"Dumbbell Bench Press" : 1,
+	"Dumbbell Fly" : 1,
 	"Bench Press" : 1,
+	
+	"Lateral Raise" : 1,
+	"Dumbbell Press" : 1,
+	"Arnold Press" : 1,
 	"Barbell Press" : 1,
+	
+	"Dumbbell Row" : 1,
+	"Pull-Up" : 1,
+	"Landmine Row" : 1,
 	"Barbell Row" : 1,
+	
+	"Sit-Up" : 1,
+	"Lying Leg Raise" : 1,
+	"Hanging Leg Raise" : 1,
+	"Ab Wheel Rollout" : 1,
+	
+	"Bodyweight Squat" : 1,
+	"Goblet Squat" : 1,
 	"Barbell Squat" : 1,
+	"Snatch" : 1,
+	
+	"Dumbbell Deadlift" : 1,
+	"Romanian Deadlift" : 1,
 	"Deadlift" : 1,
+	"Power Clean" : 1,
 }
 export var proficiency_xp = {
 	"Push-Up" : 0.0,
-	"Sit-Up" : 0.0,
-	"Bodyweight Squat" : 0.0,
-	"Pull-Up" : 0.0,
-	
-	"Lateral Raise": 0.0,
-	"Dumbbell Row": 0.0,
-	"Goblet Squat": 0.0,
-	"Dumbbell Deadlift": 0.0,
-	"Dumbbell Bench Press": 0.0,
-	"Dumbbell Press": 0.0,
-	
+	"Dumbbell Bench Press" : 0.0,
+	"Dumbbell Fly" : 0.0,
 	"Bench Press" : 0.0,
+	
+	"Lateral Raise" : 0.0,
+	"Dumbbell Press" : 0.0,
+	"Arnold Press" : 0.0,
 	"Barbell Press" : 0.0,
+	
+	"Dumbbell Row" : 0.0,
+	"Pull-Up" : 0.0,
+	"Landmine Row" : 0.0,
 	"Barbell Row" : 0.0,
+	
+	"Sit-Up" : 0.0,
+	"Lying Leg Raise" : 0.0,
+	"Hanging Leg Raise" : 0.0,
+	"Ab Wheel Rollout" : 0.0,
+	
+	"Bodyweight Squat" : 0.0,
+	"Goblet Squat" : 0.0,
 	"Barbell Squat" : 0.0,
+	"Snatch" : 0.0,
+	
+	"Dumbbell Deadlift" : 0.0,
+	"Romanian Deadlift" : 0.0,
 	"Deadlift" : 0.0,
+	"Power Clean" : 0.0,
 }
 export var proficiency_xp_total = {
 	"Push-Up" : 0.0,
-	"Sit-Up" : 0.0,
-	"Bodyweight Squat" : 0.0,
-	"Pull-Up" : 0.0,
-	
-	"Lateral Raise": 0.0,
-	"Dumbbell Row": 0.0,
-	"Goblet Squat": 0.0,
-	"Dumbbell Deadlift": 0.0,
-	"Dumbbell Bench Press": 0.0,
-	"Dumbbell Press": 0.0,
-	
+	"Dumbbell Bench Press" : 0.0,
+	"Dumbbell Fly" : 0.0,
 	"Bench Press" : 0.0,
+	
+	"Lateral Raise" : 0.0,
+	"Dumbbell Press" : 0.0,
+	"Arnold Press" : 0.0,
 	"Barbell Press" : 0.0,
+	
+	"Dumbbell Row" : 0.0,
+	"Pull-Up" : 0.0,
+	"Landmine Row" : 0.0,
 	"Barbell Row" : 0.0,
+	
+	"Sit-Up" : 0.0,
+	"Lying Leg Raise" : 0.0,
+	"Hanging Leg Raise" : 0.0,
+	"Ab Wheel Rollout" : 0.0,
+	
+	"Bodyweight Squat" : 0.0,
+	"Goblet Squat" : 0.0,
 	"Barbell Squat" : 0.0,
+	"Snatch" : 0.0,
+	
+	"Dumbbell Deadlift" : 0.0,
+	"Romanian Deadlift" : 0.0,
 	"Deadlift" : 0.0,
+	"Power Clean" : 0.0,
 }
 export var challenge_progress = {
 	"No Imbalances I" : false,

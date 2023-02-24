@@ -27,7 +27,7 @@ onready var muscle_search = {
 onready var type_search = {
 	"All" : null,
 	"Calisthenic" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Calisthenics,
-	"Dumbbell" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Dumbbell,
+	"Dumbbells" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Dumbbell,
 	"Barbell" : $VBox_Main/HBoxContainer/VBoxContainer/HBox_MuscleGroup2/Button_Barbell,
 }
 
@@ -41,23 +41,19 @@ func fillGrid():
 	
 	for i in Globals.all_exercises:
 		appendExercise(i)
-	
-	# Workaround for ScrollContainer bug not showing the last elements
-	appendExercise(Globals.blank_exercise)
 
 
 func appendExercise(item):
-	
-	if item.exercise_name.match("Blank"):
-		return
 	
 	var instance
 	var scene = load("res://Scenes/ExercisePanel.tscn")
 	
 	instance = scene.instance()
 	instance.connect("selected_item", self, "activateExercise")
-	instance.createPanel(item.exercise_name, Globals.muscle_icons[item.muscle_groups], Globals.type_icons[item.exercise_type], item)
-	grid.add_child(instance)
+	
+	if instance.determineUnlocked(item):
+		instance.createPanel(item.exercise_name, Globals.muscle_icons[item.muscle_groups], Globals.type_icons[item.exercise_type], item)
+		grid.add_child(instance)
 
 
 func filterExercises(type, group):
@@ -80,14 +76,9 @@ func filterExercises(type, group):
 		
 		elif i["exercise_type"] == type and i["muscle_groups"] == group:
 			filtered_exercises.append(i)
-
 	
 	for i in filtered_exercises:
 		appendExercise(i)
-	
-	# Workaround for ScrollContainer bug not showing the last elements
-	if type == "All" and group == "All":
-		appendExercise(Globals.blank_exercise)
 	
 	emit_signal("list_changed")
 
@@ -188,7 +179,7 @@ func _on_Button_Calisthenics_pressed():
 	applyFilter()
 
 func _on_Button_Dumbbell_pressed():
-	type_filter = "Dumbbell"
+	type_filter = "Dumbbells"
 	applyFilter()
 
 func _on_Button_Barbell_pressed():

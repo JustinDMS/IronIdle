@@ -9,4 +9,4 @@ export var has_level_requirement : bool
 export var level_requirement : int
 export(String, "None", "Pull-Up Bar", "Bench", "Barbell Rack", "Deadlift Platform") var unit_req
 export(String, "None", "Barbell", "Dumbbells") var equipment_req_1
-export(String, "None", "Plates") var equipment_req_2
+export(String, "None", "Plates", "Ab Wheel") var equipment_req_2

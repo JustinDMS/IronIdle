@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ExerciseStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+exercise_name = "Deadlift"
+exercise_type = "Barbell"
+rep_time = 4.0
+base_strength = 3.0
+muscle_groups = "Hamstrings"
+has_level_requirement = true
+level_requirement = 18
+unit_req = "Deadlift Platform"
+equipment_req_1 = "Barbell"
+equipment_req_2 = "Plates"

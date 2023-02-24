@@ -29,6 +29,11 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
+[node name="Button_Milestones" type="Button" parent="HBoxContainer/Texture_Muscle"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 32.0
 margin_right = 130.0
@@ -57,7 +62,9 @@ valign = 1
 margin_top = 46.0
 margin_right = 98.0
 margin_bottom = 60.0
+rect_min_size = Vector2( 0, 14 )
 step = 1.0
 
+[connection signal="pressed" from="HBoxContainer/Texture_Muscle/Button_Milestones" to="." method="_on_Button_Milestones_pressed"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/ProgressBar" to="." method="_on_ProgressBar_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/ProgressBar" to="." method="_on_ProgressBar_mouse_exited"]

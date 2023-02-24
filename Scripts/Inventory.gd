@@ -1,6 +1,6 @@
 extends Control
 
-signal supplement_taken
+signal supplement_taken(num, type)
 
 onready var units = $Panel/VBoxContainer/HBoxContainer/VBox_Units
 onready var equipment = $Panel/VBoxContainer/HBoxContainer/Vbox2/MarginContainer/VBox_Equipment
@@ -52,7 +52,11 @@ func updateInventory():
 					var label = newLabel(text)
 					deletion_array.append(label)
 					equipment.add_child(label)
-	
+				"Ab Wheel":
+					var text = item
+					var label = newLabel(text)
+					deletion_array.append(label)
+					equipment.add_child(label)
 	
 	for item in Globals.player.gym_supplements:
 		if Globals.player.gym_supplements[item] == 0 or item == "None":
@@ -64,7 +68,7 @@ func updateInventory():
 				"BCAA":
 					$Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_BCAA.set_visible(false)
 		else:
-			var text = "x" + str(Globals.player.gym_supplements[item]) + " " + item
+			var text = "x" + Globals.formatBigNumber(Globals.player.gym_supplements[item]) + " " + item
 			match item:
 				"Caffeine":
 					$Panel/VBoxContainer/HBoxContainer/Vbox3/MarginContainer2/VBox_Supplements/VBox_Caffeine/Label_Caffeine.set_text(text)
@@ -88,7 +92,7 @@ func newLabel(text):
 func getPlateNum():
 	var tier = Globals.player.equipment_tier["Plates"]
 	var plate_num = 45 * tier
-	return plate_num * 2 + 45
+	return Globals.formatBigNumber(plate_num * 2 + 45)
 
 
 func takeSupplement(supplement : String):
@@ -100,10 +104,11 @@ func takeSupplement(supplement : String):
 	
 	else:
 		var charge_amount = Globals.getSupplementCharges(supplement) + Globals.getSponsorMeCharges(Globals.active_sponsor_tier)
-		Globals.player.active_supplements[supplement] = Globals.player.active_supplements[supplement] + current_supplement_amount * charge_amount
+		var charges_added = current_supplement_amount * charge_amount
+		Globals.player.active_supplements[supplement] = Globals.player.active_supplements[supplement] + charges_added
 		Globals.player.gym_supplements[supplement] = 0
 		updateInventory()
-		emit_signal("supplement_taken")
+		emit_signal("supplement_taken", charges_added, supplement)
 
 
 func _on_Button_Exit_pressed():

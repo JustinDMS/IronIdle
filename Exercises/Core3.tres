@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource( 1 )
-exercise_name = "Blank"
+exercise_name = "Hanging Leg Raise"
 exercise_type = "Calisthenic"
-rep_time = 1.0
-base_strength = 1.0
-muscle_groups = "Chest"
-has_level_requirement = false
-level_requirement = 0
-unit_req = "None"
+rep_time = 2.45
+base_strength = 3.0
+muscle_groups = "Core"
+has_level_requirement = true
+level_requirement = 17
+unit_req = "Pull-Up Bar"
 equipment_req_1 = "None"
 equipment_req_2 = "None"

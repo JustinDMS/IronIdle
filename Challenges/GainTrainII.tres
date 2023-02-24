@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 _name = "Gain Train II"
-description = "Use 10,000 Creatine"
+description = "Use 2,500 Creatine"
 reward = "Creatine is permanently 35% cheaper and provides 20 more charges"
 is_series = true
 series_name = "Gain Train"

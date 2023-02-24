@@ -2,28 +2,35 @@ extends Node
 
 # Exercise info
 
-var blank_exercise = load("res://Exercises/Blank.tres")
+var chest_1 = preload("res://Exercises/Chest1.tres")
+var chest_2 = preload("res://Exercises/Chest2.tres")
+var chest_3 = preload("res://Exercises/Chest3.tres")
+var chest_4 = preload("res://Exercises/Chest4.tres")
 
-# Calisthenics
-var pushup = load("res://Exercises/PushUp.tres")
-var situp = load("res://Exercises/SitUp.tres")
-var pullup = load("res://Exercises/PullUp.tres")
-var bodyweight_squat = load("res://Exercises/BodyweightSquat.tres")
+var shoulders_1 = preload("res://Exercises/Shoulders1.tres")
+var shoulders_2 = preload("res://Exercises/Shoulders2.tres")
+var shoulders_3 = preload("res://Exercises/Shoulders3.tres")
+var shoulders_4 = preload("res://Exercises/Shoulders4.tres")
 
-# Dumbbell
-var latraise = load("res://Exercises/LateralRaise.tres")
-var dumbbellrow = load("res://Exercises/DumbbellRow.tres")
-var dumbbellbench = load("res://Exercises/DumbbellBenchPress.tres")
-var dumbbelldeadlift = load("res://Exercises/DumbbellDeadlift.tres")
-var dumbbellpress = load("res://Exercises/DumbbellPress.tres")
-var gobletsquat = load("res://Exercises/GobletSquat.tres")
+var back_1 = preload("res://Exercises/Back1.tres")
+var back_2 = preload("res://Exercises/Back2.tres")
+var back_3 = preload("res://Exercises/Back3.tres")
+var back_4 = preload("res://Exercises/Back4.tres")
 
-# Barbell
-var benchpress = load("res://Exercises/BenchPress.tres")
-var barbellpress = load("res://Exercises/BarbellPress.tres")
-var barbellrow = load("res://Exercises/BarbellRow.tres")
-var barbellsquat = load("res://Exercises/BarbellSquat.tres")
-var deadlift = load("res://Exercises/Deadlift.tres")
+var core_1 = preload("res://Exercises/Core1.tres")
+var core_2 = preload("res://Exercises/Core2.tres")
+var core_3 = preload("res://Exercises/Core3.tres")
+var core_4 = preload("res://Exercises/Core4.tres")
+
+var quad_1 = preload("res://Exercises/Quadriceps1.tres")
+var quad_2 = preload("res://Exercises/Quadriceps2.tres")
+var quad_3 = preload("res://Exercises/Quadriceps3.tres")
+var quad_4 = preload("res://Exercises/Quadriceps4.tres")
+
+var ham_1 = preload("res://Exercises/Hamstrings1.tres")
+var ham_2 = preload("res://Exercises/Hamstrings2.tres")
+var ham_3 = preload("res://Exercises/Hamstrings3.tres")
+var ham_4 = preload("res://Exercises/Hamstrings4.tres")
 
 # Icons for muscle group
 var muscle_icons = {
@@ -46,11 +53,16 @@ var muscle_icons_small = {
 # Icons for the exercise type
 var type_icons = {
 	"Calisthenic" : preload("res://Art/CalisthenicIcon.png"),
-	"Dumbbell" : preload("res://Art/DumbbellIcon.png"),
+	"Dumbbells" : preload("res://Art/DumbbellIcon.png"),
 	"Barbell" : preload("res://Art/BarbellIcon.png"),
 	"Machine" : preload("res://Art/MachineIcon.png"),
 }
 
+var supplement_icons = {
+	"Caffeine" : preload("res://Art/CaffeineIcon.png"),
+	"Creatine" : preload("res://Art/CreatineIcon.png"),
+	"BCAA" : preload("res://Art/BCAAIcon.png"),
+}
 var proficiency_icon = preload("res://Art/SmallIcons/ProficiencyIcon_Small.png")
 var money_icon = preload("res://Art/SmallIcons/MoneyIcon_Small.png")
 
@@ -117,23 +129,35 @@ func _ready():
 
 
 func createExerciseArray():
-	all_exercises.append(pushup)
-	all_exercises.append(situp)
-	all_exercises.append(pullup)
-	all_exercises.append(bodyweight_squat)
+	all_exercises.append(chest_1)
+	all_exercises.append(chest_2)
+	all_exercises.append(chest_3)
+	all_exercises.append(chest_4)
 	
-	all_exercises.append(latraise)
-	all_exercises.append(dumbbellbench)
-	all_exercises.append(dumbbelldeadlift)
-	all_exercises.append(dumbbellpress)
-	all_exercises.append(dumbbellrow)
-	all_exercises.append(gobletsquat)
+	all_exercises.append(shoulders_1)
+	all_exercises.append(shoulders_2)
+	all_exercises.append(shoulders_3)
+	all_exercises.append(shoulders_4)
 	
-	all_exercises.append(benchpress)
-	all_exercises.append(barbellpress)
-	all_exercises.append(barbellrow)
-	all_exercises.append(barbellsquat)
-	all_exercises.append(deadlift)
+	all_exercises.append(back_1)
+	all_exercises.append(back_2)
+	all_exercises.append(back_3)
+	all_exercises.append(back_4)
+	
+	all_exercises.append(core_1)
+	all_exercises.append(core_2)
+	all_exercises.append(core_3)
+	all_exercises.append(core_4)
+	
+	all_exercises.append(quad_1)
+	all_exercises.append(quad_2)
+	all_exercises.append(quad_3)
+	all_exercises.append(quad_4)
+	
+	all_exercises.append(ham_1)
+	all_exercises.append(ham_2)
+	all_exercises.append(ham_3)
+	all_exercises.append(ham_4)
 
 
 func createChallengesArray():
@@ -212,9 +236,13 @@ func gainExperience(muscle, amount):
 	player.xp_total[muscle] += amount
 	player.xp[muscle] += amount
 	
-	while player.xp[muscle] >= experience_required:
-		player.xp[muscle] -= experience_required
-		levelUpStrength(muscle)
+	if Globals.player.strength_level[muscle] == 50:
+		return
+	
+	else:
+		while player.xp[muscle] >= experience_required:
+			player.xp[muscle] -= experience_required
+			levelUpStrength(muscle)
 
 
 func gainProficiencyExperience(exercise : String, amount):
@@ -239,6 +267,8 @@ func levelUpStrength(muscle):
 	updateExperienceRequired(muscle)
 	main[0].call("setActiveExerciseUI")
 	main[0].call("refreshExercisePanels")
+	main[0].call("displayBigPopup", muscle_icons[muscle], "Level " + str(player.strength_level[muscle]), true, null)
+	saveGame()
 
 
 func levelUpProficiency(exercise):
@@ -246,6 +276,8 @@ func levelUpProficiency(exercise):
 	updateProficiencyExperienceRequired(exercise)
 	main[0].call("setActiveExerciseUI")
 	main[0].call("refreshExercisePanels")
+	main[0].call("displayBigPopup", proficiency_icon, "Level " + str(player.proficiency_level[exercise]), false, exercise)
+	saveGame()
 	
 	if Globals.player.proficiency_level[exercise] == 20:
 		main[0].call("proficiencyMaxOut", exercise)
@@ -399,25 +431,25 @@ func getCanClaimChallenge(challenge_name):
 			return checkProficiencyLevelThreshold(20)
 		
 		"Need a Boost I":
-			return checkSupplementUsage("Caffeine", 5000)
+			return checkSupplementUsage("Caffeine", 1000)
 		"Need a Boost II":
-			return checkSupplementUsage("Caffeine", 10000)
+			return checkSupplementUsage("Caffeine", 2500)
 		"Need a Boost III":
-			return checkSupplementUsage("Caffeine", 25000)
+			return checkSupplementUsage("Caffeine", 5000)
 		
 		"Gain Train I":
-			return checkSupplementUsage("Creatine", 5000)
+			return checkSupplementUsage("Creatine", 1000)
 		"Gain Train II":
-			return checkSupplementUsage("Creatine", 10000)
+			return checkSupplementUsage("Creatine", 2500)
 		"Gain Train III":
-			return checkSupplementUsage("Creatine", 25000)
+			return checkSupplementUsage("Creatine", 5000)
 		
 		"Focus on Form I":
-			return checkSupplementUsage("BCAA", 5000)
+			return checkSupplementUsage("BCAA", 1000)
 		"Focus on Form II":
-			return checkSupplementUsage("BCAA", 10000)
+			return checkSupplementUsage("BCAA", 2500)
 		"Focus on Form III":
-			return checkSupplementUsage("BCAA", 25000)
+			return checkSupplementUsage("BCAA", 5000)
 		
 		"Sponsor Me I":
 			return checkSponsorMeRequirements(challenge_name)
@@ -425,6 +457,27 @@ func getCanClaimChallenge(challenge_name):
 			return checkSponsorMeRequirements(challenge_name)
 		"Sponsor Me III":
 			return checkSponsorMeRequirements(challenge_name)
+
+
+func formatBigNumber(number):
+	var num_string = str(number)
+	var format_array = num_string.split(".", true, 1) # Separates the number at the decimal place
+	
+	var comma = format_array[0].length() % 3
+	var formatted_num_string = ""
+	
+	# Adds a comma after every 3rd number
+	for i in range(0, format_array[0].length()):
+		if i != 0 and i % 3 == comma:
+			formatted_num_string += ","
+		formatted_num_string += format_array[0][i]
+	
+	# Adds the decimal and numbers back
+	if format_array.size() > 1:
+		format_array[1] = "." + format_array[1]
+		formatted_num_string += format_array[1]
+	
+	return formatted_num_string
 
 
 func loadGame():

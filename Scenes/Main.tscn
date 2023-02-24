@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/ChallengesDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/ExerciseSelect.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/SidePanel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/PopupManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Settings.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Milestones.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/HelpButton.tscn" type="PackedScene" id=9]
 
 [node name="Main" type="Node" groups=["UI"]]
 script = ExtResource( 3 )
@@ -39,6 +41,11 @@ visible = false
 [node name="Settings" parent="." instance=ExtResource( 7 )]
 visible = false
 
+[node name="Milestones" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="HelpButton" parent="." instance=ExtResource( 9 )]
+
 [connection signal="list_changed" from="ExerciseSelect" to="." method="makeExerciseDict"]
 [connection signal="sent_info" from="ExerciseSelect" to="." method="receivedExerciseInfo"]
 [connection signal="clicked_return" from="Store" to="." method="returnToExerciseSelect"]
@@ -49,5 +56,5 @@ visible = false
 [connection signal="clicked_store" from="SidePanel" to="." method="openStore"]
 [connection signal="completed_rep" from="SidePanel" to="." method="completedRep"]
 [connection signal="show_settings" from="SidePanel" to="." method="_on_SidePanel_show_settings"]
-[connection signal="supplement_taken" from="SidePanel" to="." method="setActiveExerciseUI"]
+[connection signal="supplement_taken" from="SidePanel" to="." method="supplement_taken"]
 [connection signal="setting_changed" from="Settings" to="." method="_on_Settings_setting_changed"]

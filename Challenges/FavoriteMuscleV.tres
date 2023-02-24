@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 _name = "Favorite Muscle V"
 description = "Level any muscle group to level 50"
-reward = "x5000 Creatine"
+reward = "x50 Creatine"
 is_series = true
 series_name = "Favorite Muscle"
 series_position = 5

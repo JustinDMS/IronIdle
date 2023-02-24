@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 _name = "Focus on Form II"
-description = "Use 10,000 BCAA"
+description = "Use 2,500 BCAA"
 reward = "BCAA is permanently 35% cheaper and provides 20 more charges"
 is_series = true
 series_name = "Focus on Form"

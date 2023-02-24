@@ -1,6 +1,6 @@
 extends Control
 
-signal purchased
+signal purchased(type, item, amount)
 
 var total_cost
 var item_name
@@ -13,7 +13,7 @@ func initEquipmentPurchase(item : String, description : String, cost : float):
 	type = "Equipment"
 	
 	$Panel/VBoxContainer/VBox_Spacing/VBoxContainer/Label_Description.set_text(description)
-	$Panel/VBoxContainer/VBox_Spacing/HBoxContainer3/HBox_Cost/Label_Cost2.set_text(str(cost))
+	$Panel/VBoxContainer/VBox_Spacing/HBoxContainer3/HBox_Cost/Label_Cost2.set_text(Globals.formatBigNumber(cost))
 	
 	match item:
 		"Barbell":
@@ -21,7 +21,9 @@ func initEquipmentPurchase(item : String, description : String, cost : float):
 		"Dumbbells":
 			$Panel/VBoxContainer/VBox_Spacing/VBoxContainer/Label_Item.set_text(str(int(Globals.player.equipment_tier[item] + 1) * 10) + "lb " + item)
 		"Plates":
-			$Panel/VBoxContainer/VBox_Spacing/VBoxContainer/Label_Item.set_text(item + " (" + str(getPlateNum()) + "lbs)")
+			$Panel/VBoxContainer/VBox_Spacing/VBoxContainer/Label_Item.set_text(item + " (" + getPlateNum() + "lbs)")
+		"Ab Wheel":
+			$Panel/VBoxContainer/VBox_Spacing/VBoxContainer/Label_Item.set_text(item)
 
 
 func initUnitPurchase(item : String, description : String, cost : float):
@@ -32,13 +34,13 @@ func initUnitPurchase(item : String, description : String, cost : float):
 	
 	$Panel/VBoxContainer/VBox_Spacing/VBoxContainer/Label_Item.set_text(item)
 	$Panel/VBoxContainer/VBox_Spacing/VBoxContainer/Label_Description.set_text(description)
-	$Panel/VBoxContainer/VBox_Spacing/HBoxContainer3/HBox_Cost/Label_Cost2.set_text(str(cost))
+	$Panel/VBoxContainer/VBox_Spacing/HBoxContainer3/HBox_Cost/Label_Cost2.set_text(Globals.formatBigNumber(cost))
 
 
 func getPlateNum():
 	var tier = Globals.player.equipment_tier["Plates"] + 1
 	var plate_num = 45 * tier
-	return plate_num * 2 + 45
+	return Globals.formatBigNumber(plate_num * 2 + 45)
 
 
 func _on_Button_Cancel_pressed():
@@ -57,9 +59,15 @@ func _on_Button_Purchase_pressed():
 				
 				if Globals.player.gym_equipment[item_name] == false:
 					Globals.player.gym_equipment[item_name] = true
+					if item_name.match("Barbell") == false and item_name.match("Ab Wheel") == false:
+						Globals.player.equipment_tier[item_name] = Globals.player.equipment_tier[item_name] + 1
 				
-				if item_name.match("Barbell") == false:
+				elif item_name.match("Barbell") == false and item_name.match("Ab Wheel") == false:
 					Globals.player.equipment_tier[item_name] = Globals.player.equipment_tier[item_name] + 1
+				
+				elif Globals.player.gym_equipment[item_name] == true:
+					print("Already owned")
+					return
 			
 			"Unit":
 				
@@ -70,5 +78,5 @@ func _on_Button_Purchase_pressed():
 				else: Globals.player.gym_units[item_name] = true
 		
 		Globals.player.money -= total_cost
-		emit_signal("purchased")
+		emit_signal("purchased", type, item_name, 1)
 		_on_Button_Cancel_pressed()

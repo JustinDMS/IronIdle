@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 _name = "Favorite Exercise II"
 description = "Level any exercise proficiency to level 10"
-reward = "x1000 BCAA"
+reward = "x25 BCAA"
 is_series = true
 series_name = "Favorite Exercise"
 series_position = 2
