@@ -1,5 +1,5 @@
-# IronIdle
-Idle/Incremental Gym Game
+# Iron Idle
+An Idle/Incremental Gym Game
 
 You can play the game in-browser or download it for free here: https://justindm.itch.io/iron-idle
 
